@@ -1,0 +1,123 @@
+{
+  "env": {
+    "AWS_REGION": "us-east-1",
+    "AWS_PROFILE": "toptal-agent-ops",
+    "CLAUDE_CODE_USE_BEDROCK": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(brew install:*)",
+      "Bash(brew tap:*)",
+      "Bash(mkdir:*)",
+      "Bash(vector validate:*)",
+      "Bash(~/logs/applications/test.log)",
+      "Bash(~/logs/scripts/script.log)",
+      "Bash(cat:*)",
+      "Bash(tree:*)",
+      "Bash(stow:*)",
+      "Bash(test:*)",
+      "WebFetch(domain:*)",
+      "Bash(opencode:*)",
+      "Bash(uvx:*)",
+      "Bash(uv run:*)",
+      "Bash(uv sync:*)",
+      "Bash(uv lock:*)",
+      "Bash(uv add:*)",
+      "Bash(uv remove:*)",
+      "Bash(uv update:*)",
+      "Bash(ls:*)",
+      "Bash(xargs:*)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "model": "global.anthropic.claude-opus-4-5-20251101-v1:0",
+  "enabledMcpjsonServers": [],
+  "disabledMcpjsonServers": [
+    "memory",
+    "context7",
+    "fetch"
+  ],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ~/.claude/hooks/workflows/pre_tool_use.py"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ~/.claude/hooks/workflows/post_tool_use.py"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ~/.claude/hooks/workflows/user_prompt.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ~/.claude/hooks/workflows/stop.py"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ~/.claude/hooks/workflows/subagent_stop.py"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ~/.claude/hooks/workflows/session_start.py"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ~/.claude/hooks/workflows/session_end.py"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "python3 ~/.claude/scripts/context-monitor.py"
+  },
+  "alwaysThinkingEnabled": true,
+  "enabledPlugins": {
+    "claude-mem@thedotmack": true
+  }
+}

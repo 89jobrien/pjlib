@@ -1,0 +1,14 @@
+.claude/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+data/
+.vscode/
+.ide/
+# shell-snapshots/
+# session-env/
+# file-history/
+# debug/
+# statsig/
+# todos/
+# transcripts/
