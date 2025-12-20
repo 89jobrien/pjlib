@@ -6,7 +6,7 @@ displayName: Code Reviewer
 category: general
 color: blue
 model: opus
-skills: code-review, tool-presets, security-audit
+skills: code-review, tool-presets, security-audit, meta-cognitive-reasoning
 ---
 
 # Code Reviewer

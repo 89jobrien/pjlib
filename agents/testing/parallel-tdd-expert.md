@@ -1,5 +1,5 @@
 ---
-name: parallel-tdd-implementation
+name: parallel-tdd-expert
 description: Use proactively for parallelizing Test-Driven Development implementation of multiple Python components. Specialist for implementing multiagent orchestration features using strict TDD workflow with async patterns, maintaining >90% test coverage.
 tools: Read, Write, Edit, Bash, Grep, Glob
 model: sonnet

@@ -1,10 +1,10 @@
 ---
 name: ml-engineer
 description: ML production systems and model deployment specialist. Use PROACTIVELY for ML pipelines, model serving, feature engineering, A/B testing, monitoring, and production ML infrastructure.
-tools: Read, Write, Edit, Bash
+tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, mcp__context7__get-library-docs, mcp__context7__resolve-library-id
 model: sonnet
 color: orange
-skills: machine-learning, performance
+skills: machine-learning, performance, python-scripting
 ---
 
 # ML Engineer

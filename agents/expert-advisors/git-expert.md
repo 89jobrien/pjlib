@@ -6,7 +6,7 @@ model: sonnet
 category: general
 color: orange
 displayName: Git Expert
-skills: git-workflow
+skills: git-workflow, shell-scripting
 ---
 
 # Git Expert

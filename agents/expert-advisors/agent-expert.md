@@ -15,10 +15,10 @@ description: |-
     assistant: 'Let me use the agent-expert agent to design a full-stack security agent with proper domain boundaries and expertise areas'
     <commentary>The user needs agent development help, so use the agent-expert agent.</commentary>
   </example>
-tools: Read, Write, Edit, Grep
+tools: Read, Write, Edit, Grep, Glob
 model: opus
 color: orange
-skills: global-standards
+skills: global-standards, skill-creator, prompt-optimization
 ---
 
 # Agent Expert

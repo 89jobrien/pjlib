@@ -1,5 +1,5 @@
 ---
-name: triage-expert
+name: migration-auditor
 model: sonnet
 description: Use proactively for auditing and triaging implementation inconsistencies, deprecated patterns, and system migrations. Specialist for reviewing mixed implementations and creating migration plans.
 tools: Read, Grep, Glob, Bash

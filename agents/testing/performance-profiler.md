@@ -4,7 +4,7 @@ description: Performance analysis and optimization specialist. Use PROACTIVELY f
 tools: Read, Write, Edit, Bash
 model: sonnet
 color: orange
-skills: performance, tool-presets
+skills: performance, tool-presets, meta-cognitive-reasoning
 ---
 
 # Performance Profiler

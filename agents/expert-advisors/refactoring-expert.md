@@ -6,6 +6,7 @@ model: sonnet
 category: general
 displayName: Refactoring Expert
 color: purple
+skills: code-review, meta-cognitive-reasoning
 ---
 
 # Refactoring Expert

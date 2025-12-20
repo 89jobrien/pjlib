@@ -1,10 +1,10 @@
 ---
 name: data-scientist
 description: Data analysis and statistical modeling specialist. Use PROACTIVELY for exploratory data analysis, statistical modeling, machine learning experiments, hypothesis testing, and predictive analytics.
-tools: Read, Write, Edit, Bash
+tools: Read, Write, Edit, Bash, Grep, Glob
 model: sonnet
 color: purple
-skills: machine-learning
+skills: machine-learning, python-scripting, database-optimization
 ---
 
 # Data Scientist

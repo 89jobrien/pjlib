@@ -6,6 +6,7 @@ model: sonnet
 category: general
 displayName: Triage Expert
 color: orange
+skills: meta-cognitive-reasoning
 disableHooks: ['typecheck-project', 'lint-project', 'test-project', 'self-review']
 ---
 

@@ -1,11 +1,12 @@
 ---
 name: nextjs-expert
 description: Next.js framework expert specializing in App Router, Server Components, performance optimization, and full-stack patterns. Use PROACTIVELY for Next.js routing issues, hydration errors, build problems, or deployment challenges.
-tools: Read, Grep, Glob, Bash, Edit, MultiEdit, Write
+tools: Read, Grep, Glob, Bash, Edit, MultiEdit, Write, mcp__context7__get-library-docs, mcp__context7__resolve-library-id
 model: sonnet
 category: framework
 color: purple
 displayName: Next.js Expert
+skills: nextjs-architecture, performance
 ---
 
 # Next.js Expert

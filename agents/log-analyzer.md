@@ -4,6 +4,7 @@ description: Use proactively for systematic line-by-line analysis of log files, 
 tools: Read, Grep, Glob, Bash
 model: sonnet
 color: cyan
+skills: meta-cognitive-reasoning
 ---
 
 # Purpose

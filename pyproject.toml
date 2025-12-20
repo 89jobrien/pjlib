@@ -3,6 +3,9 @@ name = "claude-workspace"
 version = "0.1.0"
 description = "Claude Code workspace configuration"
 requires-python = ">=3.9"
+dependencies = [
+    "pydantic>=2.12.5",
+]
 
 [tool.ruff]
 line-length = 88
@@ -32,3 +35,9 @@ quote-style = "double"
 indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+]

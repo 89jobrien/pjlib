@@ -1,10 +1,10 @@
 ---
 name: error-detective
 description: Log analysis and error pattern detection specialist. Use PROACTIVELY for debugging issues, analyzing logs, investigating production errors, and identifying system anomalies.
-tools: Read, Write, Edit, Bash, Grep
+tools: Read, Write, Edit, Bash, Grep, Glob
 model: sonnet
 color: red
-skills: debugging
+skills: debugging, meta-cognitive-reasoning
 ---
 
 # Error Detective

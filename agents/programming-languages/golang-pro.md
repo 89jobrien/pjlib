@@ -2,8 +2,8 @@
 name: golang-pro
 model: sonnet
 description: Use proactively for enterprise-level Golang development including clean architecture, DDD, concurrency patterns, testing strategies, performance optimization, production readiness, API design, and security best practices
-tools: Read, Edit, Write, Bash, Grep, Glob, Task
-skills: golang-enterprise-patterns, golang-testing, golang-performance
+tools: Read, Edit, Write, Bash, Grep, Glob, Task, mcp__context7__get-library-docs, mcp__context7__resolve-library-id
+skills: golang-enterprise-patterns, golang-testing, golang-performance, testing
 color: cyan
 ---
 

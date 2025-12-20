@@ -4,7 +4,7 @@ description: Fact verification and source validation specialist. Use PROACTIVELY
 tools: Read, Write, Edit, WebSearch, WebFetch
 model: sonnet
 color: yellow
-skills: lead-research-assistant
+skills: lead-research-assistant, meta-cognitive-reasoning
 ---
 
 # Fact-Checker

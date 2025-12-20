@@ -1,10 +1,10 @@
 ---
 name: nlp-engineer
 description: Natural Language Processing and text analytics specialist. Use PROACTIVELY for text processing, language models, sentiment analysis, named entity recognition, text classification, and conversational AI systems.
-tools: Read, Write, Edit, Bash
+tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, mcp__context7__get-library-docs, mcp__context7__resolve-library-id
 model: sonnet
 color: blue
-skills: machine-learning
+skills: machine-learning, prompt-optimization
 ---
 
 # NLP Engineer

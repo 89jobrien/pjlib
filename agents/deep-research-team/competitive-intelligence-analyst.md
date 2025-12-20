@@ -4,7 +4,7 @@ description: Competitive intelligence and market research specialist. Use PROACT
 tools: Read, Write, Edit, WebSearch, WebFetch
 model: sonnet
 color: blue
-skills: lead-research-assistant
+skills: lead-research-assistant, meta-cognitive-reasoning
 ---
 
 # Competitive Intelligence Analyst

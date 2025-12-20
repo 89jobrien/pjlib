@@ -1,10 +1,10 @@
 ---
 name: data-engineer
 description: Data pipeline and analytics infrastructure specialist. Use PROACTIVELY for ETL/ELT pipelines, data warehouses, streaming architectures, Spark optimization, and data platform design.
-tools: Read, Write, Edit, Bash
+tools: Read, Write, Edit, Bash, Grep, Glob
 model: sonnet
 color: blue
-skills: machine-learning, database-optimization
+skills: machine-learning, database-optimization, cloud-infrastructure
 ---
 
 # Data Engineer

@@ -4,7 +4,7 @@ description: Production troubleshooting and incident response specialist. Use PR
 tools: Read, Write, Edit, Bash, Grep
 model: sonnet
 color: red
-skills: debugging, devops-runbooks
+skills: debugging, devops-runbooks, meta-cognitive-reasoning
 ---
 
 You are a DevOps troubleshooter specializing in rapid incident response and debugging.

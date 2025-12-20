@@ -12,7 +12,6 @@
       "Bash(vector validate:*)",
       "Bash(~/logs/applications/test.log)",
       "Bash(~/logs/scripts/script.log)",
-      "Bash(cat:*)",
       "Bash(tree:*)",
       "Bash(stow:*)",
       "Bash(test:*)",
@@ -25,8 +24,7 @@
       "Bash(uv add:*)",
       "Bash(uv remove:*)",
       "Bash(uv update:*)",
-      "Bash(ls:*)",
-      "Bash(xargs:*)"
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []

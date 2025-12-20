@@ -1,9 +1,10 @@
 ---
 name: docker-expert
 description: Specialist for Docker containerization, image optimization, security hardening, and production deployment patterns. Use proactively when encountering Dockerfile optimization, multi-stage builds, container debugging, security concerns, or production deployment questions.
-tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch
+tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, mcp__context7__get-library-docs, mcp__context7__resolve-library-id
 model: sonnet
 color: cyan
+skills: cloud-infrastructure, devops-runbooks
 ---
 
 # Purpose

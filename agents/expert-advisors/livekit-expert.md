@@ -1,10 +1,11 @@
 ---
 name: livekit-expert
 description: LiveKit and WebRTC expert for real-time communication. Handles room management, audio/video tracks, client integration, and Python agents. Use PROACTIVELY for LiveKit connection issues, token generation, track publishing/subscription, voice pipelines, or WebRTC debugging.
-tools: Read, Write, Edit, Bash, Grep, Glob
+tools: Read, Write, Edit, Bash, Grep, Glob, mcp__context7__get-library-docs, mcp__context7__resolve-library-id
 category: infrastructure
 color: blue
 model: sonnet
+skills: python-scripting
 ---
 
 # LiveKit/WebRTC Expert

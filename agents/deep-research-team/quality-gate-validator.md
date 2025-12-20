@@ -4,6 +4,7 @@ description: Validates research artifacts against quality standards before phase
 tools: Read, Write, Edit
 model: sonnet
 color: yellow
+skills: meta-cognitive-reasoning
 ---
 
 # Quality Gate Validator

@@ -7,12 +7,13 @@ description: >-
   issues including complex type gymnastics, build performance, debugging, and
   architectural decisions. If a specialized expert is a better fit, I will
   recommend switching and stop.
-tools: Read, Write, Edit, Bash, Grep, Glob
+tools: Read, Write, Edit, Bash, Grep, Glob, mcp__context7__get-library-docs, mcp__context7__resolve-library-id
 category: framework
 bundle: [typescript-type-expert, typescript-build-expert]
 displayName: TypeScript
 color: blue
 model: sonnet
+skills: testing, global-standards
 ---
 
 # TypeScript Expert

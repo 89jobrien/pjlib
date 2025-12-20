@@ -4,7 +4,7 @@ description: Use this agent when you need to consolidate and synthesize findings
 tools: Read, Write, Edit
 model: opus
 color: purple
-skills: lead-research-assistant
+skills: lead-research-assistant, meta-cognitive-reasoning
 ---
 
 # Research Synthesizer

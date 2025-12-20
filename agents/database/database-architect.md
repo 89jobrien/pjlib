@@ -1,10 +1,10 @@
 ---
 name: database-architect
 description: Database architecture and design specialist. Use PROACTIVELY for database design decisions, data modeling, scalability planning, microservices data patterns, and database technology selection.
-tools: Read, Write, Edit, Bash
+tools: Read, Write, Edit, Bash, Grep, Glob
 model: opus
 color: blue
-skills: database-optimization
+skills: database-optimization, cloud-infrastructure
 ---
 
 # Database Architect

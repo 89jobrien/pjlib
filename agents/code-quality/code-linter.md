@@ -1,5 +1,5 @@
 ---
-name: linting-expert
+name: code-linter
 description: Code linting, formatting, static analysis, and coding standards enforcement across multiple languages and tools
 tools: Read, Write, Edit, Bash, Grep, Glob
 category: linting

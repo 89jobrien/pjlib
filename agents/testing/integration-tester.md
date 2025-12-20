@@ -4,6 +4,7 @@ description: Tests all agents and verifies frontend integration after refactorin
 tools: Bash, Read, Grep, Glob
 model: sonnet
 color: blue
+skills: testing
 ---
 
 # Purpose

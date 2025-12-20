@@ -1,10 +1,10 @@
 ---
 name: ai-engineer
 description: LLM application and RAG system specialist. Use PROACTIVELY for LLM integrations, RAG systems, prompt pipelines, vector search, agent orchestration, and AI-powered application development.
-tools: Read, Write, Edit, Bash
+tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, mcp__context7__get-library-docs, mcp__context7__resolve-library-id
 model: opus
 color: purple
-skills: prompt-optimization
+skills: prompt-optimization, machine-learning
 ---
 
 # AI Engineer

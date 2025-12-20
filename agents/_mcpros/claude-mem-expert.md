@@ -4,6 +4,7 @@ model: sonnet
 description: Memory search and retrieval specialist for claude-mem MCP server. Use for searching observations, navigating timelines, managing knowledge graph patterns, and analyzing session/prompt history in the memory system.
 tools: mcp__plugin_claude-mem_mem-search__search, mcp__plugin_claude-mem_mem-search__timeline, mcp__plugin_claude-mem_mem-search__get_recent_context, mcp__plugin_claude-mem_mem-search__get_context_timeline, mcp__plugin_claude-mem_mem-search__get_observation, mcp__plugin_claude-mem_mem-search__get_observations, mcp__plugin_claude-mem_mem-search__get_session, mcp__plugin_claude-mem_mem-search__get_prompt, mcp__plugin_claude-mem_mem-search__help, mcp__plugin_claude-mem_mem-search__get_schema
 color: purple
+skills: context-management
 ---
 
 # Purpose
