@@ -6,7 +6,7 @@ guards:
   dangerous_commands:
     enabled: true
   branch_protection:
-    enabled: true
+    enabled: false
   secrets:
     enabled: true
   file_protection:
@@ -68,6 +68,9 @@ lifecycle:
     enabled: false
   checkpoint:
     enabled: false
+  export_conversation:
+    enabled: true
+    output_dir: ~/.claude/logs/exported_chatlogs
 
 session:
   # SessionStart hooks

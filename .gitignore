@@ -1,34 +1,35 @@
 ## Custom
-
+logs/exported_chatlogs/
+docs/**
 *.local.md
 *.local.json
-.claude/
-.cursor/
+# .claude/
+# .cursor/
 .specify/
 ISSUES/
 node_modules/
 **/.DS_Store
-file-history/
-logs/
-plans/
-plugins/
-projects/
-data/
-datasets/
-debug/
-docs/
-status_lines/
-statsig/
-session-*/
-shell-snapshots/
-specs/
-todos/
-transcripts/
-valerie/
-knowledge-updates/
-ide/
-.vscode/
-ai_docs/
+# file-history/
+# logs/
+# plans/
+# plugins/
+# projects/
+# data/
+# datasets/
+# debug/
+# docs/
+# status_lines/
+# statsig/
+# session-*/
+# shell-snapshots/
+# specs/
+# todos/
+# transcripts/
+# valerie/
+# knowledge-updates/
+# ide/
+# .vscode/
+# ai_docs/
 performance.csv
 *.jsonl
 

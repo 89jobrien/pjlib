@@ -27,6 +27,10 @@ HOOKS_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(HOOKS_ROOT))
 
 from hook_logging import hook_invocation  # noqa: E402
+from lifecycle.export_conversation import (  # noqa: E402
+    export_transcript,
+    get_output_dir,
+)
 
 
 def load_config() -> dict[str, Any]:
@@ -36,6 +40,7 @@ def load_config() -> dict[str, Any]:
         return {}
     try:
         import yaml
+
         with config_path.open() as f:
             return yaml.safe_load(f) or {}
     except Exception:
@@ -83,7 +88,9 @@ def collect_metrics(transcript_path: str | None) -> dict[str, Any]:
                 for item in content:
                     if isinstance(item, dict) and item.get("type") == "tool_use":
                         tool = item.get("name", "unknown")
-                        metrics["tools_used"][tool] = metrics["tools_used"].get(tool, 0) + 1
+                        metrics["tools_used"][tool] = (
+                            metrics["tools_used"].get(tool, 0) + 1
+                        )
 
                         if tool in ("Write", "Edit", "MultiEdit"):
                             metrics["files_modified"] += 1
@@ -105,7 +112,7 @@ def suggest_commit(cwd: str) -> str | None:
             cwd=cwd,
             capture_output=True,
             text=True,
-            timeout=5
+            timeout=5,
         )
 
         if result.returncode != 0 or not result.stdout.strip():
@@ -117,7 +124,7 @@ def suggest_commit(cwd: str) -> str | None:
             cwd=cwd,
             capture_output=True,
             text=True,
-            timeout=5
+            timeout=5,
         )
 
         if files_result.returncode != 0:
@@ -185,7 +192,9 @@ def run_lifecycle_hooks(payload: dict[str, Any], config: dict) -> list[str]:
         metrics = collect_metrics(transcript_path)
         if metrics.get("tools_used"):
             save_metrics(metrics, config)
-            tool_summary = ", ".join(f"{k}:{v}" for k, v in list(metrics["tools_used"].items())[:5])
+            tool_summary = ", ".join(
+                f"{k}:{v}" for k, v in list(metrics["tools_used"].items())[:5]
+            )
             output.append(f"Session metrics: {tool_summary}")
 
     # Commit suggestion
@@ -193,6 +202,15 @@ def run_lifecycle_hooks(payload: dict[str, Any], config: dict) -> list[str]:
         suggestion = suggest_commit(cwd)
         if suggestion:
             output.append(f"Suggested commit: {suggestion}")
+
+    # Export conversation
+    if is_enabled("export_conversation", config) and transcript_path:
+        export_dir = get_output_dir(config)
+        exported = export_transcript(
+            transcript_path, export_dir, event_type="stop", cwd=cwd
+        )
+        if exported:
+            output.append(f"Conversation exported: {exported.name}")
 
     return output
 

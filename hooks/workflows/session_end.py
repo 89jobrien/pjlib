@@ -31,6 +31,10 @@ HOOKS_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(HOOKS_ROOT))
 
 from hook_logging import hook_invocation  # noqa: E402
+from lifecycle.export_conversation import (  # noqa: E402
+    export_transcript,
+    get_output_dir,
+)
 
 
 def load_config() -> dict[str, Any]:
@@ -93,6 +97,17 @@ def main() -> None:
         # Log session end
         if is_enabled("session_logging", config):
             log_session_end(payload, config)
+
+        # Export conversation if transcript available
+        transcript_path = payload.get("transcript_path")
+        cwd = payload.get("cwd", ".")
+        if transcript_path:
+            export_dir = get_output_dir(config)
+            exported = export_transcript(
+                transcript_path, export_dir, event_type="session_end", cwd=cwd
+            )
+            if exported:
+                print(f"[Conversation exported: {exported.name}]", file=sys.stderr)
 
         # Print summary to stderr
         print(f"[Session ended: {reason}]", file=sys.stderr)
