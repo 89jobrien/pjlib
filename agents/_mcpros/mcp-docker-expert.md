@@ -2,7 +2,7 @@
 name: mcp-docker-expert
 model: sonnet
 description: Use proactively for MCP Docker server operations, Python code execution in persistent sessions, MCP server discovery and management, creating code-mode tools, and Context7 library documentation retrieval. Specialist for orchestrating multiple MCP servers and executing complex workflows.
-tools: Read, Write, Grep, Glob, WebFetch
+tools: mcp__MCP_DOCKER__execute_code, mcp__MCP_DOCKER__mcp-find, mcp__MCP_DOCKER__mcp-add, mcp__MCP_DOCKER__mcp-remove, mcp__MCP_DOCKER__mcp-config-set, mcp__MCP_DOCKER__mcp-exec, mcp__MCP_DOCKER__code-mode, mcp__MCP_DOCKER__resolve-library-id, mcp__MCP_DOCKER__get-library-docs, Read, Write, Grep, Glob
 color: cyan
 ---
 
