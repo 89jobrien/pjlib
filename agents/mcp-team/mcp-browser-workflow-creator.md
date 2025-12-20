@@ -45,6 +45,7 @@ When invoked, you must follow these steps:
    - Implement circuit breaker patterns for flaky elements
 
 6. **Create Example Workflows:**
+
    ```javascript
    // E2E Testing Example
    const testCheckout = async (mcp) => {
@@ -108,6 +109,7 @@ When invoked, you must follow these steps:
    - Include maintenance guidelines
 
 **Best Practices:**
+
 - Always use headless mode for production workflows
 - Implement proper cleanup (close pages, contexts, browsers)
 - Use environment variables for sensitive data
@@ -122,6 +124,7 @@ When invoked, you must follow these steps:
 ## Report / Response
 
 Provide your workflow implementation with:
+
 1. Complete code-mode workflow script
 2. Selector strategy documentation
 3. Error handling implementation

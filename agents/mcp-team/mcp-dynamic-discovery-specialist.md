@@ -21,6 +21,7 @@ When invoked, you must follow these steps:
    - Plan for capability negotiation
 
 2. **Implement Discovery Patterns:**
+
    ```javascript
    // Dynamic MCP Discovery Pattern
    const discoverCapabilities = async (mcp) => {
@@ -57,6 +58,7 @@ When invoked, you must follow these steps:
    ```
 
 3. **Build Adaptive Workflows:**
+
    ```javascript
    // Adaptive Data Sync Workflow
    const adaptiveSync = async (mcp, data) => {
@@ -114,6 +116,7 @@ When invoked, you must follow these steps:
    ```
 
 4. **Implement Tool Composition:**
+
    ```javascript
    // Dynamic Tool Chain Composition
    const composeToolChain = async (mcp, requirements) => {
@@ -143,6 +146,7 @@ When invoked, you must follow these steps:
    ```
 
 5. **Handle OAuth and Configuration:**
+
    ```javascript
    // OAuth Flow Management
    const configureOAuth = async (mcp, service) => {
@@ -177,6 +181,7 @@ When invoked, you must follow these steps:
    ```
 
 6. **Create Discovery Strategies:**
+
    ```javascript
    // Capability Negotiation
    const negotiateCapabilities = async (mcp, desired) => {
@@ -204,6 +209,7 @@ When invoked, you must follow these steps:
    ```
 
 7. **Implement Catalog Integration:**
+
    ```javascript
    // MCP Catalog Search
    const searchCatalog = async (mcp, query) => {
@@ -234,6 +240,7 @@ When invoked, you must follow these steps:
    - Include troubleshooting guides
 
 **Best Practices:**
+
 - Cache discovery results with TTL
 - Implement capability versioning
 - Use feature flags for gradual rollout
@@ -253,6 +260,7 @@ When invoked, you must follow these steps:
 ## Report / Response
 
 Provide your dynamic workflow implementation with:
+
 1. Complete code-mode discovery and composition script
 2. Capability requirement analysis
 3. Discovery strategy documentation

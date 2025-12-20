@@ -9,23 +9,12 @@ tools:
   - Glob
   - Bash
   - WebFetch
-  - mcp__MCP_DOCKER__search_nodes
-  - mcp__MCP_DOCKER__open_nodes
-  - mcp__MCP_DOCKER__read_graph
-  - mcp__MCP_DOCKER__create_entities
-  - mcp__MCP_DOCKER__add_observations
-  - mcp__MCP_DOCKER__create_relations
-  - mcp__MCP_DOCKER__get-library-docs
-  - mcp__MCP_DOCKER__resolve-library-id
-  - mcp__MCP_DOCKER__sequentialthinking
-  - mcp__MCP_DOCKER__tavily-crawl
-  - mcp__MCP_DOCKER__tavily-extract
-  - mcp__MCP_DOCKER__tavily-map
-  - mcp__MCP_DOCKER__tavily-search
+  - mcp__MCP_DOCKER__*
+  - Skill(code-context-finder)
 model: sonnet
 color: cyan
-skills:
-  - code-context-finder
+# skills:
+#   - code-context-finder
 ---
 
 # Context-Aware Coder

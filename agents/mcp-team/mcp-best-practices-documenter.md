@@ -22,6 +22,7 @@ When invoked, you must follow these steps:
    - Document technical debt
 
 2. **Document Performance Optimization:**
+
    ```markdown
    ## Token Efficiency Patterns
 
@@ -40,6 +41,7 @@ When invoked, you must follow these steps:
    ```
 
    ### 2. Batch Processing
+
    **Problem:** Individual API calls increase overhead
    **Solution:** Batch operations when possible
 
@@ -57,6 +59,7 @@ When invoked, you must follow these steps:
    ```
 
    ### 3. Caching Strategy
+
    **Problem:** Redundant fetches of static data
    **Solution:** Implement intelligent caching
 
@@ -75,9 +78,11 @@ When invoked, you must follow these steps:
      return data;
    };
    ```
+
    ```
 
 3. **Create Security Guidelines:**
+
    ```markdown
    ## Security Best Practices
 
@@ -104,6 +109,7 @@ When invoked, you must follow these steps:
    ```
 
    ### 2. Input Validation
+
    - Validate all external inputs
    - Sanitize data before processing
    - Use parameterized queries
@@ -122,6 +128,7 @@ When invoked, you must follow these steps:
    ```
 
    ### 3. Sandboxing
+
    - Run untrusted code in isolated environments
    - Limit resource consumption
    - Implement timeout mechanisms
@@ -134,9 +141,11 @@ When invoked, you must follow these steps:
      network: false
    };
    ```
+
    ```
 
 4. **Document Error Handling Patterns:**
+
    ```javascript
    // Comprehensive Error Handling Pattern
    class MCPError extends Error {
@@ -179,6 +188,7 @@ When invoked, you must follow these steps:
    ```
 
 5. **Create Testing Strategies:**
+
    ```markdown
    ## Testing Best Practices
 
@@ -204,17 +214,21 @@ When invoked, you must follow these steps:
    ```
 
    ### 2. Integration Testing
+
    - Test with real MCP servers in staging
    - Use test databases and sandboxed APIs
    - Verify end-to-end data flow
 
    ### 3. Performance Testing
+
    - Benchmark token usage
    - Measure latency and throughput
    - Test with production-scale data
+
    ```
 
 6. **Document Design Patterns:**
+
    ```markdown
    ## MCP Design Patterns
 
@@ -231,7 +245,9 @@ When invoked, you must follow these steps:
    ```
 
    ### 2. Circuit Breaker Pattern
+
    **Use Case:** Prevent cascading failures
+
    ```javascript
    class CircuitBreaker {
      constructor(threshold = 5, timeout = 60000) {
@@ -259,7 +275,9 @@ When invoked, you must follow these steps:
    ```
 
    ### 3. Observer Pattern
+
    **Use Case:** Event-driven workflows
+
    ```javascript
    const eventBus = new EventEmitter();
 
@@ -271,9 +289,11 @@ When invoked, you must follow these steps:
      await handleError(error);
    });
    ```
+
    ```
 
 7. **Create Real-World Case Studies:**
+
    ```markdown
    ## Case Study: E-Commerce Data Sync
 
@@ -300,6 +320,7 @@ When invoked, you must follow these steps:
    ```
 
 8. **Document Debugging Approaches:**
+
    ```markdown
    ## Debugging MCP Workflows
 
@@ -326,17 +347,21 @@ When invoked, you must follow these steps:
    ```
 
    ### 2. Distributed Tracing
+
    - Use correlation IDs across services
    - Track request flow through MCP servers
    - Measure latency at each step
 
    ### 3. Replay Capability
+
    - Log all inputs and outputs
    - Enable workflow replay for debugging
    - Create test cases from production issues
+
    ```
 
 **Best Practices:**
+
 - Document with real code examples
 - Include performance benchmarks
 - Provide troubleshooting guides
@@ -356,6 +381,7 @@ When invoked, you must follow these steps:
 ## Report / Response
 
 Provide comprehensive documentation including:
+
 1. Performance optimization guide with benchmarks
 2. Security best practices and audit checklist
 3. Error handling and resilience patterns

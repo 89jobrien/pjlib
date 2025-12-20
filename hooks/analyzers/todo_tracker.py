@@ -3,9 +3,9 @@
 # requires-python = ">=3.12"
 # dependencies = []
 # ///
-"""TODO tracker hook.
+"""TO-DO tracker hook.
 
-Tracks TODO/FIXME comments added or removed in files.
+Tracks `TODO`/`FIXME` comments added or removed in files.
 Runs on PostToolUse for Write/Edit operations.
 """
 
@@ -20,7 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from hook_logging import hook_invocation
 
-# Patterns to match TODO comments
+# Patterns to match `TODO` comments
 TODO_PATTERNS = [
     r"#\s*(TODO|FIXME|HACK|XXX|BUG|NOTE)[\s:]+(.+?)$",  # Python/Shell
     r"//\s*(TODO|FIXME|HACK|XXX|BUG|NOTE)[\s:]+(.+?)$",  # JS/TS/Go/Rust
@@ -32,7 +32,7 @@ LOG_DIR = Path.home() / ".claude" / "todo-logs"
 
 
 def extract_todos(content: str) -> list[tuple[str, str, int]]:
-    """Extract TODO comments from content.
+    """Extract `TODO` comments from content.
 
     Returns list of (type, message, line_number).
     """
@@ -54,7 +54,7 @@ def extract_todos(content: str) -> list[tuple[str, str, int]]:
 def compare_todos(
     old_todos: list[tuple[str, str, int]], new_todos: list[tuple[str, str, int]]
 ) -> tuple[list[tuple[str, str, int]], list[tuple[str, str, int]]]:
-    """Compare old and new TODOs.
+    """Compare old and new TO-DOs.
 
     Returns (added, removed).
     """
@@ -120,7 +120,20 @@ def main() -> None:
         path = Path(file_path)
 
         # Skip non-code files
-        code_extensions = {".py", ".js", ".ts", ".tsx", ".jsx", ".go", ".rs", ".java", ".c", ".cpp", ".h", ".md"}
+        code_extensions = {
+            ".py",
+            ".js",
+            ".ts",
+            ".tsx",
+            ".jsx",
+            ".go",
+            ".rs",
+            ".java",
+            ".c",
+            ".cpp",
+            ".h",
+            ".md",
+        }
         if path.suffix.lower() not in code_extensions:
             sys.exit(0)
 

@@ -1,5 +1,5 @@
 ---
-name: golang-enterprise-expert
+name: golang-pro
 model: sonnet
 description: Use proactively for enterprise-level Golang development including clean architecture, DDD, concurrency patterns, testing strategies, performance optimization, production readiness, API design, and security best practices
 tools: Read, Edit, Write, Bash, Grep, Glob, Task
@@ -92,6 +92,7 @@ When invoked, you must follow these steps:
 
 11. **Organize Code Structure**
     - Follow standard Go project layout:
+
       ```
       /cmd          - Main applications
       /internal     - Private application code
@@ -101,12 +102,14 @@ When invoked, you must follow these steps:
       /scripts      - Build and deployment scripts
       /test         - Additional test data
       ```
+
     - Use dependency injection for testability
     - Define clear interfaces for all dependencies
     - Keep packages focused and cohesive
     - Avoid circular dependencies
 
 **Best Practices:**
+
 - Write idiomatic Go code following Effective Go guidelines
 - Use Go modules for dependency management
 - Run `go fmt`, `go vet`, and `golangci-lint` on all code

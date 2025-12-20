@@ -3,33 +3,44 @@ logs/exported_chatlogs/
 docs/**
 *.local.md
 *.local.json
-# .claude/
-# .cursor/
+
+# IDE / Editor state
+.claude/
+.cursor/
+
+# Auto-generated / managed (per CLAUDE.md)
+file-history/
+plugins/
+projects/
+debug/
+statsig/
+ide/
+shell-snapshots/
+session-diffs/
+
+# Local state & caches
+stats-cache.json
+security_warnings_state_*.json
+herstory.txt
+
+# Usually local (uncomment individual lines to track if needed)
+ai_docs/
+data/
+datasets/
+knowledge-updates/
+plans/
+specs/
+todos/
+valerie/
+
+# Misc
 .specify/
 ISSUES/
 node_modules/
 **/.DS_Store
-# file-history/
-# logs/
-# plans/
-# plugins/
-# projects/
-# data/
-# datasets/
-# debug/
-# docs/
-# status_lines/
-# statsig/
-# session-*/
-# shell-snapshots/
-# specs/
-# todos/
-# transcripts/
-# valerie/
-# knowledge-updates/
-# ide/
-# .vscode/
-# ai_docs/
+logs/
+status_lines/
+transcripts/
 performance.csv
 *.jsonl
 

@@ -21,6 +21,7 @@ When invoked, you must follow these steps:
    - Establish sync frequency and batch sizes
 
 2. **Design Pipeline Architecture:**
+
    ```javascript
    // Pipeline Configuration Template
    const pipelineConfig = {
@@ -52,6 +53,7 @@ When invoked, you must follow these steps:
    - Maintain audit logs
 
 4. **Build Example Pipelines:**
+
    ```javascript
    // Notion → Linear Pipeline
    const notionToLinear = async (mcp) => {
@@ -129,6 +131,7 @@ When invoked, you must follow these steps:
    - Compress data in transit
 
 6. **Handle Errors Gracefully:**
+
    ```javascript
    const withRetry = async (fn, options = {}) => {
      const { maxRetries = 3, backoff = 1000 } = options;
@@ -163,6 +166,7 @@ When invoked, you must follow these steps:
    - Include performance benchmarks
 
 **Best Practices:**
+
 - Use transactions where supported for atomicity
 - Implement circuit breakers for external services
 - Version your pipeline configurations
@@ -181,6 +185,7 @@ When invoked, you must follow these steps:
 ## Report / Response
 
 Provide your pipeline implementation with:
+
 1. Complete code-mode pipeline script
 2. Data flow architecture diagram
 3. Field mapping documentation
