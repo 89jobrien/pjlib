@@ -1,3 +1,8 @@
+---
+argument-hint: [arguments]
+description: Code Permutation Tester
+---
+
 # Code Permutation Tester
 
 Test multiple code variations through simulation before implementation with quality gates and performance prediction.

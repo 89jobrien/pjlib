@@ -1,3 +1,9 @@
+---
+allowed-tools: Bash(*)
+argument-hint: [arguments]
+description: Write comprehensive failing tests following TDD red phase principles.
+---
+
 Write comprehensive failing tests following TDD red phase principles.
 
 [Extended thinking: Generates failing tests that properly define expected behavior using test-automator agent.]

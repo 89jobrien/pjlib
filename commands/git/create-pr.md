@@ -1,3 +1,7 @@
+---
+description: How to Create a Pull Request Using GitHub CLI
+---
+
 # How to Create a Pull Request Using GitHub CLI
 
 This guide explains how to create pull requests using GitHub CLI in our project.

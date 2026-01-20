@@ -1,3 +1,8 @@
+---
+argument-hint: [arguments]
+description: Analyze and Explain Code Functionality
+---
+
 # Analyze and Explain Code Functionality
 
 Analyze and explain code functionality

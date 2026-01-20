@@ -1,3 +1,7 @@
+---
+description: Execute comprehensive research on the following projects for the PROJECT_VIABILITY_REPORT.md at /Users/joe/Documents/Git
+---
+
 Execute comprehensive research on the following projects for the PROJECT_VIABILITY_REPORT.md at /Users/joe/Documents/GitHub/PROJECT_VIABILITY_REPORT.md:
 
 Projects to Research:

@@ -1,3 +1,8 @@
+---
+argument-hint: [arguments]
+description: Systematically Debug and Fix Errors
+---
+
 # Systematically Debug and Fix Errors
 
 Systematically debug and fix errors

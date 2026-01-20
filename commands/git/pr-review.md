@@ -1,3 +1,8 @@
+---
+argument-hint: [arguments]
+description: PR Review
+---
+
 # PR Review
 
 **PR Link/Number**: $ARGUMENTS

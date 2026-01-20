@@ -1,3 +1,8 @@
+---
+argument-hint: [arguments]
+description: Git Status Command
+---
+
 # Git Status Command
 
 Show detailed git repository status

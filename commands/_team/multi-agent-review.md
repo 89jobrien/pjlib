@@ -1,3 +1,8 @@
+---
+argument-hint: [arguments]
+description: Multi-Agent Code Review Orchestration Tool
+---
+
 # Multi-Agent Code Review Orchestration Tool
 
 ## Role: Expert Multi-Agent Review Orchestration Specialist

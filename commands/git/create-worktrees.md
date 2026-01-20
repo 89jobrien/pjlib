@@ -1,3 +1,8 @@
+---
+argument-hint: [arg1]
+description: Git Worktree Commands
+---
+
 # Git Worktree Commands
 
 ## Create Worktrees for All Open PRs

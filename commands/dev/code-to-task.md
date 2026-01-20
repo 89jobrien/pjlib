@@ -1,3 +1,7 @@
+---
+description: Convert code analysis to Linear tasks using full project context
+---
+
 # Convert code analysis to Linear tasks using full project context
 
 ## Purpose

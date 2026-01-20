@@ -1,3 +1,7 @@
+---
+description: Research Task Breakdown: Project Viability Assessment
+---
+
 # Research Task Breakdown: Project Viability Assessment
 
 ## Project: 8-Project Portfolio Viability Update

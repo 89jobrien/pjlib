@@ -1,3 +1,8 @@
+---
+argument-hint: [arguments]
+description: File Analysis Tool
+---
+
 # File Analysis Tool
 
 Perform comprehensive analysis of $ARGUMENTS to identify code quality issues, security vulnerabilities, and optimization opportunities.
