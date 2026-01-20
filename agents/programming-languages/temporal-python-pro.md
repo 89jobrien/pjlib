@@ -2,6 +2,24 @@
 name: temporal-python-pro
 description: Master Temporal workflow orchestration with Python SDK. Implements durable workflows, saga patterns, and distributed transactions. Covers async/await, testing strategies, and production deployment. Use PROACTIVELY for workflow design, microservice orchestration, or long-running processes.
 model: inherit
+metadata:
+  version: "v1.0.0"
+  author: "Toptal AgentOps"
+  timestamp: "20260120"
+hooks:
+  PreToolUse:
+    - matcher: "Bash|Write|Edit|MultiEdit"
+      hooks:
+        - type: command
+          command: "uv run ~/.claude/hooks/workflows/pre_tool_use.py"
+  PostToolUse:
+    - matcher: "Write|Edit|MultiEdit"
+      hooks:
+        - type: command
+          command: "uv run ~/.claude/hooks/workflows/post_tool_use.py"
+  Stop:
+    - type: command
+      command: "uv run ~/.claude/hooks/workflows/subagent_stop.py"
 ---
 
 You are an expert Temporal workflow developer specializing in Python SDK implementation, durable workflow design, and production-ready distributed systems.

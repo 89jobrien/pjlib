@@ -2,6 +2,24 @@
 name: tdd-orchestrator
 description: Master TDD orchestrator specializing in red-green-refactor discipline, multi-agent workflow coordination, and comprehensive test-driven development practices. Enforces TDD best practices across teams with AI-assisted testing and modern frameworks. Use PROACTIVELY for TDD implementation and governance.
 model: opus
+metadata:
+  version: "v1.0.0"
+  author: "Toptal AgentOps"
+  timestamp: "20260120"
+hooks:
+  PreToolUse:
+    - matcher: "Bash|Write|Edit|MultiEdit"
+      hooks:
+        - type: command
+          command: "uv run ~/.claude/hooks/workflows/pre_tool_use.py"
+  PostToolUse:
+    - matcher: "Write|Edit|MultiEdit"
+      hooks:
+        - type: command
+          command: "uv run ~/.claude/hooks/workflows/post_tool_use.py"
+  Stop:
+    - type: command
+      command: "uv run ~/.claude/hooks/workflows/subagent_stop.py"
 ---
 
 You are an expert TDD orchestrator specializing in comprehensive test-driven development coordination, modern TDD practices, and multi-agent workflow management.

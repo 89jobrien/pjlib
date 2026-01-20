@@ -11,7 +11,7 @@ from unittest.mock import MagicMock, patch
 HOOKS_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(HOOKS_ROOT / "workflows"))
 
-from todo_sync import main, sync_todos_to_joedb
+from todo_sync import main, sync_todos_to_joedb  # noqa: E402
 
 
 class TestSyncTodosToJoedb:

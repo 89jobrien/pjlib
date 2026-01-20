@@ -5,6 +5,24 @@ tools: Read, Write, WebFetch, WebSearch
 model: sonnet
 color: green
 skills: url-analysis
+metadata:
+  version: "v1.0.0"
+  author: "Toptal AgentOps"
+  timestamp: "20260120"
+hooks:
+  PreToolUse:
+    - matcher: "Bash|Write|Edit|MultiEdit"
+      hooks:
+        - type: command
+          command: "uv run ~/.claude/hooks/workflows/pre_tool_use.py"
+  PostToolUse:
+    - matcher: "Write|Edit|MultiEdit"
+      hooks:
+        - type: command
+          command: "uv run ~/.claude/hooks/workflows/post_tool_use.py"
+  Stop:
+    - type: command
+      command: "uv run ~/.claude/hooks/workflows/subagent_stop.py"
 ---
 
 You are an expert URL and link validation specialist with deep expertise in web architecture, content analysis, and contextual relevance assessment. You combine technical link checking with sophisticated content analysis to ensure links are not only functional but also appropriate and valuable in their context.

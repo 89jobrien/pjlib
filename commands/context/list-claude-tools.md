@@ -1,9 +1,10 @@
 ---
-argument-hint: ' No arguments required'
+name: list-claude-tools
+argument-hint: " No arguments required"
 description: Shortcut to see all available Claude tools
 ---
 
-# All Tools
+# List Claude Tools
 
 Display All Available Development Tools
 

@@ -25,22 +25,42 @@ MAX_SUGGESTIONS = 5
 # File patterns to search for based on keywords
 KEYWORD_FILE_PATTERNS = {
     # Testing
-    r"\btest(s|ing)?\b": ["**/test_*.py", "**/*.test.ts", "**/*.spec.ts", "**/tests/**"],
+    r"\btest(s|ing)?\b": [
+        "**/test_*.py",
+        "**/*.test.ts",
+        "**/*.spec.ts",
+        "**/tests/**",
+    ],
     r"\bpytest\b": ["**/test_*.py", "**/conftest.py", "pytest.ini", "pyproject.toml"],
     r"\bjest\b": ["**/*.test.ts", "**/*.spec.ts", "jest.config.*"],
     # Configuration
     r"\bconfig(uration)?\b": ["**/config.*", "**/*.config.*", ".env*", "settings.*"],
     r"\benv(ironment)?\b": [".env*", "**/*.env", "**/env.*"],
     # Database
-    r"\bdatabase\b|\bdb\b|\bmigration": ["**/models.*", "**/migrations/**", "**/schema.*", "alembic.ini"],
+    r"\bdatabase\b|\bdb\b|\bmigration": [
+        "**/models.*",
+        "**/migrations/**",
+        "**/schema.*",
+        "alembic.ini",
+    ],
     r"\bsql\b": ["**/*.sql", "**/queries/**"],
     # API
-    r"\bapi\b|\bendpoint|\broute": ["**/routes/**", "**/api/**", "**/endpoints/**", "**/views.*"],
+    r"\bapi\b|\bendpoint|\broute": [
+        "**/routes/**",
+        "**/api/**",
+        "**/endpoints/**",
+        "**/views.*",
+    ],
     r"\brest\b|\bopenapi\b|\bswagger": ["**/openapi.*", "**/swagger.*", "**/api/**"],
     # Auth
-    r"\bauth(entication|orization)?\b": ["**/auth/**", "**/middleware/**", "**/security/**"],
+    r"\bauth(entication|orization)?\b": [
+        "**/auth/**",
+        "**/middleware/**",
+        "**/security/**",
+    ],
     # Components (frontend)
     r"\bcomponent": ["**/components/**", "**/*.tsx", "**/*.vue"],
+    r"\bagent(s|ic)": ["**/agents/**"],
     r"\bhook": ["**/hooks/**", "**/use*.ts"],
     # Styles
     r"\bstyle|\bcss|\bsass": ["**/*.css", "**/*.scss", "**/*.sass", "**/styles/**"],
@@ -62,13 +82,24 @@ def find_matching_files(cwd: str, prompt: str) -> list[Path]:
                 try:
                     for match in cwd_path.glob(pattern):
                         if match.is_file() and not any(
-                            p in str(match) for p in ["node_modules", "__pycache__", ".git", "dist", "build"]
+                            p in str(match)
+                            for p in [
+                                "node_modules",
+                                "__pycache__",
+                                ".git",
+                                "dist",
+                                "build",
+                            ]
                         ):
                             matching_files.add(match)
                 except OSError:
                     continue
 
-    return sorted(matching_files, key=lambda p: p.stat().st_mtime if p.exists() else 0, reverse=True)[:MAX_SUGGESTIONS]
+    return sorted(
+        matching_files,
+        key=lambda p: p.stat().st_mtime if p.exists() else 0,
+        reverse=True,
+    )[:MAX_SUGGESTIONS]
 
 
 def extract_file_mentions(prompt: str) -> list[str]:
@@ -117,16 +148,22 @@ def main() -> None:
         output_parts = []
 
         if keyword_matches:
-            files_list = "\n".join(f"- `{f.relative_to(cwd)}`" for f in keyword_matches[:MAX_SUGGESTIONS])
+            files_list = "\n".join(
+                f"- `{f.relative_to(cwd)}`" for f in keyword_matches[:MAX_SUGGESTIONS]
+            )
             output_parts.append(f"**Related Files Found:**\n{files_list}")
 
         if file_mentions:
-            mentions_list = "\n".join(f"- `{f}`" for f in file_mentions[:MAX_SUGGESTIONS])
+            mentions_list = "\n".join(
+                f"- `{f}`" for f in file_mentions[:MAX_SUGGESTIONS]
+            )
             output_parts.append(f"**Files Mentioned:**\n{mentions_list}")
 
         if output_parts:
             print(f"\n---\n{chr(10).join(output_parts)}\n---\n")
-            print(f"[Success] Found {len(keyword_matches)} related files", file=sys.stderr)
+            print(
+                f"[Success] Found {len(keyword_matches)} related files", file=sys.stderr
+            )
 
         sys.exit(0)
 

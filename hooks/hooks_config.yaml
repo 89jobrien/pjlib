@@ -3,10 +3,13 @@
 # Set 'enabled: false' to disable any check
 
 guards:
+  
   dangerous_commands:
     enabled: true
+  
   branch_protection:
     enabled: false
+  
   secrets:
     enabled: true
   file_protection:
@@ -23,7 +26,7 @@ guards:
 analyzers:
   lint:
     enabled: true
-    auto_fix: false
+    auto_fix: true
     timeout_seconds: 30
   complexity:
     enabled: true
@@ -35,7 +38,7 @@ analyzers:
     enabled: false
     timeout_seconds: 60
   test:
-    enabled: false
+    enabled: true
     timeout_seconds: 120
 
 context:
@@ -58,19 +61,19 @@ lifecycle:
   metrics:
     enabled: true
     min_tool_calls: 3
-    output_dir: ~/.claude/logs
+    output_dir: ~/logs/claude-code/metrics
   commit_suggester:
     enabled: true
     conventional_commits: true
   knowledge_update:
-    enabled: false
-  session_summary:
-    enabled: false
-  checkpoint:
-    enabled: false
-  export_conversation:
     enabled: true
-    output_dir: ~/.claude/logs/exported_chatlogs
+  session_summary:
+    enabled: true
+  checkpoint:
+    enabled: true
+  export_conversation:
+    enabled: false
+    output_dir: ~/logs/claude-code/exported_chatlogs
 
 session:
   # SessionStart hooks
@@ -81,9 +84,9 @@ session:
   # SessionEnd hooks
   session_logging:
     enabled: true
-    log_dir: ~/.claude/logs
+    log_dir: ~/logs/claude-code/hooks/session_logging
 
 subagent:
   # SubagentStop hooks
   verify_completion:
-    enabled: false
+    enabled: true

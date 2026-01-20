@@ -5,6 +5,24 @@ tools: Read, Write, Edit, Bash
 model: sonnet
 color: orange
 skills: performance, seo-analysis
+metadata:
+  version: "v1.0.0"
+  author: "Toptal AgentOps"
+  timestamp: "20260120"
+hooks:
+  PreToolUse:
+    - matcher: "Bash|Write|Edit|MultiEdit"
+      hooks:
+        - type: command
+          command: "uv run ~/.claude/hooks/workflows/pre_tool_use.py"
+  PostToolUse:
+    - matcher: "Write|Edit|MultiEdit"
+      hooks:
+        - type: command
+          command: "uv run ~/.claude/hooks/workflows/post_tool_use.py"
+  Stop:
+    - type: command
+      command: "uv run ~/.claude/hooks/workflows/subagent_stop.py"
 ---
 
 You are a Core Web Vitals optimization specialist focused on improving user experience through measurable web performance metrics.

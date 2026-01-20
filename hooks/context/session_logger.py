@@ -23,7 +23,7 @@ from hook_logging import hook_invocation
 
 def get_session_log_dir() -> Path:
     """Get the directory for session logs."""
-    log_dir = Path.home() / ".claude" / "session-logs"
+    log_dir = Path.home() / "logs" / "claude-code" / "session-logs"
     log_dir.mkdir(parents=True, exist_ok=True)
     return log_dir
 

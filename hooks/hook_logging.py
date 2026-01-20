@@ -34,7 +34,7 @@ def _get_log_dir() -> Path:
         p.mkdir(parents=True, exist_ok=True)
         return p
 
-    p = Path.home() / ".claude" / "logs"
+    p = Path.home()  / "logs" / "claude-code" / "hook_logs"
     p.mkdir(parents=True, exist_ok=True)
     return p
 

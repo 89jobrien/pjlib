@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["pyyaml"]
+# dependencies = ["pyyaml", "loguru"]
 # ///
 """
 PreToolUse workflow - runs all guard checks before tool execution.
@@ -18,6 +18,8 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from loguru import logger
+
 
 # Add hooks root to path
 HOOKS_ROOT = Path(__file__).parent.parent

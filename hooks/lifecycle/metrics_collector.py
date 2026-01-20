@@ -19,7 +19,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from hook_logging import hook_invocation
 
-METRICS_DIR = Path.home() / ".claude" / "session-metrics"
+METRICS_DIR = Path.home() / ".logs" / "claude-code" / "session-metrics"
 
 
 def analyze_transcript(transcript_path: str) -> dict:

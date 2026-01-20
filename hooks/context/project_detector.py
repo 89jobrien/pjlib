@@ -124,7 +124,6 @@ def get_skill_content(project_type: str) -> str | None:
 
     try:
         content = path.read_text()
-        # Limit to first 1500 chars to avoid overwhelming context
         return content[:1500] if len(content) > 1500 else content
     except OSError:
         return None
@@ -145,7 +144,6 @@ def main() -> None:
         cwd = payload.get("cwd", ".")
         prompt = payload.get("prompt", "")
 
-        # Only trigger for code-related prompts
         code_keywords = ["code", "implement", "create", "build", "add", "fix", "refactor", "write"]
         if not any(kw in prompt.lower() for kw in code_keywords):
             sys.exit(0)

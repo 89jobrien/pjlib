@@ -1,12 +1,15 @@
 {
+  "[markdown]": {
+    "editor.tabSize": 2,
+  },
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
+    "editor.tabSize": 4,
     "editor.codeActionsOnSave": {
       "source.fixAll.ruff": "explicit",
       "source.organizeImports.ruff": "explicit"
     },
-    "editor.tabSize": 4
   },
   "ruff.configurationPreference": "filesystemFirst",
   "ruff.fixAll": true,

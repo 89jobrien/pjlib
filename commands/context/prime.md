@@ -1,6 +1,6 @@
 ---
 allowed-tools: Bash, Read
-argument-hint: ' [context] | [file-path] | [fuckin-anything]'
+argument-hint: " [context] | [file-path] | [fuckin-anything]"
 description: Load context for a new agent session by analyzing codebase structure, documentation and README
 ---
 
@@ -22,18 +22,21 @@ description: Load context for a new agent session by analyzing codebase structur
 Initialize a new Claude Code session with comprehensive project context:
 
 1. **Analyze Codebase Structure**
+
    - Run `git ls-files` to understand file organization and project layout
    - Execute directory tree commands (if available) for visual structure
    - Identify key directories and their purposes
    - Note the technology stack and frameworks in use
 
 2. **Read Project Documentation**
+
    - Read README.md for project overview and setup instructions
    - Check for any additional documentation in docs/ or ai_docs/
    - Review any CONTRIBUTING.md or development guides
    - Look for architecture or design documents
 
 3. **Understand Project Context**
+
    - Identify the project's primary purpose and goals
    - Note any special setup requirements or dependencies
    - Check for environment configuration needs

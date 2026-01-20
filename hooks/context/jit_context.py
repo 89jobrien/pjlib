@@ -4,7 +4,7 @@
 # ///
 
 """
-JIT Context Hook for Claude Code UserPromptSubmit events.
+Just-In-Time Context Hook for Claude Code UserPromptSubmit events.
 
 Analyzes user prompts for file patterns and keywords, then pre-loads
 relevant file context using head/tail slicing and grep.

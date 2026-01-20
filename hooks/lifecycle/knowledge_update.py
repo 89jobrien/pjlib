@@ -20,7 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from hook_logging import hook_invocation
 
-KNOWLEDGE_DIR = Path.home() / ".claude" / "knowledge-updates"
+KNOWLEDGE_DIR = Path.home() / "logs" / "claude" / "knowledge-updates"
 
 
 def extract_entities_from_transcript(transcript_path: str) -> dict:
@@ -50,7 +50,9 @@ def extract_entities_from_transcript(transcript_path: str) -> dict:
         return entities
 
     # Extract created files
-    write_matches = re.findall(r'"tool_name":\s*"Write"[^}]*"file_path":\s*"([^"]+)"', content)
+    write_matches = re.findall(
+        r'"tool_name":\s*"Write"[^}]*"file_path":\s*"([^"]+)"', content
+    )
     entities["files_created"] = list(set(write_matches))
 
     # Extract dependencies (npm install, uv add, pip install)
@@ -173,13 +175,21 @@ def main() -> None:
             print(f"  Files created: {len(entities['files_created'])}", file=sys.stderr)
 
         if entities["dependencies_added"]:
-            print(f"  Dependencies: {', '.join(entities['dependencies_added'][:5])}", file=sys.stderr)
+            print(
+                f"  Dependencies: {', '.join(entities['dependencies_added'][:5])}",
+                file=sys.stderr,
+            )
 
         if entities["patterns_used"]:
-            print(f"  Patterns: {', '.join(entities['patterns_used'])}", file=sys.stderr)
+            print(
+                f"  Patterns: {', '.join(entities['patterns_used'])}", file=sys.stderr
+            )
 
         if entities["technologies"]:
-            print(f"  Technologies: {', '.join(entities['technologies'])}", file=sys.stderr)
+            print(
+                f"  Technologies: {', '.join(entities['technologies'])}",
+                file=sys.stderr,
+            )
 
         print(f"\n  Saved to: {update_file}", file=sys.stderr)
         print("=" * 50 + "\n", file=sys.stderr)

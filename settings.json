@@ -1,8 +1,8 @@
 {
   "env": {
-    "AWS_REGION": "us-east-1",
-    "AWS_PROFILE": "toptal-agent-ops",
-    "CLAUDE_CODE_USE_BEDROCK": "1"
+    "CLOUD_ML_REGION": "global",
+    "CLOUDSDK_ACTIVE_CONFIG_NAME": "toptal-agent-ops",
+    "CLAUDE_CODE_USE_VERTEX": "1"
   },
   "permissions": {
     "allow": [
@@ -12,10 +12,25 @@
       "Bash(vector validate:*)",
       "Bash(~/logs/applications/test.log)",
       "Bash(~/logs/scripts/script.log)",
-      "Bash(tree:*)",
+      "Bash(tree ~/.claude:*)",
+      "Bash(tree ~/Documents/Projects:*)",
+      "Bash(tree ./:*)",
       "Bash(stow:*)",
       "Bash(test:*)",
-      "WebFetch(domain:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:openai.com)",
+      "WebFetch(domain:docs.python.org)",
+      "WebFetch(domain:developer.mozilla.org)",
+      "WebFetch(domain:stackoverflow.com)",
+      "WebFetch(domain:hn.algolia.com)",
+      "WebFetch(domain:news.ycombinator.com)",
+      "WebFetch(domain:dev.to)",
+      "WebFetch(domain:www.reddit.com)",
+      "WebFetch(domain:livekit.io)",
+      "WebFetch(domain:docs.openpipe.ai)",
       "Bash(opencode:*)",
       "Bash(uvx:*)",
       "Bash(uv run:*)",
@@ -29,7 +44,7 @@
     "deny": [],
     "ask": []
   },
-  "model": "global.anthropic.claude-opus-4-5-20251101-v1:0",
+  "model": "claude-opus-4-5",
   "enabledMcpjsonServers": [],
   "disabledMcpjsonServers": [
     "memory",
@@ -37,17 +52,6 @@
     "fetch"
   ],
   "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "^(?!TodoWrite$).*$",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run ~/.claude/hooks/workflows/pre_tool_use.py"
-          }
-        ]
-      }
-    ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit|MultiEdit",
@@ -68,16 +72,66 @@
         ]
       }
     ],
-    "UserPromptSubmit": [
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bd prime"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo \"$CLAUDE_FILE_PATHS\" | grep -qE '(\\.zshrc|\\.zshrc$)'; then echo 'BLOCK: ~/.zshrc is protected - edit manually if needed' >&2; exit 2; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo \"$TOOL_INPUT\" | grep -qE '(gh repo edit.*--default-branch|gh api.*default_branch)'; then echo 'BLOCKED: Default branch must remain main.' >&2; exit 1; fi"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "uv run ~/.claude/hooks/workflows/user_prompt.py"
+            "command": "uv run ~/.claude/hooks/workflows/session_end.py"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ~/.claude/hooks/workflows/session_start.py"
           },
           {
             "type": "command",
-            "command": "uv run ~/.claude/hooks/context/jit_context.py"
+            "command": "uv run ~/.claude/hooks/context/codebase_map.py"
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bd prime"
           }
         ]
       }
@@ -102,22 +156,16 @@
         ]
       }
     ],
-    "SessionStart": [
+    "UserPromptSubmit": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "uv run ~/.claude/hooks/workflows/session_start.py"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
+            "command": "uv run ~/.claude/hooks/workflows/user_prompt.py"
+          },
           {
             "type": "command",
-            "command": "uv run ~/.claude/hooks/workflows/session_end.py"
+            "command": "uv run ~/.claude/hooks/context/jit_context.py"
           }
         ]
       }
@@ -125,20 +173,27 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "python3 ~/.claude/scripts/context-monitor.py"
+    "command": "bash -c '\"/Users/joe/.bun/bin/bun\" \"$(ls -td ~/.claude/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | head -1)src/index.ts\"'"
   },
   "enabledPlugins": {
-    "claude-mem@thedotmack": true,
-    "agent-sdk-dev@claude-plugins-official": true,
+    "agent-sdk-dev@claude-plugins-official": false,
     "asana@claude-plugins-official": true,
     "atlassian@claude-plugins-official": true,
+    "claude-mem@thedotmack": true,
     "code-review@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": false,
     "github@claude-plugins-official": true,
-    "linear@claude-plugins-official": true,
-    "pr-review-toolkit@claude-plugins-official": true,
-    "security-guidance@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "gopls@claude-code-lsps": true,
+    "greptile@claude-plugins-official": false,
+    "linear@claude-plugins-official": false,
+    "pr-review-toolkit@claude-plugins-official": false,
+    "pyright-lsp@claude-plugins-official": true,
+    "pyright@claude-code-lsps": false,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": false,
+    "claude-hud@claude-hud": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": false
 }

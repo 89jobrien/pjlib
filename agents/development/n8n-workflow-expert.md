@@ -4,6 +4,24 @@ description: n8n workflow development specialist for creating, debugging, and op
 tools: Read, Write, Edit, MultiEdit, Grep, Glob, Bash, mcp__MCP_DOCKER__get_node_info, mcp__MCP_DOCKER__search_nodes, mcp__MCP_DOCKER__validate_workflow, mcp__MCP_DOCKER__n8n_validate_workflow
 skills: nathan-standards
 category: development
+metadata:
+  version: "v1.0.0"
+  author: "Toptal AgentOps"
+  timestamp: "20260120"
+hooks:
+  PreToolUse:
+    - matcher: "Bash|Write|Edit|MultiEdit"
+      hooks:
+        - type: command
+          command: "uv run ~/.claude/hooks/workflows/pre_tool_use.py"
+  PostToolUse:
+    - matcher: "Write|Edit|MultiEdit"
+      hooks:
+        - type: command
+          command: "uv run ~/.claude/hooks/workflows/post_tool_use.py"
+  Stop:
+    - type: command
+      command: "uv run ~/.claude/hooks/workflows/subagent_stop.py"
 ---
 
 # n8n Workflow Expert

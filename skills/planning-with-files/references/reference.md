@@ -1,8 +1,8 @@
-# Reference: Manus Context Engineering Principles
+# Reference: Context Engineering Principles
 
-This skill is based on the context engineering principles from Manus, the AI agent company acquired by Meta for $2 billion in December 2025.
+This skill is based on the context engineering principles from, the AI agent company acquired by Meta for $2 billion in December 2025.
 
-## The 6 Manus Principles
+## The 6 Principles
 
 ### 1. Filesystem as External Memory
 
@@ -71,8 +71,7 @@ The model updates its internal understanding when seeing failures.
 **Solution:** NEVER modify previous messages. Always append new information.
 
 ## The Agent Loop
-
-Manus operates in a continuous loop:
+ operates in a continuous loop:
 
 ```
 1. Analyze → 2. Think → 3. Select Tool → 4. Execute → 5. Observe → 6. Iterate → 7. Deliver
@@ -87,7 +86,7 @@ Manus operates in a continuous loop:
 | `edit` | Updating specific parts (checkboxes, status) |
 | `read` | Reviewing before decisions |
 
-## Manus Statistics
+## Statistics
 
 | Metric | Value |
 |--------|-------|
@@ -98,7 +97,7 @@ Manus operates in a continuous loop:
 
 ## Key Quotes
 
-> "If the model improvement is the rising tide, we want Manus to be the boat, not the piling stuck on the seafloor."
+> "If the model improvement is the rising tide, we want to be the boat, not the piling stuck on the seafloor."
 
 > "For complex tasks, I save notes, code, and findings to files so I can reference them as I work."
 
@@ -106,5 +105,5 @@ Manus operates in a continuous loop:
 
 ## Source
 
-Based on Manus's official context engineering documentation:
-https://manus.im/de/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus
+Based on's official context engineering documentation:
+https:/.im/de/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building

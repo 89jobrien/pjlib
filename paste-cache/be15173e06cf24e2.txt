@@ -1,0 +1,19 @@
+# joe @ Josephs-MacBook-Air in ~/Documents/GitHub/cod on git:master x [21:39:12]
+$ make test-quick
+uv run pytest tests/test_semantic_cache_v2.py::TestToolAdvisor \
+        tests/test_semantic_cache_v2.py::TestToolRecommendation \
+        tests/test_semantic_cache_v2.py::TestConvenienceFunctions \
+        tests/test_semantic_cache_v2.py::TestEmbeddingProvider \
+        -v
+^CTraceback (most recent call last):
+  File "/Users/joe/Documents/GitHub/cod/.venv/bin/pytest", line 4, in <module>
+    from pytest import console_main
+  File "/Users/joe/Documents/GitHub/cod/.venv/lib/python3.12/site-packages/pytest/__init__.py", line 6, in <module>
+^C^C  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1091, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1191, in get_data
+KeyboardInterrupt
+make: *** [test-quick] Error 130

@@ -1,5 +1,8 @@
 ---
+name: analyze-codebase
 description: Run parallel code review, test audit, and architecture analysis
+allowed-tools: Read, Grep, Glob, Task, Bash
+argument-hint: "[file-path] | [commit-hash] | full"
 ---
 
 # Analyze Codebase
@@ -11,12 +14,14 @@ You MUST spawn the following three agents IN PARALLEL by making all Task tool ca
 Execute these simultaneously:
 
 1. **Code Reviewer** (subagent_type: `code-reviewer`)
+
    - Review the codebase for quality, security vulnerabilities, and maintainability issues
    - Identify code smells, anti-patterns, and potential bugs
    - Check for OWASP top 10 vulnerabilities
    - Provide actionable feedback organized by priority (critical, high, medium, low)
 
 2. **Test Engineer** (subagent_type: `test-engineer`)
+
    - Audit the existing test suite for coverage gaps
    - Evaluate test quality and effectiveness
    - Identify missing unit, integration, and e2e tests
@@ -24,6 +29,7 @@ Execute these simultaneously:
    - Check for flaky or brittle tests
 
 3. **Architect Reviewer** (subagent_type: `architect-reviewer`)
+
    - Analyze the overall software architecture and codebase structure
    - Review for SOLID principles and proper layering
    - Identify opportunities for refactoring and optimization
@@ -31,6 +37,7 @@ Execute these simultaneously:
    - Suggest architectural improvements for scalability and maintainability
 
 4. **Performance Engineer** (subagent_type: `performance-engineer`)
+
    - Analyze the performance of the codebase
    - Identify performance bottlenecks
    - Evaluate performance metrics
@@ -38,6 +45,7 @@ Execute these simultaneously:
    - Suggest performance improvements
 
 5. **Security Engineer** (subagent_type: `security-engineer`)
+
    - Analyze the security of the codebase
    - Identify security vulnerabilities
    - Evaluate security metrics

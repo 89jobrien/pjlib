@@ -2,14 +2,16 @@
 name = "claude-workspace"
 version = "0.1.0"
 description = "Claude Code workspace configuration"
-requires-python = ">=3.9"
+requires-python = ">=3.12"
 dependencies = [
+    "mlx-lm>=0.29.1",
+    "openpipe-art>=0.5.4",
     "pydantic>=2.12.5",
 ]
 
 [tool.ruff]
 line-length = 88
-target-version = "py39"
+target-version = "py312"
 extend-exclude = ["plugins", "projects", "file-history", "shell-snapshots"]
 
 [tool.ruff.lint]

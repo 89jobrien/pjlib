@@ -1,4 +1,5 @@
 #!/usr/bin/env -S uv run --script
+# pyright: reportArgumentType=false
 # /// script
 # requires-python = ">=3.12"
 # dependencies = []
@@ -21,45 +22,59 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from hook_logging import hook_invocation
 
 
+def default_stats() -> tuple[dict[str, int], list[str]]:
+    return (
+        {
+            "files_written": 0,
+            "files_edited": 0,
+            "commands_run": 0,
+            "searches": 0,
+            "reads": 0,
+        },
+        [],
+    )
+
+
 def get_summary_dir() -> Path:
     """Get the directory for session summaries."""
-    summary_dir = Path.home() / ".claude" / "session-summaries"
+    summary_dir = Path.home() / "logs" / "claude-code" / "session-summaries"
     summary_dir.mkdir(parents=True, exist_ok=True)
     return summary_dir
 
 
-def analyze_transcript(transcript_path: str) -> dict:
+def analyze_transcript(transcript_path: str) -> tuple[dict[str, int], list[str]]:
     """Analyze transcript to extract key information."""
     path = Path(transcript_path)
     if not path.exists():
-        return {}
+        return default_stats()
 
     try:
         content = path.read_text()
     except (OSError, UnicodeDecodeError):
-        return {}
-
-    # Count different activities
-    stats = {
-        "files_written": content.count('"tool_name": "Write"'),
-        "files_edited": content.count('"tool_name": "Edit"')
-        + content.count('"tool_name": "MultiEdit"'),
-        "commands_run": content.count('"tool_name": "Bash"'),
-        "searches": content.count('"tool_name": "Grep"')
-        + content.count('"tool_name": "Glob"'),
-        "reads": content.count('"tool_name": "Read"'),
-    }
+        return default_stats()
 
     # Extract file paths mentioned
     import re
 
-    file_paths = set(re.findall(r'"file_path":\s*"([^"]+)"', content))
-    stats["files_touched"] = list(file_paths)[:20]  # Limit to 20
+    file_paths: list[str] = re.findall(r'"file_path":\s*"([^"]+)"', content)
+    files_touched: list[str] = sorted(set(file_paths))[:20]  # Limit to 20
 
-    return stats
+    # Count different activities
+    stats, _ = default_stats()
+    stats["files_written"] = content.count('"tool_name": "Write"')
+    stats["files_edited"] = content.count('"tool_name": "Edit"') + content.count(
+        '"tool_name": "MultiEdit"'
+    )
+    stats["commands_run"] = content.count('"tool_name": "Bash"')
+    stats["searches"] = content.count('"tool_name": "Grep"') + content.count(
+        '"tool_name": "Glob"'
+    )
+    stats["reads"] = content.count('"tool_name": "Read"')
+
+    return stats, files_touched
 
 
-def generate_summary(stats: dict, cwd: str) -> str:
+def generate_summary(stats: dict[str, int], files_touched: list[str], cwd: str) -> str:
     """Generate markdown summary."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -82,9 +97,8 @@ def generate_summary(stats: dict, cwd: str) -> str:
 
 """
 
-    files = stats.get("files_touched", [])
-    if files:
-        for f in files:
+    if files_touched:
+        for f in files_touched:
             summary += f"- `{f}`\n"
     else:
         summary += "_No files tracked_\n"
@@ -117,15 +131,15 @@ def main() -> None:
         cwd = payload.get("cwd", ".")
 
         # Analyze the session
-        stats = analyze_transcript(transcript_path) if transcript_path else {}
+        stats, files_touched = (
+            analyze_transcript(transcript_path) if transcript_path else default_stats()
+        )
 
         # Skip if minimal activity
-        total_activity = sum(
-            [
-                stats.get("files_written", 0),
-                stats.get("files_edited", 0),
-                stats.get("commands_run", 0),
-            ]
+        total_activity = (
+            int(stats.get("files_written", 0))
+            + int(stats.get("files_edited", 0))
+            + int(stats.get("commands_run", 0))
         )
 
         if total_activity < 3:
@@ -133,7 +147,7 @@ def main() -> None:
             sys.exit(0)
 
         # Generate summary
-        summary = generate_summary(stats, cwd)
+        summary = generate_summary(stats, files_touched, cwd)
 
         # Save summary
         summary_dir = get_summary_dir()

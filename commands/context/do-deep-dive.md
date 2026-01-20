@@ -1,3 +1,10 @@
+---
+name: do-deep-dive
+description: Analyze directory structure and purpose
+allowed-tools: Read, Grep, Glob, Task, Bash
+argument-hint: "[directory]"
+---
+
 # Directory Deep Dive
 
 Analyze directory structure and purpose
@@ -5,9 +12,11 @@ Analyze directory structure and purpose
 ## Instructions
 
 1. **Target Directory**
+
    - Focus on the specified directory `$ARGUMENTS` or the current working directory
 
 2. **Investigate Architecture**
+
    - Analyze the implementation principles and architecture of the code in this directory and its subdirectories
    - Look for:
      - Design patterns being used
@@ -16,6 +25,7 @@ Analyze directory structure and purpose
      - Naming conventions and code organization
 
 3. **Create or Update Documentation**
+
    - Create a DEEP_DIVE.local.md file capturing this knowledge
    - If one already exists, update it with newly discovered information
    - Include:

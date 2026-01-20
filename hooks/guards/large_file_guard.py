@@ -30,7 +30,7 @@ ALLOWED_PATTERNS = {
     "pnpm-lock.yaml",
     "poetry.lock",
     "Cargo.lock",
-    "uv.lock",
+    "uv.lock"
 }
 
 

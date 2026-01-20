@@ -70,9 +70,11 @@ CONTEXT_MAPPINGS = [
     {
         "patterns": [
             r"\bdatabase\b",
-            r"\b db \b",
+            r"\b db\b",
             r"\bsql\b",
             r"\bquery\b",
+            r"\bsqlite\b",
+            r"\bpostgres\b",
             r"\bschema\b",
             r"\bmigration\b",
         ],

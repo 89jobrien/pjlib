@@ -1,0 +1,182 @@
+$ make start
+uv run cod.py
+      Built cod @ file:///Users/joe/Documents/GitHub/cod
+Uninstalled 1 package in 1ms
+Installed 1 package in 1ms
+cod | openai:gpt-5-mini | /Users/joe/Documents/GitHub/cod
+
+────────────────────────────────────────────────────────────────────────────────
+❯ how many tests are in the tests dir?
+────────────────────────────────────────────────────────────────────────────────
+
+⏺ Tree(.)
+  ⎿  .
+     ├── AGENTS.md
+     ├── CLAUDE.md
+     ├── GEMINI.md
+     ├── Makefile
+     ... +47 more lines
+
+⏺ Glob(tests/test_*.py .)
+  ⎿  ./tests/test_retry.py
+     ./tests/test_tdd_enhancements.py
+     ./tests/test_implementation_alternatives.py
+     ./tests/test_experimental_tools_todo.py
+     ./tests/test_main_loop.py
+     ... +11 more lines
+
+⏺ Glob(tests/* .)
+  ⎿  ./tests/test_retry.py
+     ./tests/test_tdd_enhancements.py
+     ./tests/test_implementation_alternatives.py
+     ./tests/test_experimental_tools_todo.py
+     ./tests/test_main_loop.py
+     ... +17 more lines
+There are 16 test files matching tests/test_*.py in the tests directory:
+
+- test_retry.py
+- test_tdd_enhancements.py
+- test_implementation_alternatives.py
+- test_experimental_tools_todo.py
+- test_main_loop.py
+- test_tool_execution.py
+- test_experimental_tools.py
+- test_semantic_cache_v2.py
+- test_e2e.py
+- test_api.py
+- test_async.py
+- test_hooks.py
+- test_utils.py
+- test_semantic_cache.py
+- test_tools.py
+- test_schema.py
+
+(There are also test-related files like conftest.py, eval_experimental_tools.py, quick_eval.py, and README_EVALS.md in the tests/ directory.)
+────────────────────────────────────────────────────────────────────────────────
+❯ how many individual tests are there?
+────────────────────────────────────────────────────────────────────────────────
+
+⏺ Bash(pytest --collect-only -q)
+  ⎿  tests/test_api.py: 2
+     tests/test_async.py: 5
+     tests/test_e2e.py: 2
+     tests/test_experimental_tools.py: 33
+     tests/test_experimental_tools_todo.py: 6
+     ... +11 more lines
+Pytest collected 208 individual tests in total.
+
+Per-file breakdown (from pytest --collect-only -q):
+- tests/test_api.py: 2
+- tests/test_async.py: 5
+- tests/test_e2e.py: 2
+- tests/test_experimental_tools.py: 33
+- tests/test_experimental_tools_todo.py: 6
+- tests/test_hooks.py: 9
+- tests/test_implementation_alternatives.py: 53
+- tests/test_main_loop.py: 5
+- tests/test_retry.py: 6
+- tests/test_schema.py: 4
+- tests/test_semantic_cache.py: 23
+- tests/test_semantic_cache_v2.py: 16
+- tests/test_tdd_enhancements.py: 24
+- tests/test_tool_execution.py: 3
+- tests/test_tools.py: 14
+- tests/test_utils.py: 3
+
+(Counts are from test collection — e.g., collected/defined tests, not runtime pass/fail results.)
+────────────────────────────────────────────────────────────────────────────────
+❯ list all of the tests
+────────────────────────────────────────────────────────────────────────────────
+
+⏺ Bash(pytest --collect-only -q -vv)
+  ⎿  ============================= test session starts ==============================
+     platform darwin -- Python 3.12.12, pytest-9.0.2, pluggy-1.6.0
+     rootdir: /Users/joe/Documents/GitHub/cod
+     configfile: pyproject.toml
+     testpaths: tests
+     ... +255 more lines
+Total: 208 tests
+
+tests/test_api.py::test_call_api_ollama
+tests/test_api.py::test_call_api_anthropic
+
+tests/test_async.py::test_call_api_async
+tests/test_async.py::test_run_tool_async
+tests/test_async.py::test_call_api_async_with_callback
+tests/test_async.py::test_run_tool_async_with_hooks
+tests/test_async.py::test_multiple_async_calls
+
+tests/test_e2e.py::test_e2e_read_write_edit_flow
+tests/test_e2e.py::test_e2e_grep_glob_flow
+
+tests/test_experimental_tools.py::test_count_lines_tool
+tests/test_experimental_tools.py::test_file_info_tool
+tests/test_experimental_tools.py::test_list_dir_tool
+tests/test_experimental_tools.py::test_find_text_tool
+tests/test_experimental_tools.py::test_head_tool
+tests/test_experimental_tools.py::test_tail_tool
+tests/test_experimental_tools.py::test_agent_calls_count_lines
+tests/test_experimental_tools.py::test_agent_calls_file_info
+tests/test_experimental_tools.py::test_agent_calls_list_dir
+tests/test_experimental_tools.py::test_agent_calls_find_text
+tests/test_experimental_tools.py::test_agent_calls_head
+tests/test_experimental_tools.py::test_agent_calls_tail
+tests/test_experimental_tools.py::test_experimental_tools_in_schema
+tests/test_experimental_tools.py::test_e2e_agent_chooses_experimental_tool
+tests/test_experimental_tools.py::test_tool_preference_scenarios
+tests/test_experimental_tools.py::test_diff_tool
+tests/test_experimental_tools.py::test_diff_identical_files
+tests/test_experimental_tools.py::test_tree_tool
+tests/test_experimental_tools.py::test_env_tool
+tests/test_experimental_tools.py::test_env_tool_pattern
+tests/test_experimental_tools.py::test_which_tool
+tests/test_experimental_tools.py::test_which_tool_not_found
+tests/test_experimental_tools.py::test_wc_tool
+tests/test_experimental_tools.py::test_checksum_tool
+tests/test_experimental_tools.py::test_checksum_tool_sha256
+tests/test_experimental_tools.py::test_replace_in_file_tool
+tests/test_experimental_tools.py::test_replace_in_file_count
+tests/test_experimental_tools.py::test_append_to_file_tool
+tests/test_experimental_tools.py::test_touch_tool_create
+tests/test_experimental_tools.py::test_touch_tool_update
+tests/test_experimental_tools.py::test_mkdir_tool
+tests/test_experimental_tools.py::test_mkdir_tool_nested
+tests/test_experimental_tools.py::test_mkdir_tool_exists
+
+tests/test_experimental_tools_todo.py::test_replace_in_file_empty_old
+tests/test_experimental_tools_todo.py::test_append_to_file_reports_actual_bytes
+tests/test_experimental_tools_todo.py::test_tail_large_file_returns_last_lines
+tests/test_experimental_tools_todo.py::test_find_text_binary_file_skipped
+tests/test_experimental_tools_todo.py::test_find_text_with_glob_pattern
+tests/test_experimental_tools_todo.py::test_wc_counts_lines_with_no_trailing_newline
+
+tests/test_hooks.py::test_pre_tool_hook_allows
+tests/test_hooks.py::test_pre_tool_hook_blocks
+tests/test_hooks.py::test_pre_tool_hook_modifies_args
+tests/test_hooks.py::test_post_tool_hook
+tests/test_hooks.py::test_multiple_hooks
+tests/test_hooks.py::test_unregister_hook
+tests/test_hooks.py::test_clear_hooks
+tests/test_hooks.py::test_post_hook_error_ignored
+tests/test_hooks.py::test_hook_chain_stops_on_block
+
+tests/test_implementation_alternatives.py::TestEditAlternatives::test_single_replacement
+tests/test_implementation_alternatives.py::TestEditAlternatives::test_not_found
+tests/test_implementation_alternatives.py::TestEditAlternatives::test_multiple_occurrences_blocked
+tests/test_implementation_alternatives.py::TestEditAlternatives::test_replace_all
+tests/test_implementation_alternatives.py::TestEditAlternatives::test_special_characters
+tests/test_implementation_alternatives.py::TestEditAlternatives::test_multiline_content
+tests/test_implementation_alternatives.py::TestEditAlternatives::test_empty_replacement
+tests/test_implementation_alternatives.py::TestEditAlternatives::test_boundary_cases[-x-y-False]
+tests/test_implementation_alternatives.py::TestEditAlternatives::test_boundary_cases[x-x-y-True]
+tests/test_implementation_alternatives.py::TestEditAlternatives::test_boundary_cases[abc_unique_xyz-unique-replaced-True]
+tests/test_implementation_alternatives.py::TestEditAlternatives::test_boundary_cases[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa^C^Cerror: Failed to get PID of child process
+  Caused by: ESRCH: No such process
+make: *** [start] Error 2
+
+
+# joe @ Josephs-MacBook-Air in ~/Documents/GitHub/cod on git:master x [1:39:28] C:130
+$
+
+# joe @ Josephs-MacBook-Air in ~/Documents/GitHub/cod on git:master x [1:39:28] C:130
+$
