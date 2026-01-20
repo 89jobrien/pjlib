@@ -1,7 +1,8 @@
 ---
 name: testing
 description: Comprehensive testing specialization covering test strategy, automation, TDD methodology, test writing, and web app testing. Use when setting up test infrastructure, writing tests, implementing TDD workflows, analyzing coverage, integrating tests into CI/CD, or testing web applications with Playwright. Framework-agnostic approach with framework-specific guidance via reference files.
-user-invocable: true---
+user-invocable: true
+---
 
 # Testing
 

@@ -1,7 +1,8 @@
 ---
 name: database-optimization
-description: SQL query optimization and database performance specialist. Use when optimizing slow queries, fixing N+1 problems, designing indexes, implementing caching, or improving database performance. Works with PostgreSQL, MySQL, and other databases.
-user-invocable: true---
+description: "SQL query optimization and database performance specialist. Use when optimizing slow queries, fixing N+1 problems, designing indexes, implementing caching, or improving database performance. Works with PostgreSQL, MySQL, and other databases."
+user-invocable: false
+---
 
 # Database Optimization
 

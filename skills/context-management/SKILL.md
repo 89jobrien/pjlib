@@ -1,7 +1,8 @@
 ---
 name: context-management
-description: Context management specialist for multi-agent workflows and long-running tasks. Use when coordinating multiple agents, preserving context across sessions, or managing complex project state. Focuses on context compression and distribution.
-user-invocable: true---
+description: "Context management specialist for multi-agent workflows and long-running tasks. Use when coordinating multiple agents, preserving context across sessions, or managing complex project state. Focuses on context compression and distribution."
+user-invocable: false
+---
 
 # Context Management
 

@@ -1,5 +1,37 @@
 # Claude Workspace Index
 
+## Core Sets
+
+### Core Agents
+- code-reviewer
+- test-engineer
+- architect-reviewer
+- performance-engineer
+- security-engineer
+- logging-specialist
+- tdd-orchestrator
+- test-automator
+- backend-architect
+- research-expert
+- debugger
+- valerie
+
+### Core Skills
+- testing
+- tdd-pytest
+- documentation
+- performance
+- database-optimization
+- security-engineering
+- security-audit
+- debugging
+- tool-presets
+- lead-research-assistant
+- context-management
+- command-optimization
+
+---
+
 ## Stats & health
 
 make stats              # Component counts

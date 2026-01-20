@@ -1,7 +1,8 @@
 ---
 name: tdd-pytest
 description: Python/pytest TDD specialist for test-driven development workflows. Use when writing tests, auditing test quality, running pytest, or generating test reports. Integrates with uv and pyproject.toml configuration.
-user-invocable: true---
+user-invocable: true
+---
 
 # TDD-Pytest Skill
 

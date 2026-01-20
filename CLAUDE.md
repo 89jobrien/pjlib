@@ -2,6 +2,20 @@
 
 This file provides guidance to Claude Code when working in this personal workspace configuration directory (`~/.claude`).
 
+# Agent Instructions
+
+This project uses **bd** (beads) for issue tracking. Run `bd onboard` to get started.
+
+```bash
+bd ready              # Find available work
+bd show <id>          # View issue details
+bd update <id> --status in_progress  # Claim work
+bd close <id>         # Complete work
+bd sync               # Sync with git
+```
+
+See [AGENTS.md](AGENTS.md) for more information.
+
 ## Repository Overview
 
 This is a personal Claude Code workspace containing specialized agents, slash commands, and skills that extend Claude Code's capabilities. This directory is a meta-configuration workspace for managing Claude Code itself.
