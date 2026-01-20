@@ -1,7 +1,7 @@
 ---
 name: cloud-infrastructure
 description: Cloud infrastructure design and deployment patterns for AWS, Azure, and GCP. Use when designing cloud architectures, implementing IaC with Terraform, optimizing costs, or setting up multi-region deployments.
----
+user-invocable: true---
 
 # Cloud Infrastructure
 

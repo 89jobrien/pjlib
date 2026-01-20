@@ -1,7 +1,7 @@
 ---
 name: developer-experience
 description: Developer Experience specialist for tooling, setup, and workflow optimization. Use when setting up projects, reducing friction, improving development workflows, or automating repetitive tasks. Focuses on making development joyful and productive.
----
+user-invocable: true---
 
 # Developer Experience
 

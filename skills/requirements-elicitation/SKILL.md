@@ -1,8 +1,8 @@
 ---
 name: requirements-elicitation
 description: Systematic workflow for extracting complete, unambiguous specifications from incomplete or ambiguous inputs. Orchestrates question-driven elicitation, multi-stakeholder analysis, and systematic completeness verification. Use when gathering requirements, reviewing specs, or when facing unclear stakeholder intent.
-allowed-tools: clarifying-questions, specification-elicitation, stakeholder-analysis, information-completeness, conceptual-analysis, framing-skepticism, deliverable-completeness, documentation-quality, evidence-reasoning
----
+user-invocable: true
+allowed-tools: clarifying-questions, specification-elicitation, stakeholder-analysis, information-completeness, conceptual-analysis, framing-skepticism, deliverable-completeness, documentation-quality, evidence-reasoning---
 
 # Requirements Elicitation
 

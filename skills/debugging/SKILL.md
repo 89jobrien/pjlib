@@ -1,7 +1,7 @@
 ---
 name: debugging
 description: Comprehensive debugging specialist for errors, test failures, log analysis, and system problems. Use when encountering issues, analyzing error logs, investigating system anomalies, debugging production issues, analyzing stack traces, or identifying root causes. Combines general debugging workflows with error pattern detection and log analysis.
----
+user-invocable: true---
 
 # Debugging
 

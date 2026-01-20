@@ -1,7 +1,7 @@
 ---
 name: code-context-finder
 description: Automatically find relevant context from knowledge graph and code relationships while coding. Detects when context would be helpful (new files, unfamiliar code, architectural decisions) and surfaces related entities, prior decisions, and code dependencies.
----
+user-invocable: true---
 
 # Code Context Finder
 

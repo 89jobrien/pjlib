@@ -1,7 +1,7 @@
 ---
 name: network-engineering
 description: Network architecture, troubleshooting, and infrastructure patterns. Use when designing network topologies, debugging connectivity issues, configuring load balancers, DNS, or implementing network security.
----
+user-invocable: true---
 
 # Network Engineering
 

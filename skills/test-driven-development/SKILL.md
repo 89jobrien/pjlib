@@ -1,7 +1,7 @@
 ---
 name: test-driven-development
 description: Apply TDD methodology with Red-Green-Refactor cycle. Use when implementing features, fixing bugs, or when user says "TDD", "test first", "test-driven". Ensures code quality through disciplined test-first development.
----
+user-invocable: true---
 
 # Test-Driven Development (TDD)
 

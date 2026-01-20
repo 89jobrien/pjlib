@@ -1,7 +1,7 @@
 ---
 name: machine-learning
 description: Machine learning development patterns, model training, evaluation, and deployment. Use when building ML pipelines, training models, feature engineering, model evaluation, or deploying ML systems to production.
----
+user-invocable: true---
 
 # Machine Learning
 

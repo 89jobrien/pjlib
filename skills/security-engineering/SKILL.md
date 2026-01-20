@@ -1,7 +1,7 @@
 ---
 name: security-engineering
 description: Security architecture and implementation patterns. Use when designing security controls, implementing authentication/authorization, conducting threat modeling, or ensuring compliance with security frameworks.
----
+user-invocable: true---
 
 # Security Engineering
 

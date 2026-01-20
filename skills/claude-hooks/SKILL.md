@@ -1,7 +1,7 @@
 ---
 name: claude-hooks
 description: Claude Code hooks configuration specialist. Use when creating hooks for tool validation, logging, notifications, or custom automation in Claude Code.
----
+user-invocable: true---
 
 # Claude Hooks Skill
 

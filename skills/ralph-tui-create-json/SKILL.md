@@ -1,7 +1,7 @@
 ---
 name: ralph-tui-create-json
 description: "Convert PRDs to prd.json format for ralph-tui execution. Creates JSON task files with user stories, acceptance criteria, and dependencies. Triggers on: create prd.json, convert to json, ralph json, create json tasks."
----
+user-invocable: true---
 
 # Ralph TUI - Create JSON Tasks
 

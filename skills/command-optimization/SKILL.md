@@ -1,7 +1,7 @@
 ---
 name: command-optimization
 description: CLI command development specialist. Use when creating commands, designing argument parsing, automating tasks, or implementing CLI best practices. Specializes in command design patterns and user experience.
----
+user-invocable: true---
 
 # Command Optimization
 

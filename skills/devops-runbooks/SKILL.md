@@ -1,7 +1,7 @@
 ---
 name: devops-runbooks
 description: Operational runbook and procedure documentation specialist. Use when creating incident response procedures, operational playbooks, or system maintenance guides.
----
+user-invocable: true---
 
 # DevOps Runbooks Skill
 

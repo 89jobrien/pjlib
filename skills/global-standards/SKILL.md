@@ -1,7 +1,7 @@
 ---
 name: global-standards
 description: Project-wide coding standards and conventions specialist. Use PROACTIVELY when writing code, making architectural decisions, or establishing project conventions. Covers coding style, commenting, error handling, validation, tech stack consistency, and project conventions across all languages and frameworks.
----
+user-invocable: true---
 
 # Project Standards
 

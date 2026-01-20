@@ -1,9 +1,9 @@
 ---
 name: design-docs
 description: "DEPRECATED: Use 'documentation' skill instead. Design documentation and architecture decision specialist."
+user-invocable: true
 deprecated: true
-superseded_by: documentation
----
+superseded_by: documentation---
 
 > **⚠️ DEPRECATED**: This skill has been consolidated into the `documentation` skill. Use `documentation` instead, which includes all design documentation capabilities plus API docs, technical writing, and changelogs.
 

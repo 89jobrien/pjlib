@@ -1,7 +1,7 @@
 ---
 name: web-accessibility
 description: Web accessibility compliance specialist. Use when conducting WCAG compliance audits, testing screen reader compatibility, validating keyboard navigation, or ensuring inclusive design. Focuses on WCAG 2.1/2.2 standards.
----
+user-invocable: true---
 
 # Web Accessibility
 

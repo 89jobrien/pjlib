@@ -1,7 +1,7 @@
 ---
 name: code-permutation-testing
 description: Systematic testing of code variations, edge cases, boundary conditions, and alternative implementations. This skill provides methodologies and tools for exhaustive testing including input permutation, code path analysis, mutation testing, and implementation alternatives. Use when ensuring code robustness through comprehensive test coverage or when exploring edge cases and boundary conditions.
----
+user-invocable: true---
 
 # Code Permutation Testing
 

@@ -1,7 +1,7 @@
 ---
 name: git-workflow
 description: Git workflow and pull request specialist. Use when creating PRs, managing branches, establishing git conventions, or improving code review processes.
----
+user-invocable: true---
 
 # Git Workflow Skill
 

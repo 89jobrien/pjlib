@@ -1,7 +1,7 @@
 ---
 name: security-audit
 description: Security auditing and vulnerability assessment specialist. Use when conducting security reviews, analyzing code for vulnerabilities, performing OWASP assessments, or creating security audit reports.
----
+user-invocable: true---
 
 # Security Audit Skill
 

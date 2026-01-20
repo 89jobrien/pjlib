@@ -1,7 +1,7 @@
 ---
 name: prompt-optimization
 description: Expert prompt optimization for LLMs and AI systems. Use when building AI features, improving agent performance, crafting system prompts, or optimizing LLM interactions. Masters prompt patterns and techniques.
----
+user-invocable: true---
 
 # Prompt Optimization
 

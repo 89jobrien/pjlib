@@ -1,7 +1,7 @@
 ---
 name: python-scripting
 description: Python scripting with uv and PEP 723 inline dependencies. Use when creating standalone Python scripts with automatic dependency management.
----
+user-invocable: true---
 
 # Python Scripting Skill
 

@@ -1,7 +1,7 @@
 ---
 name: python-uv
 description: Use UV for Python dependency management. Use when setting up Python projects, creating Dockerfiles for Python apps, or managing dependencies & `pyproject.toml` files. UV provides deterministic resolution, speed, and reproducibility.
----
+user-invocable: true---
 
 # Python UV Package Management
 

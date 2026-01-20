@@ -1,7 +1,7 @@
 ---
 name: agile-ceremonies
 description: Agile ceremonies and sprint management specialist. Use when running standups, retrospectives, sprint planning, or tracking sprint progress.
----
+user-invocable: true---
 
 # Agile Ceremonies Skill
 

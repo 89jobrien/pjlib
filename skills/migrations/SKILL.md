@@ -1,9 +1,9 @@
 ---
 name: migrations
 description: "DEPRECATED: Use 'documentation' skill instead. Migration guide and upgrade path specialist."
+user-invocable: true
 deprecated: true
-superseded_by: documentation
----
+superseded_by: documentation---
 
 > **⚠️ DEPRECATED**: This skill has been consolidated into the `documentation` skill. Use `documentation` instead, which includes migration guides plus API docs, technical writing, design docs, and changelogs.
 

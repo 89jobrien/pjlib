@@ -1,7 +1,7 @@
 ---
 name: spec-driven-development
 description: Spec-Driven Development (SDD) methodology based on GitHub's SpecKit. Use for structured AI-assisted development with constitutional governance, phased workflows, and multi-agent coordination. Implements 7-phase process from constitution to implementation.
----
+user-invocable: true---
 
 # Spec-Driven Development (SDD)
 

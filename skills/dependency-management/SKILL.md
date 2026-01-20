@@ -1,7 +1,7 @@
 ---
 name: dependency-management
 description: Dependency management specialist. Use when updating dependencies, scanning for vulnerabilities, analyzing dependency trees, or ensuring license compliance. Handles npm, pip, maven, and other package managers.
----
+user-invocable: true---
 
 # Dependency Management
 

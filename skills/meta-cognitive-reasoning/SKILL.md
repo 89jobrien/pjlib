@@ -1,6 +1,7 @@
 ---
 name: meta-cognitive-reasoning
 description: Meta-cognitive reasoning specialist for evidence-based analysis, hypothesis testing, and cognitive failure prevention. Use when conducting reviews, making assessments, debugging complex issues, or any task requiring rigorous analytical reasoning. Prevents premature conclusions, assumption-based errors, and pattern matching without verification.
+user-invocable: true
 
 tags:
   - reasoning
@@ -11,8 +12,7 @@ tags:
   - decision-making
   - cognitive failure prevention
   - meta-cognitive reasoning
-  - evidence-based reasoning
----
+  - evidence-based reasoning---
 
 # Meta-Cognitive Reasoning
 

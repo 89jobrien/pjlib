@@ -1,7 +1,7 @@
 ---
 name: nextjs-architecture
 description: Next.js architecture specialist. Use when designing Next.js applications, migrating to App Router, implementing Server Components, or optimizing Next.js performance. Covers App Router, Server Components, and best practices.
----
+user-invocable: true---
 
 # Next.js Architecture
 

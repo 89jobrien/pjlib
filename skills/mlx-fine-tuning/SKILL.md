@@ -1,7 +1,7 @@
 ---
 name: mlx-fine-tuning
 description: Specialized skill for MLX-based LLM fine-tuning on Apple Silicon. This skill should be used when working with LoRA fine-tuning, model conversion from HuggingFace to MLX format, adapter management, hyperparameter tuning, memory optimization, and benchmarking on M1/M2/M3/M4 chips.
----
+user-invocable: true---
 
 # MLX Fine-Tuning
 

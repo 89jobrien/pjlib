@@ -1,7 +1,7 @@
 ---
 name: golang-enterprise-patterns
 description: Enterprise-level Go architecture patterns including clean architecture, hexagonal architecture, DDD, and production-ready application structure.
----
+user-invocable: true---
 
 # Golang Enterprise Patterns
 

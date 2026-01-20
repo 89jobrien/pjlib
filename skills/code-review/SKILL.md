@@ -1,7 +1,7 @@
 ---
 name: code-review
 description: Expert code review specialist for quality, security, and maintainability. Use when reviewing code changes, ensuring high development standards, or conducting security audits. Provides actionable feedback organized by priority.
----
+user-invocable: true---
 
 # Code Review
 

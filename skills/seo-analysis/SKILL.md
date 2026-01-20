@@ -1,7 +1,7 @@
 ---
 name: seo-analysis
 description: SEO analysis and optimization specialist. Use when conducting technical SEO audits, optimizing meta tags, analyzing Core Web Vitals, or improving search engine rankings. Focuses on actionable recommendations.
----
+user-invocable: true---
 
 # SEO Analysis
 

@@ -1,7 +1,7 @@
 ---
 name: performance
 description: Comprehensive performance specialist covering analysis, optimization, load testing, and framework-specific performance. Use when identifying bottlenecks, optimizing code, conducting load tests, analyzing Core Web Vitals, fixing memory leaks, or improving application performance across all layers (application, database, frontend). Includes React-specific optimization patterns.
----
+user-invocable: true---
 
 # Performance
 

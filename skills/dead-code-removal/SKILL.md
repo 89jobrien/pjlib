@@ -1,7 +1,7 @@
 ---
 name: dead-code-removal
 description: Detects and safely removes unused code (imports, functions, classes) across multiple languages. Use after refactoring, when removing features, or before production deployment. Includes safety checks and validation.
----
+user-invocable: true---
 
 # Dead Code Removal
 

@@ -1,7 +1,7 @@
 ---
 name: file-converter
 description: This skill handles file format conversions across documents (PDF, DOCX, Markdown, HTML, TXT), data files (JSON, CSV, YAML, XML, TOML), and images (PNG, JPG, WebP, SVG, GIF). Use when the user requests converting, transforming, or exporting files between formats. Generates conversion code dynamically based on the specific request.
----
+user-invocable: true---
 
 # File Converter
 

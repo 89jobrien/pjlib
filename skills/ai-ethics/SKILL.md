@@ -1,7 +1,7 @@
 ---
 name: ai-ethics
 description: Responsible AI development and ethical considerations. Use when evaluating AI bias, implementing fairness measures, conducting ethical assessments, or ensuring AI systems align with human values.
----
+user-invocable: true---
 
 # AI Ethics
 

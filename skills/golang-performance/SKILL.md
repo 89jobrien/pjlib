@@ -1,7 +1,7 @@
 ---
 name: golang-performance
 description: Go performance optimization techniques including profiling with pprof, memory optimization, concurrency patterns, and escape analysis.
----
+user-invocable: true---
 
 # Golang Performance
 

@@ -1,7 +1,7 @@
 ---
 name: technical-research
 description: Technical spike and research investigation specialist. Use when exploring options for a technical decision, conducting timeboxed investigations, or evaluating technology choices.
----
+user-invocable: true---
 
 # Technical Research Skill
 

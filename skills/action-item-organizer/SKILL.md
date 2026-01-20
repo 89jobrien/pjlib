@@ -1,7 +1,7 @@
 ---
 name: action-item-organizer
 description: Systematic framework for extracting actionable items from documents and organizing them into prioritized, trackable checklists. Use when converting reports, meeting notes, audits, or any document with embedded action items into structured TODO lists.
----
+user-invocable: true---
 
 # Action Item Organizer
 

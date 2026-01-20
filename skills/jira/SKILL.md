@@ -1,7 +1,7 @@
 ---
 name: jira
 description: "Jira Cloud integration for issue management and search. This skill should be used when working with Jira tickets, searching issues with JQL, creating or updating issues, adding comments, or transitioning issue status. Covers REST API v3 and Jira Query Language."
----
+user-invocable: true---
 
 # Jira Integration Skill
 

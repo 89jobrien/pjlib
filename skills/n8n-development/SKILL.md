@@ -1,7 +1,7 @@
 ---
 name: n8n-development
 description: n8n workflow development patterns, testing, validation, and best practices for building composable webhook workflows
----
+user-invocable: true---
 
 # n8n Development Skill
 

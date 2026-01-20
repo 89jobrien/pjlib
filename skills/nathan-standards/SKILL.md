@@ -1,7 +1,7 @@
 ---
 name: nathan-standards
 description: Development standards for the Nathan n8n-Jira agent automation system. Covers n8n workflows, Python patterns, and project conventions.
----
+user-invocable: true---
 
 # Nathan Development Standards
 

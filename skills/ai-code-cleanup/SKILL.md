@@ -1,7 +1,7 @@
 ---
 name: ai-code-cleanup
 description: Remove AI-generated code slop from branches. Use after AI-assisted coding sessions to clean up defensive bloat, unnecessary comments, type casts, and style inconsistencies. Focuses on identifying and removing AI artifacts that degrade code quality.
----
+user-invocable: true---
 
 # AI Code Cleanup
 

@@ -1,7 +1,7 @@
 ---
 name: golang-testing
 description: Comprehensive Go testing patterns including table-driven tests, mocking, integration testing, benchmarks, and test organization.
----
+user-invocable: true---
 
 # Golang Testing
 

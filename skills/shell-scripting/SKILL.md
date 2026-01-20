@@ -1,7 +1,7 @@
 ---
 name: shell-scripting
 description: Shell scripting best practices and patterns. Use when writing bash/zsh scripts, automating tasks, creating CLI tools, or debugging shell commands.
----
+user-invocable: true---
 
 # Shell Scripting
 

@@ -1,7 +1,7 @@
 ---
 name: url-analysis
 description: URL validation and contextual analysis specialist. Use when validating links, analyzing URL context, extracting links from content, or ensuring link appropriateness. Combines technical validation with content analysis.
----
+user-invocable: true---
 
 # URL Analysis
 
