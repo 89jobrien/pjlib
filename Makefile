@@ -9,6 +9,7 @@ AGENTS_DIR := agents
 SKILLS_DIR := skills
 COMMANDS_DIR := commands
 SCRIPTS_DIR := scripts
+PROJECTS_DIR ?= $(HOME)/.claude/projects
 
 # Colors
 BLUE := \033[34m
@@ -172,6 +173,24 @@ grep-all: ## Search all components (usage: make grep-all PATTERN=foo)
 	@grep -r "$(PATTERN)" $(AGENTS_DIR) $(SKILLS_DIR) $(COMMANDS_DIR) --include="*.md" 2>/dev/null | head -20
 
 ##@ Development
+
+.PHONY: projects-index
+projects-index: ## Build projects index (OUT=out.json)
+	@uv run python $(SCRIPTS_DIR)/projects_index.py $(OUT) $(PROJECTS_DIR) $(TOP_N)
+
+.PHONY: projects-schema-samples
+projects-schema-samples: ## Extract schema samples (OUT=out.json FILES="...")
+	@uv run python $(SCRIPTS_DIR)/projects_schema_samples.py $(OUT) $(FILES)
+
+.PHONY: projects-log-parse
+projects-log-parse: ## Normalize logs (OUT=out.jsonl FILES="...")
+	@uv run python $(SCRIPTS_DIR)/projects_log_parser.py $(OUT) $(FILES)
+
+.PHONY: projects-tests
+projects-tests: ## Run projects tool tests
+	@uv run python -m unittest scripts.test_projects_index
+	@uv run python -m unittest scripts.test_projects_schema_samples
+	@uv run python -m unittest scripts.test_projects_log_parser
 
 .PHONY: new-agent
 new-agent: ## Create new agent scaffold (usage: make new-agent NAME=foo CATEGORY=testing)
