@@ -1,13 +1,22 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "claude-workspace"
+name = "pjlib"
 version = "0.1.0"
-description = "Claude Code workspace configuration"
+description = "Parse Claude Code ~/.claude/projects logs and build datasets"
 requires-python = ">=3.12"
-dependencies = [
-    "mlx-lm>=0.29.1",
-    "openpipe-art>=0.5.4",
-    "pydantic>=2.12.5",
-]
+
+[project.scripts]
+pj-dataset = "pjlib.dataset:cli"
+pj-index = "pjlib.index:cli"
+pj-log-parser = "pjlib.log_parser:cli"
+pj-schema-samples = "pjlib.schema_samples:cli"
+pj-to-art = "pjlib.to_art:cli"
+
+[tool.setuptools]
+packages = ["pjlib"]
 
 [tool.ruff]
 line-length = 88
@@ -30,7 +39,7 @@ ignore = [
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["skills", "agents", "commands"]
+known-first-party = ["pjlib", "scripts", "skills", "agents", "commands"]
 
 [tool.ruff.format]
 quote-style = "double"
