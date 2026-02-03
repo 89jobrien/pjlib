@@ -1,7 +1,8 @@
 ---
 name: mcp-integration
 description: Model Context Protocol (MCP) integration specialist. Use when creating MCP server configurations, implementing MCP integrations, or optimizing MCP performance. Specializes in MCP server architecture and integration patterns.
-user-invocable: true---
+user-invocable: true
+---
 
 # MCP Integration
 
