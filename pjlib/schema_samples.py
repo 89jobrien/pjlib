@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from collections.abc import Iterable
 from pathlib import Path
 from typing import Any
@@ -126,5 +127,11 @@ def main(argv: list[str]) -> int:
     return 0
 
 
+def cli() -> None:
+    """Console-script entry point (pj-schema-samples)."""
+
+    raise SystemExit(main(sys.argv))
+
+
 if __name__ == "__main__":
-    raise SystemExit(main(__import__("sys").argv))
+    raise SystemExit(main(sys.argv))

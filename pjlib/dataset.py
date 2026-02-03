@@ -11,6 +11,7 @@ Notes:
 from __future__ import annotations
 
 import json
+import sys
 from collections import deque
 from collections.abc import Iterable, Iterator
 from dataclasses import asdict, dataclass
@@ -185,5 +186,11 @@ def main(argv: list[str]) -> int:
     return 0
 
 
+def cli() -> None:
+    """Console-script entry point (pj-dataset)."""
+
+    raise SystemExit(main(sys.argv))
+
+
 if __name__ == "__main__":
-    raise SystemExit(main(__import__("sys").argv))
+    raise SystemExit(main(sys.argv))

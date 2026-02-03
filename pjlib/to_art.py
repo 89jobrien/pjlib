@@ -493,6 +493,12 @@ def main() -> int:
     return 0
 
 
+def cli() -> None:
+    """Console-script entry point (pj-to-art)."""
+
+    raise SystemExit(main())
+
+
 __all__ = [
     "ToolCall",
     "TrajectoryRewards",
