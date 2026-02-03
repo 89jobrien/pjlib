@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          python-version: "3.12"
+
+      - name: Sync
+        run: uv sync
+
+      - name: Lint
+        run: uv tool run ruff check pjlib scripts
+
+      - name: Format check
+        run: uv tool run ruff format --check pjlib scripts
+
+      - name: Compile
+        run: uv run python -m compileall -q pjlib scripts
+
+      - name: Unit tests
+        run: make pj-tests
+
+      - name: Install (editable)
+        run: uv pip install -e .
+
+      - name: CLI smoke
+        run: |
+          uv run pj-index --help
+          uv run pj-schema-samples --help
+          uv run pj-log-parser --help
+          uv run pj-dataset --help
+          uv run pj-to-art --help
