@@ -4,6 +4,7 @@ docs/**
 *.local.md
 *.local.json
 thoughts/
+settings.json
 
 # IDE / Editor state
 .claude/
