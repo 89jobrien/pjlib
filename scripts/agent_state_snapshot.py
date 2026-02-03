@@ -1,6 +1,6 @@
 """Inert feature extraction for agent "state" snapshots.
 
-Option A: treat shell snapshots and related artifacts as *text* and extract
+Treat shell snapshots and related artifacts as *text* and extract
 stable, deterministic features (no sourcing/execution).
 
 Primary use:
