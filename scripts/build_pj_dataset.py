@@ -24,8 +24,8 @@ _ROOT = Path(__file__).resolve().parents[1]
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
-from scripts.pj_dataset import iter_dataset_rows  # noqa: E402
-from scripts.pj_extract import iter_pj_files  # noqa: E402
+from pjlib.dataset import iter_dataset_rows  # noqa: E402
+from pjlib.extract import iter_pj_files  # noqa: E402
 
 
 def main() -> int:
