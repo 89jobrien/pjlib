@@ -1,6 +1,6 @@
 import unittest
 
-from scripts.projects_extract import (
+from scripts.pj_extract import (
     MessageEvent,
     ToolResultEvent,
     ToolUseEvent,

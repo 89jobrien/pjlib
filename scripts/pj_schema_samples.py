@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
-from scripts.projects_extract import iter_jsonl
+from scripts.pj_extract import iter_jsonl
 
 
 def _type_name(value: Any) -> str:
@@ -14,7 +15,7 @@ def _type_name(value: Any) -> str:
         return "null"
     if isinstance(value, bool):
         return "boolean"
-    if isinstance(value, int | float):
+    if isinstance(value, (int, float)):
         return "number"
     if isinstance(value, str):
         return "string"
@@ -85,7 +86,9 @@ def extract_schema_samples(
             entry["count"] += 1
             if len(entry["examples"]) < sample_limit:
                 entry["examples"].append(record)
-                entry["schema"] = _merge_schema(entry["schema"], _schema_for_value(record))
+                entry["schema"] = _merge_schema(
+                    entry["schema"], _schema_for_value(record)
+                )
                 keys = set(record.keys())
                 if entry["required_keys"] is None:
                     entry["required_keys"] = keys
@@ -113,7 +116,7 @@ def write_schema_samples(samples: dict[str, Any], out_path: Path) -> None:
 def main(argv: list[str]) -> int:
     if len(argv) < 3:
         raise SystemExit(
-            "usage: projects_schema_samples.py OUT.json PROJECT.jsonl [PROJECT2.jsonl ...]"
+            "usage: pj_schema_samples.py OUT.json PROJECT.jsonl [PROJECT2.jsonl ...]"
         )
 
     out_path = Path(argv[1]).expanduser()

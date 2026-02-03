@@ -3,11 +3,17 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable, Iterator
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any, Iterable, Iterator
+from typing import Any
 
-from scripts.projects_extract import MessageEvent, ToolResultEvent, ToolUseEvent, iter_project_events
+from scripts.pj_extract import (
+    MessageEvent,
+    ToolResultEvent,
+    ToolUseEvent,
+    iter_project_events,
+)
 
 
 @dataclass(frozen=True)
@@ -26,7 +32,9 @@ class NormalizedLogRow:
     is_error: bool | None
 
 
-def normalize_event(event: MessageEvent | ToolUseEvent | ToolResultEvent) -> dict[str, Any]:
+def normalize_event(
+    event: MessageEvent | ToolUseEvent | ToolResultEvent,
+) -> dict[str, Any]:
     if isinstance(event, MessageEvent):
         row = NormalizedLogRow(
             session_id=event.session_id,
@@ -93,7 +101,7 @@ def write_jsonl(rows: Iterable[dict[str, Any]], out_path: Path) -> None:
 def main(argv: list[str]) -> int:
     if len(argv) < 3:
         raise SystemExit(
-            "usage: projects_log_parser.py OUT.jsonl PROJECT.jsonl [PROJECT2.jsonl ...]"
+            "usage: pj_log_parser.py OUT.jsonl PROJECT.jsonl [PROJECT2.jsonl ...]"
         )
 
     out_path = Path(argv[1]).expanduser()

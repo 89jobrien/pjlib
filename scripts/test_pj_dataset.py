@@ -1,7 +1,7 @@
 import unittest
 
-from scripts.projects_dataset import iter_dataset_rows_from_events
-from scripts.projects_extract import MessageEvent, ToolResultEvent, ToolUseEvent
+from scripts.pj_dataset import iter_dataset_rows_from_events
+from scripts.pj_extract import MessageEvent, ToolResultEvent, ToolUseEvent
 
 
 class TestProjectsDataset(unittest.TestCase):

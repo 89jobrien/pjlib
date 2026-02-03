@@ -174,23 +174,29 @@ grep-all: ## Search all components (usage: make grep-all PATTERN=foo)
 
 ##@ Development
 
-.PHONY: projects-index
-projects-index: ## Build projects index (OUT=out.json)
-	@uv run python $(SCRIPTS_DIR)/projects_index.py $(OUT) $(PROJECTS_DIR) $(TOP_N)
 
-.PHONY: projects-schema-samples
-projects-schema-samples: ## Extract schema samples (OUT=out.json FILES="...")
-	@uv run python $(SCRIPTS_DIR)/projects_schema_samples.py $(OUT) $(FILES)
+.PHONY: pj-index
+pj-index: ## Build pj index (OUT=out.json)
+	@uv run python $(SCRIPTS_DIR)/pj_index.py $(OUT) $(PROJECTS_DIR) $(TOP_N)
 
-.PHONY: projects-log-parse
-projects-log-parse: ## Normalize logs (OUT=out.jsonl FILES="...")
-	@uv run python $(SCRIPTS_DIR)/projects_log_parser.py $(OUT) $(FILES)
 
-.PHONY: projects-tests
-projects-tests: ## Run projects tool tests
-	@uv run python -m unittest scripts.test_projects_index
-	@uv run python -m unittest scripts.test_projects_schema_samples
-	@uv run python -m unittest scripts.test_projects_log_parser
+.PHONY: pj-schema-samples
+pj-schema-samples: ## Extract schema samples (OUT=out.json FILES="...")
+	@uv run python $(SCRIPTS_DIR)/pj_schema_samples.py $(OUT) $(FILES)
+
+
+.PHONY: pj-log-parse
+pj-log-parse: ## Normalize logs (OUT=out.jsonl FILES="...")
+	@uv run python $(SCRIPTS_DIR)/pj_log_parser.py $(OUT) $(FILES)
+
+
+.PHONY: pj-tests
+pj-tests: ## Run pj tool tests
+	@uv run python -m unittest scripts.test_pj_extract
+	@uv run python -m unittest scripts.test_pj_dataset
+	@uv run python -m unittest scripts.test_pj_index
+	@uv run python -m unittest scripts.test_pj_schema_samples
+	@uv run python -m unittest scripts.test_pj_log_parser
 
 .PHONY: new-agent
 new-agent: ## Create new agent scaffold (usage: make new-agent NAME=foo CATEGORY=testing)

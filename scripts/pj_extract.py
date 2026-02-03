@@ -223,5 +223,5 @@ def iter_project_events(paths: Iterable[Path]) -> Iterator[NormalizedEvent]:
             yield from extract_events(rec)
 
 
-def iter_project_files(projects_dir: Path) -> Iterator[Path]:
-    yield from projects_dir.rglob("*.jsonl")
+def iter_pj_files(pj_dir: Path) -> Iterator[Path]:
+    yield from pj_dir.rglob("*.jsonl")

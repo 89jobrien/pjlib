@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 from typing import Any, cast
 
-from scripts.projects_index import DEFAULT_BUCKETS, build_projects_index
+from scripts.pj_index import DEFAULT_BUCKETS, build_pj_index
 
 
 class TestProjectsIndex(unittest.TestCase):
@@ -15,7 +15,7 @@ class TestProjectsIndex(unittest.TestCase):
                 path = root / f"file_{idx}.jsonl"
                 path.write_bytes(b"a" * size)
 
-            index = cast(dict[str, Any], build_projects_index(root, top_n=2))
+            index = cast(dict[str, Any], build_pj_index(root, top_n=2))
 
             self.assertEqual(index["summary"]["total_files"], 3)
             self.assertEqual(index["summary"]["total_bytes"], sum(sizes))

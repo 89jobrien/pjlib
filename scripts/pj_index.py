@@ -21,14 +21,14 @@ def _bucket_for_size(size: int, buckets: list[tuple[str, int, int]]) -> str:
     return buckets[-1][0]
 
 
-def build_projects_index(
-    projects_dir: Path,
+def build_pj_index(
+    pj_dir: Path,
     *,
     top_n: int = 20,
     buckets: list[tuple[str, int, int]] | None = None,
 ) -> dict[str, object]:
-    if not projects_dir.exists() or not projects_dir.is_dir():
-        raise ValueError(f"projects_dir not found: {projects_dir}")
+    if not pj_dir.exists() or not pj_dir.is_dir():
+        raise ValueError(f"pj_dir not found: {pj_dir}")
 
     bucket_defs = buckets or DEFAULT_BUCKETS
     bucket_stats: dict[str, dict[str, int | str]] = {
@@ -39,7 +39,7 @@ def build_projects_index(
     files: list[dict[str, int | str]] = []
     total_bytes = 0
 
-    for path in projects_dir.rglob("*.jsonl"):
+    for path in pj_dir.rglob("*.jsonl"):
         size = path.stat().st_size
         total_bytes += size
         files.append({"path": str(path), "size_bytes": size})
@@ -72,13 +72,13 @@ def write_index(index: dict[str, object], out_path: Path) -> None:
 
 def main(argv: list[str]) -> int:
     if len(argv) < 3:
-        raise SystemExit("usage: projects_index.py OUT.json PROJECTS_DIR [TOP_N]")
+        raise SystemExit("usage: pj_index.py OUT.json PROJECTS_DIR [TOP_N]")
 
     out_path = Path(argv[1]).expanduser()
-    projects_dir = Path(argv[2]).expanduser()
+    pj_dir = Path(argv[2]).expanduser()
     top_n = int(argv[3]) if len(argv) > 3 else 20
 
-    index = build_projects_index(projects_dir, top_n=top_n)
+    index = build_pj_index(pj_dir, top_n=top_n)
     write_index(index, out_path)
     return 0
 

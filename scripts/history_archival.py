@@ -97,7 +97,9 @@ def process_entry(
     stats["archived_entries"] += 1
 
     if verbose:
-        logger.debug(f"ARCHIVE: Entry from {entry_date.strftime('%Y-%m-%d')} -> {month_key}")
+        logger.debug(
+            f"ARCHIVE: Entry from {entry_date.strftime('%Y-%m-%d')} -> {month_key}"
+        )
 
 
 def write_archives(
@@ -118,7 +120,9 @@ def write_archives(
         archive_file = archive_dir / f"history-{month_key}.jsonl.gz"
 
         if verbose:
-            logger.info(f"Creating archive: {archive_file.name} ({len(entries)} entries)")
+            logger.info(
+                f"Creating archive: {archive_file.name} ({len(entries)} entries)"
+            )
 
         if not dry_run:
             mode = "ab" if archive_file.exists() else "wb"
@@ -168,7 +172,9 @@ def archive_history(
             line = line.strip()
             if not line:
                 continue
-            process_entry(line, cutoff_date, recent_entries, archive_entries, stats, verbose)
+            process_entry(
+                line, cutoff_date, recent_entries, archive_entries, stats, verbose
+            )
 
     archives_created = write_archives(archive_dir, archive_entries, dry_run, verbose)
 
@@ -217,14 +223,20 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Archive old history entries from ~/.claude/history.jsonl",
     )
-    parser.add_argument("--dry-run", action="store_true", help="Show what would be done")
-    parser.add_argument("--days", type=int, default=30, help="Days to retain (default: 30)")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Show what would be done"
+    )
+    parser.add_argument(
+        "--days", type=int, default=30, help="Days to retain (default: 30)"
+    )
     parser.add_argument("--verbose", "-v", action="store_true", help="Show details")
 
     args = parser.parse_args()
 
     logger.info("Starting history archival...")
-    stats = archive_history(retention_days=args.days, dry_run=args.dry_run, verbose=args.verbose)
+    stats = archive_history(
+        retention_days=args.days, dry_run=args.dry_run, verbose=args.verbose
+    )
 
     if "error" in stats:
         logger.error(stats["error"])

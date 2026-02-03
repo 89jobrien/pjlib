@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.projects_schema_samples import extract_schema_samples
+from scripts.pj_schema_samples import extract_schema_samples
 
 
 class TestProjectsSchemaSamples(unittest.TestCase):
@@ -11,7 +11,10 @@ class TestProjectsSchemaSamples(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "sample.jsonl"
             rows = [
-                {"type": "assistant", "message": {"role": "assistant", "content": "hi"}},
+                {
+                    "type": "assistant",
+                    "message": {"role": "assistant", "content": "hi"},
+                },
                 {
                     "type": "user",
                     "message": {

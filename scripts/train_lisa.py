@@ -49,7 +49,9 @@ class TrainingConfig:
     art_path: Path
 
 
-def flatten_metadata(metadata: dict[str, Any]) -> dict[str, float | int | str | bool | None]:
+def flatten_metadata(
+    metadata: dict[str, Any],
+) -> dict[str, float | int | str | bool | None]:
     """Flatten nested metadata to scalar values only.
 
     ART requires metadata values to be float, int, str, bool, or None.
@@ -250,14 +252,18 @@ async def train(config: TrainingConfig) -> dict[str, Any]:
             batch_rewards = [t.reward for g in batch for t in g.trajectories]
             avg_reward = sum(batch_rewards) / len(batch_rewards) if batch_rewards else 0
 
-            print(f"  Step {total_steps}: batch {batch_idx // config.batch_size + 1}, "
-                  f"avg_reward={avg_reward:.3f}")
+            print(
+                f"  Step {total_steps}: batch {batch_idx // config.batch_size + 1}, "
+                f"avg_reward={avg_reward:.3f}"
+            )
 
         # Epoch metrics
-        epoch_metrics.append({
-            "epoch": epoch + 1,
-            "steps": total_steps,
-        })
+        epoch_metrics.append(
+            {
+                "epoch": epoch + 1,
+                "steps": total_steps,
+            }
+        )
 
         # Delete old checkpoints to save space
         await model.delete_checkpoints()

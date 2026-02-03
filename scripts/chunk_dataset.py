@@ -10,7 +10,7 @@ Usage:
     uv run chunk_dataset.py [input_file] [--chunk-size MB] [--output-dir DIR]
 
 Example:
-    uv run chunk_dataset.py datasets/projects_tool_rows.jsonl --chunk-size 100
+    uv run chunk_dataset.py datasets/pj_tool_rows.jsonl --chunk-size 100
 """
 
 import argparse
@@ -18,14 +18,15 @@ import json
 import sys
 from datetime import datetime
 from pathlib import Path
+from typing import Any, TextIO
 
 
 def chunk_jsonl(
-    input_path: str,
-    output_dir: str,
+    input_path: Path,
+    output_dir: Path,
     chunk_size_mb: int = 100,
-    by_session: bool = False
-) -> dict:
+    by_session: bool = False,
+) -> dict[str, Any]:
     """
     Chunk a large JSONL file into smaller files.
 
@@ -38,8 +39,6 @@ def chunk_jsonl(
     Returns:
         Dictionary with chunking statistics
     """
-    input_path = Path(input_path)
-    output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     chunk_size_bytes = chunk_size_mb * 1024 * 1024
@@ -57,20 +56,27 @@ def chunk_jsonl(
     current_chunk = 0
     current_size = 0
     current_rows = 0
-    current_file = None
-    current_sessions = set()
+    current_file: TextIO | None = None
+    current_sessions: set[str] = set()
 
-    def start_new_chunk():
-        nonlocal current_chunk, current_size, current_rows, current_file, current_sessions
+    def start_new_chunk() -> TextIO:
+        nonlocal \
+            current_chunk, \
+            current_size, \
+            current_rows, \
+            current_file, \
+            current_sessions
 
         if current_file:
             current_file.close()
-            stats["chunks"].append({
-                "chunk": current_chunk,
-                "rows": current_rows,
-                "size_mb": current_size / 1024 / 1024,
-                "sessions": len(current_sessions)
-            })
+            stats["chunks"].append(
+                {
+                    "chunk": current_chunk,
+                    "rows": current_rows,
+                    "size_mb": current_size / 1024 / 1024,
+                    "sessions": len(current_sessions),
+                }
+            )
 
         current_chunk += 1
         current_size = 0
@@ -78,7 +84,7 @@ def chunk_jsonl(
         current_sessions = set()
 
         chunk_path = output_dir / f"{base_name}_chunk_{current_chunk:04d}.jsonl"
-        current_file = open(chunk_path, 'w')
+        current_file = chunk_path.open("w", encoding="utf-8")
         print(f"  Writing chunk {current_chunk}: {chunk_path.name}")
 
         return current_file
@@ -90,17 +96,20 @@ def chunk_jsonl(
 
     current_file = start_new_chunk()
 
-    with open(input_path) as f:
+    with input_path.open("r", encoding="utf-8", errors="replace") as f:
         for line_num, line in enumerate(f, 1):
-            line_size = len(line.encode('utf-8'))
+            line_size = len(line.encode("utf-8"))
+
+            session_id = ""
 
             # Parse to get session_id if grouping by session
             if by_session:
                 try:
                     data = json.loads(line)
-                    session_id = data.get('session_id', '')
+                    if isinstance(data, dict):
+                        session_id = str(data.get("session_id", ""))
                 except json.JSONDecodeError:
-                    session_id = ''
+                    session_id = ""
 
             # Check if we need a new chunk
             if current_size + line_size > chunk_size_bytes:
@@ -122,19 +131,21 @@ def chunk_jsonl(
     # Close final chunk
     if current_file:
         current_file.close()
-        stats["chunks"].append({
-            "chunk": current_chunk,
-            "rows": current_rows,
-            "size_mb": current_size / 1024 / 1024,
-            "sessions": len(current_sessions) if by_session else 0
-        })
+        stats["chunks"].append(
+            {
+                "chunk": current_chunk,
+                "rows": current_rows,
+                "size_mb": current_size / 1024 / 1024,
+                "sessions": len(current_sessions) if by_session else 0,
+            }
+        )
 
     stats["completed_at"] = datetime.now().isoformat()
     stats["total_chunks"] = len(stats["chunks"])
 
     # Write stats
     stats_path = output_dir / f"{base_name}_chunks_stats.json"
-    with open(stats_path, 'w') as f:
+    with stats_path.open("w", encoding="utf-8") as f:
         json.dump(stats, f, indent=2)
 
     print()
@@ -146,31 +157,29 @@ def chunk_jsonl(
     return stats
 
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser(
         description="Chunk large JSONL files into smaller pieces for preprocessing"
     )
     parser.add_argument(
         "input_file",
         nargs="?",
-        default="datasets/projects_tool_rows.jsonl",
-        help="Input JSONL file path"
+        default="datasets/pj_tool_rows.jsonl",
+        help="Input JSONL file path",
     )
     parser.add_argument(
         "--chunk-size",
         type=int,
         default=100,
-        help="Target chunk size in MB (default: 100)"
+        help="Target chunk size in MB (default: 100)",
     )
     parser.add_argument(
         "--output-dir",
         default=None,
-        help="Output directory (default: <input_dir>/chunks/)"
+        help="Output directory (default: <input_dir>/chunks/)",
     )
     parser.add_argument(
-        "--by-session",
-        action="store_true",
-        help="Keep rows from same session together"
+        "--by-session", action="store_true", help="Keep rows from same session together"
     )
 
     args = parser.parse_args()
@@ -194,10 +203,10 @@ def main():
         output_dir = input_path.parent / "chunks"
 
     chunk_jsonl(
-        input_path=str(input_path),
-        output_dir=str(output_dir),
+        input_path=input_path,
+        output_dir=output_dir,
         chunk_size_mb=args.chunk_size,
-        by_session=args.by_session
+        by_session=args.by_session,
     )
 
     return 0

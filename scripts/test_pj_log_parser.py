@@ -1,7 +1,7 @@
 import unittest
 
-from scripts.projects_extract import MessageEvent, ToolResultEvent, ToolUseEvent
-from scripts.projects_log_parser import normalize_event
+from scripts.pj_extract import MessageEvent, ToolResultEvent, ToolUseEvent
+from scripts.pj_log_parser import normalize_event
 
 
 class TestProjectsLogParser(unittest.TestCase):

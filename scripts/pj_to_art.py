@@ -1,6 +1,6 @@
 """Convert projects dataset to OpenPipe ART trajectory format.
 
-Transforms tool-use rows from build_projects_dataset.py into
+Transforms tool-use rows from build_pj_dataset.py into
 trajectories suitable for GRPO training with OpenPipe ART.
 
 Features:
@@ -10,8 +10,8 @@ Features:
 - Outputs ART-compatible JSONL
 
 Example:
-  uv run python scripts/projects_to_art.py \
-    --input ~/.claude/datasets/projects_tool_rows.jsonl \
+  uv run python scripts/pj_to_art.py \
+    --input ~/.claude/datasets/pj_tool_rows.jsonl \
     --output ~/.claude/datasets/lisa_trajectories.jsonl \
     --min-trajectory-length 3 \
     --max-trajectory-length 50
@@ -92,39 +92,51 @@ class LisaTrajectory:
         messages_and_choices = []
 
         # Add system prompt
-        messages_and_choices.append({
-            "role": "system",
-            "content": self._generate_system_prompt(),
-        })
+        messages_and_choices.append(
+            {
+                "role": "system",
+                "content": self._generate_system_prompt(),
+            }
+        )
 
         # Interleave messages and tool calls
         for msg in self.messages:
-            messages_and_choices.append({
-                "role": msg.get("role", "user"),
-                "content": msg.get("text", ""),
-            })
+            messages_and_choices.append(
+                {
+                    "role": msg.get("role", "user"),
+                    "content": msg.get("text", ""),
+                }
+            )
 
         # Tool calls become assistant choices with tool_calls field
         for tc in self.tool_calls:
             # Assistant message with tool call
-            messages_and_choices.append({
-                "role": "assistant",
-                "content": "",
-                "tool_calls": [{
-                    "type": "function",
-                    "function": {
-                        "name": tc.name,
-                        "arguments": json.dumps(tc.input),
-                    },
-                }],
-            })
+            messages_and_choices.append(
+                {
+                    "role": "assistant",
+                    "content": "",
+                    "tool_calls": [
+                        {
+                            "type": "function",
+                            "function": {
+                                "name": tc.name,
+                                "arguments": json.dumps(tc.input),
+                            },
+                        }
+                    ],
+                }
+            )
             # Tool response
-            result_str = tc.result if isinstance(tc.result, str) else json.dumps(tc.result)
-            messages_and_choices.append({
-                "role": "tool",
-                "content": result_str[:2000],  # Truncate large results
-                "name": tc.name,
-            })
+            result_str = (
+                tc.result if isinstance(tc.result, str) else json.dumps(tc.result)
+            )
+            messages_and_choices.append(
+                {
+                    "role": "tool",
+                    "content": result_str[:2000],  # Truncate large results
+                    "name": tc.name,
+                }
+            )
 
         return {
             "reward": self.final_reward,
@@ -168,11 +180,7 @@ TOOL_CATEGORIES = {
 # Error indicators in tool results
 ERROR_PATTERNS = [
     "error",
-    "Error",
-    "ERROR",
     "failed",
-    "Failed",
-    "FAILED",
     "not found",
     "does not exist",
     "permission denied",
@@ -183,6 +191,7 @@ ERROR_PATTERNS = [
 def is_tool_error(result: str | dict[str, Any]) -> bool:
     """Check if tool result indicates an error."""
     result_str = result if isinstance(result, str) else json.dumps(result)
+    result_str = result_str.casefold()
     return any(pattern in result_str for pattern in ERROR_PATTERNS)
 
 
@@ -190,7 +199,8 @@ def extract_file_path(tool_input: dict[str, Any]) -> str | None:
     """Extract file path from tool input if present."""
     for key in ("file_path", "path", "file"):
         if key in tool_input:
-            return tool_input[key]
+            value = tool_input[key]
+            return value if isinstance(value, str) else None
     return None
 
 
@@ -232,7 +242,8 @@ def is_warmup_message(msg: dict[str, Any]) -> bool:
         "observed_from_primary_session",
         "Claude-Mem",
     ]
-    return any(p in text for p in warmup_patterns)
+    text_cf = str(text).casefold()
+    return any(p.casefold() in text_cf for p in warmup_patterns)
 
 
 def compute_rewards(trajectory: LisaTrajectory) -> TrajectoryRewards:
@@ -275,7 +286,9 @@ def compute_rewards(trajectory: LisaTrajectory) -> TrajectoryRewards:
     return rewards
 
 
-def group_rows_by_session(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+def group_rows_by_session(
+    rows: list[dict[str, Any]],
+) -> dict[str, list[dict[str, Any]]]:
     """Group dataset rows by session_id."""
     sessions: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in rows:
@@ -304,11 +317,13 @@ def build_trajectory(
             uuid = msg.get("uuid")
             if uuid and uuid not in seen_uuids and not is_warmup_message(msg):
                 seen_uuids.add(uuid)
-                traj.messages.append({
-                    "role": msg.get("role", "user"),
-                    "text": msg.get("text", ""),
-                    "timestamp": msg.get("t", ""),
-                })
+                traj.messages.append(
+                    {
+                        "role": msg.get("role", "user"),
+                        "text": msg.get("text", ""),
+                        "timestamp": msg.get("t", ""),
+                    }
+                )
 
     # Collect tool calls
     for row in rows[:max_length]:
@@ -403,11 +418,13 @@ def convert_dataset(
         "skipped": skipped,
         "avg_tool_calls": (
             sum(len(t.tool_calls) for t in trajectories) / len(trajectories)
-            if trajectories else 0
+            if trajectories
+            else 0
         ),
         "avg_reward": (
             sum(t.final_reward for t in trajectories) / len(trajectories)
-            if trajectories else 0
+            if trajectories
+            else 0
         ),
         "language_distribution": _compute_lang_dist(trajectories),
         "tool_distribution": _compute_tool_dist(trajectories),
@@ -443,10 +460,24 @@ def _compute_tool_dist(trajectories: list[LisaTrajectory]) -> dict[str, int]:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--input", type=Path, required=True, help="Input JSONL from build_projects_dataset.py")
-    ap.add_argument("--output", type=Path, required=True, help="Output ART trajectories JSONL")
-    ap.add_argument("--min-trajectory-length", type=int, default=3, help="Min tool calls per trajectory")
-    ap.add_argument("--max-trajectory-length", type=int, default=50, help="Max tool calls per trajectory")
+    ap.add_argument(
+        "--input", type=Path, required=True, help="Input JSONL from build_pj_dataset.py"
+    )
+    ap.add_argument(
+        "--output", type=Path, required=True, help="Output ART trajectories JSONL"
+    )
+    ap.add_argument(
+        "--min-trajectory-length",
+        type=int,
+        default=3,
+        help="Min tool calls per trajectory",
+    )
+    ap.add_argument(
+        "--max-trajectory-length",
+        type=int,
+        default=50,
+        help="Max tool calls per trajectory",
+    )
     args = ap.parse_args()
 
     input_path = args.input.expanduser()
@@ -464,11 +495,15 @@ def main() -> int:
         max_length=args.max_trajectory_length,
     )
 
-    print(f"Created {stats['trajectories']} trajectories from {stats['sessions']} sessions")
+    print(
+        f"Created {stats['trajectories']} trajectories from {stats['sessions']} sessions"
+    )
     print(f"Average tool calls: {stats['avg_tool_calls']:.1f}")
     print(f"Average reward: {stats['avg_reward']:.3f}")
     print(f"Skipped: {stats['skipped']} (too short)")
-    print(f"Stats written to {output_path.with_suffix(output_path.suffix + '.stats.json')}")
+    print(
+        f"Stats written to {output_path.with_suffix(output_path.suffix + '.stats.json')}"
+    )
 
     return 0
 

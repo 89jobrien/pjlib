@@ -17,7 +17,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
-from scripts.projects_extract import (
+from scripts.pj_extract import (
     MessageEvent,
     ToolResultEvent,
     ToolUseEvent,
@@ -175,7 +175,7 @@ def write_jsonl(rows: Iterable[dict[str, Any]], out_path: Path) -> None:
 def main(argv: list[str]) -> int:
     if len(argv) < 3:
         raise SystemExit(
-            "usage: projects_dataset.py OUT.jsonl PROJECT.jsonl [PROJECT2.jsonl ...]"
+            "usage: pj_dataset.py OUT.jsonl PROJECT.jsonl [PROJECT2.jsonl ...]"
         )
 
     out = Path(argv[1]).expanduser()
