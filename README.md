@@ -1,3 +1,41 @@
+# pjlib
+
+Parse Claude Code project logs under `~/.claude/projects` and build datasets.
+
+## Install (editable)
+
+```bash
+uv pip install -e .
+```
+
+## CLI
+
+After install, these commands are available:
+
+```bash
+uv run pj-index --help
+uv run pj-schema-samples --help
+uv run pj-log-parser --help
+uv run pj-dataset --help
+uv run pj-to-art --help
+```
+
+## Import
+
+```python
+from pathlib import Path
+
+from pjlib import iter_dataset_rows, iter_pj_files
+
+pj_dir = Path("~/.claude/projects").expanduser()
+files = list(iter_pj_files(pj_dir))
+
+for row in iter_dataset_rows(files):
+    ...
+```
+
+---
+
 # Claude Workspace Index
 
 ## Core Sets
