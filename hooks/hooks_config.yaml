@@ -54,6 +54,14 @@ context:
   related_files:
     enabled: true
     max_results: 5
+  jit_context:
+    enabled: true
+    max_tokens: 500           # Maximum total tokens for all JIT context
+    max_files: 3              # Maximum files to include
+    max_file_size_kb: 50      # Skip files larger than this
+    context_lines: 3          # Lines before/after matches
+    max_matches_per_file: 3   # Max matches to show per file
+    snippet_chars: 200        # Max characters per snippet
 
 lifecycle:
   metrics:
