@@ -183,14 +183,21 @@ See `README.md` for complete agent index.
 
 - **`settings.json`**: Project-level settings (hooks, permissions, components) - shareable
 - **`settings.local.json`**: Local overrides (permissions, env vars) - not synced
+- **`hooks/hooks_config.yaml`**: Hook-specific configuration (context providers, lifecycle hooks)
 - **`~/.claude.json`**: User-level global settings (MCP servers, preferences)
 
 ## Important Files
 
 - **`README.md`**: Comprehensive index of all agents, commands, and skills
 - **`CLAUDE.md`**: This file - workspace guidance
+- **`CHANGELOG.local.md`**: Workspace changelog (local changes)
 - **`mcp.local.md`**: MCP server documentation
 - **`history.jsonl`**: Session history (auto-generated)
+- **`docs/ai_docs/`**: Hook and system documentation
+  - `jit_context_hook.md`: JIT context hook with token budget controls
+  - `user_prompt_submit_hook.md`: UserPromptSubmit hook documentation
+  - `shellcheck_guard.md`: Shellcheck guard for Bash command validation
+  - `cc_hooks_docs.md`: General hooks documentation
 
 ## Best Practices
 
@@ -202,3 +209,6 @@ See `README.md` for complete agent index.
 6. **Make skills modular** and reusable across multiple agents
 7. **Update documentation** when adding or modifying components
 8. **Test new components** before committing to ensure they work as expected
+9. **Configure hooks** via `hooks/hooks_config.yaml` for token budgets and behavior
+10. **Monitor prompt length** - JIT context hook has 500-token default budget (configurable)
+11. **Bash command validation** - Shellcheck guard automatically validates syntax before execution (configurable)

@@ -8,6 +8,7 @@
 ARCHITECTURE: Thin orchestrator that composes guards from guards/ directory.
 
 Orchestrates:
+  - guards/shellcheck_guard.py - Validates bash commands with shellcheck
   - guards/dangerous_command_guard.py - Blocks dangerous bash commands
   - guards/branch_protection.py - Prevents commits to protected branches
   - guards/file_protection.py - Protects sensitive files from modification
@@ -31,8 +32,6 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
-from loguru import logger
-
 
 # Add hooks root to path
 HOOKS_ROOT = Path(__file__).parent.parent
@@ -86,6 +85,22 @@ def run_guards(payload: dict[str, Any], config: dict) -> list[CheckResult]:
     # Bash tool checks
     if tool_name == "Bash":
         command = tool_input.get("command", "") if isinstance(tool_input, dict) else ""
+
+        # Shellcheck validation
+        if is_enabled("shellcheck", config) and command:
+            from guards.shellcheck_guard import check_command as check_shellcheck
+
+            error_msg, hints = check_shellcheck(command)
+            if error_msg:
+                results.append(
+                    CheckResult(
+                        name="shellcheck",
+                        passed=False,
+                        block=True,
+                        message=error_msg,
+                        hints=hints if hints else None,
+                    )
+                )
 
         # Dangerous command check
         if is_enabled("dangerous_commands", config) and command:

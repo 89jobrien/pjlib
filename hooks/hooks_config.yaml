@@ -3,13 +3,19 @@
 # Set 'enabled: false' to disable any check
 
 guards:
-  
+
   dangerous_commands:
     enabled: true
-  
+
+  shellcheck:
+    enabled: true
+    severity: warning  # minimum severity to report (error, warning, info, style)
+    block_on_errors: true
+    warn_on_warnings: false
+
   branch_protection:
     enabled: false
-  
+
   secrets:
     enabled: true
   file_protection:
