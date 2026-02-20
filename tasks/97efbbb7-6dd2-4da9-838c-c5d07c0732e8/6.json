@@ -1,0 +1,9 @@
+{
+  "id": "6",
+  "subject": "TDD: WebSocket health monitoring - Refactor and optimize",
+  "description": "Phase 4 REFACTOR: Refactor WebSocket health monitoring while keeping tests green. Add observability (connection health metrics, logs), optimize task cleanup, improve configuration (env vars), add documentation. Tests must stay green throughout.",
+  "activeForm": "Refactoring WebSocket health monitoring",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

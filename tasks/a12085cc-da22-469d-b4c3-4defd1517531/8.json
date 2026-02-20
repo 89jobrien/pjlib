@@ -1,0 +1,9 @@
+{
+  "id": "8",
+  "subject": "Phase 1.1: Create directory structure",
+  "description": "Create empty module directories (types/, events/, actions/, helpers/) with mod.rs files and update lib.rs with placeholder module declarations. Verify build works and all existing tests pass.",
+  "activeForm": "Creating directory structure",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

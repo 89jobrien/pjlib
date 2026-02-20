@@ -1,0 +1,9 @@
+{
+  "id": "13",
+  "subject": "Phase 3.2: Create helpers/io.rs with I/O utilities",
+  "description": "Move I/O utilities (read_stdin, shell_escape, persist_env_vars, persist_env_changes, get_env_file_path) to helpers/io.rs with tests including tempfile tests.",
+  "activeForm": "Creating helpers/io.rs",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

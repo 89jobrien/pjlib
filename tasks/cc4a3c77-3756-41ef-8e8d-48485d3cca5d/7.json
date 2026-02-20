@@ -1,0 +1,9 @@
+{
+  "id": "7",
+  "subject": "Create CompanionConfig and SessionMode Types",
+  "description": "Implement CompanionConfig struct with environment variable parsing and SessionMode enum (Local/Remote). Create maestro-cli/src/claude/companion.rs with unit tests for config parsing. Add tokio-tungstenite dependency.\n\nFiles:\n- Create: maestro-cli/src/claude/companion.rs\n- Modify: maestro-cli/src/claude/mod.rs\n- Modify: maestro-cli/Cargo.toml\n\nExpected: 4 tests pass (disabled, local config, remote requires JWT, remote with JWT)",
+  "activeForm": "Creating CompanionConfig and SessionMode types",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

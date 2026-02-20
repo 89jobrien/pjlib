@@ -1,0 +1,29 @@
+✅ Persistent connections established
+   CLI WebSocket PID: 90943
+   Browser WebSocket PID: 90944
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Scenario 1: Browser subscribes to new session
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[BROWSER] → Sending: session_subscribe with last_seq=0
+{"type":"session_subscribe","last_seq":0}
+
+./scripts/ws-bidirectional-demo.sh: line 115: timeout: command not found
+❌ Failed to send to browser pipe
+./scripts/ws-bidirectional-demo.sh: line 67: /var/folders/s4/mnhb7ddn1zbgy2x4h_hf1dnc0000gn/T//maestro-cli-pipe-90933: Interrupted system call
+./scripts/ws-bidirectional-demo.sh: line 69: /var/folders/s4/mnhb7ddn1zbgy2x4h_hf1dnc0000gn/T//maestro-browser-pipe-90933: Interrupted system call✅ Persistent connections established
+   CLI WebSocket PID: 90943
+   Browser WebSocket PID: 90944
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Scenario 1: Browser subscribes to new session
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[BROWSER] → Sending: session_subscribe with last_seq=0
+{"type":"session_subscribe","last_seq":0}
+
+./scripts/ws-bidirectional-demo.sh: line 115: timeout: command not found
+❌ Failed to send to browser pipe
+./scripts/ws-bidirectional-demo.sh: line 67: /var/folders/s4/mnhb7ddn1zbgy2x4h_hf1dnc0000gn/T//maestro-cli-pipe-90933: Interrupted system call
+./scripts/ws-bidirectional-demo.sh: line 69: /var/folders/s4/mnhb7ddn1zbgy2x4h_hf1dnc0000gn/T//maestro-browser-pipe-90933: Interrupted system call

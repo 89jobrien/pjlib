@@ -8,6 +8,11 @@ argument-hint: '[skill-name] [description]'
 
 Create a new Claude Skill or update an existing one following the skill-creator methodology: **$ARGUMENTS**
 
+## Current State
+
+- Skills count: !`find ~/.claude/skills -name "SKILL.md" 2>/dev/null | wc -l`
+- Repo root: !`pwd`
+
 ## Instructions
 
 When this command is invoked, use the skill-creator-expert agent to guide the user through creating a skill.

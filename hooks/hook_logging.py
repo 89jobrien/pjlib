@@ -185,3 +185,78 @@ def hook_invocation(hook_name: str) -> Iterator[HookInvocation]:
 
         _write_jsonl(record, end_wall)
         _stderr_breadcrumb(record)
+
+
+def log_error(
+    message: str,
+    *,
+    hook_name: str = "unknown",
+    error: Exception | None = None,
+    context: dict[str, Any] | None = None,
+) -> None:
+    """
+    Log structured error messages to the central log sink.
+
+    Args:
+        message: Human-readable error message
+        hook_name: Name of the hook where error occurred
+        error: Optional exception object
+        context: Optional additional context (payload fields, etc.)
+    """
+    now = datetime.now()
+    record: dict[str, Any] = {
+        "timestamp": now.isoformat(),
+        "level": "ERROR",
+        "hook_name": hook_name,
+        "message": message,
+        "pid": os.getpid(),
+        "session_id": _get_session_id(),
+    }
+
+    if error:
+        record["error_type"] = type(error).__name__
+        record["error"] = _safe_str(error)
+
+    if context:
+        record["context"] = context
+
+    _write_jsonl(record, now)
+
+    # Also write breadcrumb to stderr for immediate visibility
+    parts = ["[HookError]", f"hook={hook_name}", f"msg={_safe_str(message, max_len=100)}"]
+    if error:
+        parts.append(f"error={type(error).__name__}")
+    try:
+        print(" ".join(parts), file=sys.stderr)
+    except Exception:
+        pass
+
+
+def log_info(
+    message: str,
+    *,
+    hook_name: str = "unknown",
+    context: dict[str, Any] | None = None,
+) -> None:
+    """
+    Log structured info messages to the central log sink.
+
+    Args:
+        message: Human-readable info message
+        hook_name: Name of the hook
+        context: Optional additional context
+    """
+    now = datetime.now()
+    record: dict[str, Any] = {
+        "timestamp": now.isoformat(),
+        "level": "INFO",
+        "hook_name": hook_name,
+        "message": message,
+        "pid": os.getpid(),
+        "session_id": _get_session_id(),
+    }
+
+    if context:
+        record["context"] = context
+
+    _write_jsonl(record, now)

@@ -1,0 +1,9 @@
+{
+  "id": "10",
+  "subject": "Add Session Lifecycle Events",
+  "description": "Add lifecycle methods to CompanionClient: send_session_init(), send_user_message(), send_permission_request(), shutdown(). Implement graceful shutdown with 1s delay.\n\nFiles:\n- Modify: maestro-cli/src/claude/companion.rs\n\nExpected: Build succeeds, methods available",
+  "activeForm": "Adding session lifecycle events",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

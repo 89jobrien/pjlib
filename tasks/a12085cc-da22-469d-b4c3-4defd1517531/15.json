@@ -1,0 +1,9 @@
+{
+  "id": "15",
+  "subject": "Phase 3.4: Move hooks_json.rs to helpers",
+  "description": "Move src/hooks_json.rs to src/helpers/hooks_json.rs using git mv. Update helpers/mod.rs and lib.rs re-exports.",
+  "activeForm": "Moving hooks_json to helpers",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

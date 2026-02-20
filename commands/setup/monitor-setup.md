@@ -13,6 +13,12 @@ The user needs to implement or improve monitoring and observability. Focus on th
 ## Requirements
 $ARGUMENTS
 
+## Current State
+
+Confirm the working directory before outlining monitoring steps.
+
+!`pwd`
+
 ## Instructions
 
 ### 1. Prometheus & Metrics Setup

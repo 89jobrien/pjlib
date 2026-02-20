@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "TDD: Permission tracker cleanup - Implement minimal code",
+  "description": "Phase 3 GREEN: Implement minimal code to make permission tracker cleanup tests pass. Add background task spawn in CompanionSession::new(), weak Arc pattern, periodic cleanup logic. No extra features beyond test requirements.",
+  "activeForm": "Implementing permission cleanup (minimal)",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

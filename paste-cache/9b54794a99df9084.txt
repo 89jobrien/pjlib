@@ -1,0 +1,447 @@
+All prerequisites met!
+
+==========================================
+Test Session Configuration
+==========================================
+
+Session ID: claude-code-e2e-1771541390
+
+This session ID will be used for:
+  1. Claude Code CLI (auto-configured)
+  2. Browser UI (manual entry required)
+
+Press ENTER to start Claude Code CLI in companion mode...
+
+==========================================
+Starting Claude Code CLI
+==========================================
+
+Instructions:
+========================================
+Maestro Companion UI - E2E Test Running
+========================================
+
+Claude Code CLI is running in companion mode.
+
+BROWSER SETUP:
+1. Open: http://localhost:8000
+2. Enter Session ID: claude-code-e2e-1771541390
+3. Click "Connect"
+4. Verify status shows "Connected"
+
+TESTING PERMISSION FLOW:
+Once browser is connected, interact with Claude Code:
+
+Example commands to trigger permission requests:
+  • "Please run: ls -la"
+  • "Read the file README.md"
+  • "Create a test file called demo.txt with content 'Hello World'"
+
+What to expect:
+  1. CLI pauses and waits for browser approval
+  2. Permission request appears in browser UI
+  3. Click "Allow" or "Deny"
+  4. CLI proceeds or skips based on your response
+
+WHAT TO OBSERVE:
+  ✓ Permission requests appear immediately in browser
+  ✓ Tool name and input details shown
+  ✓ Allow/Deny buttons work
+  ✓ Event log shows all messages
+  ✓ Counters increment correctly
+  ✓ CLI executes tools after approval
+  ✓ CLI handles denials gracefully
+
+To exit: Press Ctrl+C in this terminal
+
+Instructions also saved to: /tmp/claude-code-e2e-instructions-claude-code-e2e-1771541390.txt
+========================================
+
+Launching Claude Code CLI with Companion Mode...
+
+-------------------------------------------
+
+warning: profiles for the non root package will be ignored, specify profiles at the workspace root:
+package:   /Users/joe/dev/maestro/maestro-companion/ui/Cargo.toml
+workspace: /Users/joe/dev/maestro/Cargo.toml
+   Compiling maestro v0.2.6 (/Users/joe/dev/maestro/maestro-cli)
+    Finished `dev` profile [unoptimized] target(s) in 5.34s
+     Running `/Users/joe/dev/maestro/target/debug/maestro start claude-code-e2e-1771541390`
+[INFO ] Starting maestro environment for: /Users/joe/dev/maestro/maestro-cli
+Note: No remote origin configured, using current HEAD instead of 'main'
+Creating session 'claude-code-e2e-1771541390' with isolation: Copy
+Creating workspace copy for isolated environment...
+Transfer starting: 325 files
+./
+.DS_Store
+.gitignore
+.intentionally-empty-file.o
+.npmignore
+.npmrc.example
+CHANGELOG.md
+CLAUDE.md
+Cargo.lock
+Cargo.toml
+LICENSE
+PROXY_TEST_STATUS.md
+README.md
+build.rs
+clippy.toml
+default_11892003326766997799_0_89688.profraw
+default_1569935687447467464_0_2754.profraw
+deny.toml
+rustfmt.toml
+.config/
+.config/nextest.toml
+docs/
+docs/changelog.md
+docs/credential-storage.md
+docs/devcontainer-extends.md
+docs/dood-architecture.md
+docs/git-config-staging.md
+docs/image-cache-invalidation.md
+docs/implementation.md
+docs/jira-cli-integration.md
+docs/manual-testing-dood.md
+docs/manual-testing-remote.md
+docs/manual-testing.md
+docs/n8n-integration.md
+docs/playbooks-sync.md
+docs/releasing.md
+docs/remote-ssh-agent-forwarding.md
+docs/security.md
+docs/session-management.md
+docs/ssh-agent-forwarding.md
+docs/test-performance.md
+docs/testing.md
+docs/roadmaps/
+docs/roadmaps/AOP-378-container-provider-abstraction.md
+docs/roadmaps/AOP-379-kubernetes-provider-implementation.md
+k8s/
+k8s/maestro-session-sa.yaml
+migrations/
+migrations/20260109000001_create_projects.sql
+migrations/20260109000002_create_teams.sql
+migrations/20260109000003_create_project_teams.sql
+scripts/
+scripts/check-coverage.sh
+scripts/cleanup-test-containers.sh
+scripts/run-k8s-tests.sh
+scripts/run-tests.sh
+specs/
+specs/.DS_Store
+specs/001-session-management.md
+specs/002-code-quality-and-testing.md
+specs/003-git-worktree-container-strategy.md
+specs/004-claude-code-setup-persistence.md
+specs/006-coverage-optimization.md
+specs/007-git-ssh-github-cli-support.md
+specs/009-auth-command.md
+specs/009-docker-out-of-docker.md
+specs/009-github-ci-fast-checks.md
+specs/010-github-ci-e2e-integration.md
+specs/010-image-building.md
+specs/011-macos-keychain-credentials.md
+specs/011-resume-container-restart.md
+specs/012-nested-tmux-cc-attach.md
+specs/012-session-fork.md
+specs/013-security-hardening.md
+specs/014-lifecycle-hook-prebuilding.md
+specs/015-port-forwarding.md
+specs/016-port-proxy.md
+specs/017-purge-orphan-resources.md
+specs/018-open-command-plan.md
+specs/018-open-command.md
+specs/019-gcp-token-command.md
+specs/019-n8n-configuration.md
+specs/020-graceful-rescheduling.md
+specs/020-postgres-direct-access.md
+specs/021-native-architecture-builds.md
+specs/021-resource-allocation.md
+specs/022-claude-hooks-observability.md
+specs/022-in-cluster-image-building.md
+specs/024-jira-api-integration-via-n8n.md
+specs/025-maestro-companion.md
+specs/005-testing-approaches-poc/
+specs/005-testing-approaches-poc/ARCHITECTURE.md
+specs/005-testing-approaches-poc/README.md
+specs/005-testing-approaches-poc/expect_test.tcl
+specs/005-testing-approaches-poc/mount_test_script.sh
+specs/005-testing-approaches-poc/node_pty_test.js
+specs/005-testing-approaches-poc/pexpect_test.py
+specs/005-testing-approaches-poc/screen_test.sh
+specs/005-testing-approaches-poc/test_approach_comparisons.rs
+specs/005-testing-approaches-poc/test_bollard_docker_api.rs
+specs/005-testing-approaches-poc/test_claude_ui_snapshot.rs
+specs/005-testing-approaches-poc/test_expectrl_poc.rs
+specs/005-testing-approaches-poc/test_insta_snapshot.rs
+specs/005-testing-approaches-poc/test_poc_assert_cmd.rs
+specs/005-testing-approaches-poc/test_testcontainers_poc.rs
+specs/005-testing-approaches-poc/test_trycmd.rs
+specs/005-testing-approaches-poc/tmux_test.sh
+specs/005-testing-approaches-poc/snapshots/
+specs/005-testing-approaches-poc/snapshots/test_claude_ui_snapshot__container_environment.snap
+specs/009-kind-kubernetes-ci-testing/
+specs/009-kind-kubernetes-ci-testing/README.md
+src/
+src/.DS_Store
+src/aws.rs
+src/context.rs
+src/dood.rs
+src/git.rs
+src/lib.rs
+src/main.rs
+src/playbooks.rs
+src/russh_client.rs
+src/shell_env.rs
+src/ssh.rs
+src/claude/
+src/claude/companion.rs
+src/claude/credentials.rs
+src/claude/mod.rs
+src/claude/session.rs
+src/claude/hooks/
+src/claude/hooks/HOOK_IDEAS.md
+src/claude/hooks/README.md
+src/claude/hooks/binaries.rs
+src/claude/hooks/executor.rs
+src/claude/hooks/mod.rs
+src/claude/hooks/scripts/
+src/claude/hooks/scripts/data/
+src/claude/hooks/scripts/data/pricing.json
+src/commands/
+src/commands/attach.rs
+src/commands/auth.rs
+src/commands/config.rs
+src/commands/db.rs
+src/commands/do_cmd.rs
+src/commands/exec.rs
+src/commands/fork.rs
+src/commands/init.rs
+src/commands/jwt_utils.rs
+src/commands/list.rs
+src/commands/logs.rs
+src/commands/mod.rs
+src/commands/open.rs
+src/commands/playbooks.rs
+src/commands/project.rs
+src/commands/proxy.rs
+src/commands/purge.rs
+src/commands/resume.rs
+src/commands/sizes.rs
+src/commands/ssh_attach.rs
+src/commands/start.rs
+src/commands/status.rs
+src/commands/stop.rs
+src/commands/team.rs
+src/commands/test_utils.rs
+src/commands/work.rs
+src/config/
+src/config/credentials.rs
+src/config/mod.rs
+src/config/tmux.rs
+src/container/
+src/container/build_context.rs
+src/container/devcontainer.rs
+src/container/docker.rs
+src/container/env.rs
+src/container/gcs.rs
+src/container/kaniko.rs
+src/container/lifecycle.rs
+src/container/lifecycle_hooks.rs
+src/container/mod.rs
+src/container/path_translation.rs
+src/container/self_protection.rs
+src/container/feature/
+src/container/feature/config.rs
+src/container/feature/dockerfile.rs
+src/container/feature/download.rs
+src/container/feature/graph.rs
+src/container/feature/mod.rs
+src/container/feature/options.rs
+src/db/
+src/db/connection.rs
+src/db/connection_test.rs
+src/db/migrations_test.rs
+src/db/mod.rs
+src/db/proxy.rs
+src/db/repos/
+src/db/repos/mod.rs
+src/db/repos/project.rs
+src/db/repos/team.rs
+src/maestro_api/
+src/maestro_api/client.rs
+src/maestro_api/mod.rs
+src/models/
+src/models/mod.rs
+src/models/project.rs
+src/models/project_team.rs
+src/models/team.rs
+src/n8n/
+src/n8n/client.rs
+src/n8n/discovery.rs
+src/n8n/mod.rs
+src/n8n/types.rs
+src/providers/
+src/providers/docker.rs
+src/providers/kubernetes.rs
+src/providers/mod.rs
+src/proxy/
+src/proxy/daemon.rs
+src/proxy/mod.rs
+src/proxy/routing.rs
+src/proxy/server.rs
+src/proxy/state.rs
+src/remote/
+src/remote/config.rs
+src/remote/gke.rs
+src/remote/lifecycle.rs
+src/remote/mod.rs
+src/remote/session.rs
+src/remote/sizes.rs
+src/remote/sizes.yaml
+src/session/
+src/session/mod.rs
+src/session/picker.rs
+src/session/state.rs
+src/session/validation.rs
+src/settings/
+src/settings/mod.rs
+src/settings/validation.rs
+src/terminal/
+src/terminal/mod.rs
+src/terminal/tab.rs
+tests/
+tests/.DS_Store
+tests/companion_integration_test.rs
+tests/settings_validation_test.rs
+tests/docker/
+tests/docker/attach.rs
+tests/docker/auth_api.rs
+tests/docker/claude_hooks.rs
+tests/docker/claude_setup.rs
+tests/docker/container_config.rs
+tests/docker/container_environment.rs
+tests/docker/container_id_tracking.rs
+tests/docker/container_lifecycle.rs
+tests/docker/container_management_edge_cases.rs
+tests/docker/dood.rs
+tests/docker/error.rs
+tests/docker/error_recovery.rs
+tests/docker/exec.rs
+tests/docker/exec_integration.rs
+tests/docker/fork.rs
+tests/docker/git_ssh.rs
+tests/docker/git_worktree.rs
+tests/docker/image.rs
+tests/docker/init.rs
+tests/docker/jira.rs
+tests/docker/local_session_lifecycle.rs
+tests/docker/logs.rs
+tests/docker/main.rs
+tests/docker/n8n.rs
+tests/docker/open.rs
+tests/docker/provider.rs
+tests/docker/proxy.rs
+tests/docker/purge.rs
+tests/docker/purge_cli.rs
+tests/docker/resume_restart.rs
+tests/docker/ssh_agent.rs
+tests/docker/start_basic.rs
+tests/docker/start_claude.rs
+tests/docker/start_flags.rs
+tests/docker/status.rs
+tests/docker/tmux.rs
+tests/docker/tty.rs
+tests/docker/work.rs
+tests/docker/workspace_isolation.rs
+tests/helpers/
+tests/helpers/linux_binary.rs
+tests/helpers/mod.rs
+tests/helpers/polling.rs
+tests/helpers/providers.rs
+tests/helpers/remote.rs
+tests/helpers/subprocess.rs
+tests/helpers/test_cmd.rs
+tests/k8s/
+tests/k8s/error.rs
+tests/k8s/main.rs
+tests/k8s/pod_logs.rs
+tests/k8s/provider.rs
+tests/k8s/serviceaccount_preflight.rs
+tests/k8s/statefulset_manager.rs
+tests/k8s/tar_streaming.rs
+tests/remote/
+tests/remote/attach.rs
+tests/remote/fork.rs
+tests/remote/lifecycle_hooks.rs
+tests/remote/main.rs
+tests/remote/purge.rs
+tests/remote/session_lifecycle.rs
+tests/remote/start.rs
+tests/remote/workspace_sync.rs
+tests/unit/
+tests/unit/auth.rs
+tests/unit/config.rs
+tests/unit/exec.rs
+tests/unit/fork.rs
+tests/unit/list.rs
+tests/unit/main.rs
+tests/unit/purge.rs
+tests/unit/resume.rs
+tests/unit/self_protection.rs
+tests/unit/session_picker.rs
+tests/unit/session_state.rs
+tests/unit/start.rs
+tests/unit/stop.rs
+thoughts/
+thoughts/ledgers/
+thoughts/ledgers/CONTINUITY_ses_3b6b.md
+
+sent 22334582 bytes  received 6546 bytes  119407418 bytes/sec
+total size is 22302731  speedup is 1.00
+✓ Created workspace copy: /Users/joe/dev/maestro/maestro-cli/.maestro/workspaces/claude-code-e2e-1771541390-7dd897fc
+No devcontainer.json found, creating default configuration...
+✓ Created .devcontainer/devcontainer.json
+[INFO ] Running initializeCommand on host...
+[INFO ]   Host: mkdir -p .maestro && { setfacl -R -m user:1000:rwx -m default:user:1000:rwx -m default:other::rw .maestro 2>/dev/null || chmod -R a+rwX .m
+[INFO ]   initializeCommand completed
+Pre-built Maestro image not found, running 'maestro init' automatically...
+[INFO ] Initializing maestro workspace at: /Users/joe/dev/maestro/maestro-cli/.maestro/workspaces/claude-code-e2e-1771541390-7dd897fc
+[INFO ] Found existing devcontainer config, using it
+[INFO ] No JWT found, registry operations will be skipped
+Building Maestro image: maestro:bd7d7ad44b1dd80ff53c5b1d77d9cca6-arm64
+[INFO ] Fetching devcontainer features...
+[INFO ] Downloading 3 feature(s) in parallel...
+[INFO ] Using base image: mcr.microsoft.com/devcontainers/base:ubuntu-22.04
+[INFO ] Processing 3 feature(s)...
+[INFO ] Using optimized Maestro layer for devcontainers base image
+[INFO ] Building Docker image (this may take a few minutes)...
+[INFO ] Build context: 67.0 KB (21 files)
+[INFO ] Building Docker image: maestro:bd7d7ad44b1dd80ff53c5b1d77d9cca6-arm64
+[INFO ] Build context compressed to 24.6 KB (36.7% of original)
+[INFO ]   [buildkit] [internal] load remote build context
+[INFO ]   [buildkit] copy /context /
+[INFO ]   [buildkit] [internal] load metadata for mcr.microsoft.com/devcontainers/base:ubuntu-22.04
+[INFO ]   [buildkit] [12/16] RUN mkdir -p /.maestro /run/sshd     && git config --system --add safe.directory /workspace     && git config --system --add safe.directory /.git
+[INFO ]   [buildkit] [11/16] RUN echo 'export PATH="/usr/local/google-cloud-sdk/bin:$PATH"' > /etc/profile.d/gcloud.sh     && chmod +x /etc/profile.d/gcloud.sh
+[INFO ]   [buildkit] [10/16] RUN if ! command -v gcloud > /dev/null 2>&1; then     ARCH=$(uname -m) &&     if [ "$ARCH" = "x86_64" ]; then GCLOUD_ARCH="x86_64";     elif [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then GCLOUD_ARCH="arm";     else echo "Unsupported architecture: $ARCH" >&2 && exit 1; fi &&     curl -sSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-${GCLOUD_ARCH}.tar.gz"       | tar -xz -C /usr/local &&     /usr/local/google-cloud-sdk/install.sh --quiet --path-update=false; fi
+[INFO ]   [buildkit] [ 7/16] RUN cd /tmp/build-features/2 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+[INFO ]   [buildkit] [ 8/16] RUN apt-get update     && apt-get install -y --no-install-recommends tmux acl openssh-server gosu jq     && rm -rf /var/lib/apt/lists/*
+[INFO ]   [buildkit] [14/16] RUN tmux -V && gcloud --version && bq version && gsutil version && jira version
+[INFO ]   [buildkit] [16/16] RUN chmod +x /entrypoint.sh
+[INFO ]   [buildkit] [ 5/16] RUN cd /tmp/build-features/0 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+[INFO ]   [buildkit] [ 4/16] RUN echo "_CONTAINER_USER_HOME=$(getent passwd root | cut -d: -f6)" >> /tmp/build-features/devcontainer-features.builtin.env && echo "_REMOTE_USER_HOME=$(getent passwd root | cut -d: -f6)" >> /tmp/build-features/devcontainer-features.builtin.env
+[INFO ]   [buildkit] [ 3/16] RUN chmod -R 0755 /tmp/build-features && ls /tmp/build-features
+[INFO ]   [buildkit] [ 2/16] COPY ./devpod-context/features/ /tmp/build-features/
+[INFO ]   [buildkit] [13/16] RUN mkdir -p /etc/ssh/sshd_config.d     && printf 'AllowAgentForwarding yes\nPasswordAuthentication no\nPubkeyAuthentication yes\n'        > /etc/ssh/sshd_config.d/maestro.conf
+[INFO ]   [buildkit] [15/16] RUN cat <<'MAESTRO_ENTRYPOINT_EOF' > /entrypoint.sh
+[INFO ]   [buildkit] [ 6/16] RUN cd /tmp/build-features/1 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+[INFO ]   [buildkit] [ 1/16] FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04@sha256:81380e4c9c14e8a629ff39029639e4b7893e67400246fa7782a0fe7dc193a02a
+[INFO ]   [buildkit] [ 9/16] RUN ARCH=$(dpkg --print-architecture | sed 's/amd64/x86_64/;s/arm64/arm64/')     && JIRA_VERSION=$(curl -s https://api.github.com/repos/ankitpokhrel/jira-cli/releases/latest | jq -r '.tag_name' | sed 's/^v//')     && curl -fsSL "https://github.com/ankitpokhrel/jira-cli/releases/download/v${JIRA_VERSION}/jira_${JIRA_VERSION}_linux_${ARCH}.tar.gz"        | tar -xz --strip-components=2 -C /usr/local/bin     && chmod +x /usr/local/bin/jira
+Error: Failed to auto-build Maestro image
+
+Caused by:
+    0: Failed to build Docker image
+    1: Failed to build image
+    2: Docker stream error: process "/bin/sh -c cd /tmp/build-features/2 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh" did not complete successfully: exit code: 100

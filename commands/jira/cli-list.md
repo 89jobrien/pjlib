@@ -8,6 +8,11 @@ argument-hint: [--mine|--jql "query"|--status "In Progress"]
 
 List issues using `jira-cli` command-line tool.
 
+## Current State
+
+- Jira CLI: !`jira --version 2>/dev/null || echo "jira-cli not installed"`
+- Current user: !`jira me 2>/dev/null || echo "Not authenticated"`
+
 ## Arguments
 
 - `$ARGUMENTS` - Filters or JQL query

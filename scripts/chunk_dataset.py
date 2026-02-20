@@ -21,10 +21,7 @@ from pathlib import Path
 
 
 def chunk_jsonl(
-    input_path: str,
-    output_dir: str,
-    chunk_size_mb: int = 100,
-    by_session: bool = False
+    input_path: str, output_dir: str, chunk_size_mb: int = 100, by_session: bool = False
 ) -> dict:
     """
     Chunk a large JSONL file into smaller files.
@@ -61,16 +58,23 @@ def chunk_jsonl(
     current_sessions = set()
 
     def start_new_chunk():
-        nonlocal current_chunk, current_size, current_rows, current_file, current_sessions
+        nonlocal \
+            current_chunk, \
+            current_size, \
+            current_rows, \
+            current_file, \
+            current_sessions
 
         if current_file:
             current_file.close()
-            stats["chunks"].append({
-                "chunk": current_chunk,
-                "rows": current_rows,
-                "size_mb": current_size / 1024 / 1024,
-                "sessions": len(current_sessions)
-            })
+            stats["chunks"].append(
+                {
+                    "chunk": current_chunk,
+                    "rows": current_rows,
+                    "size_mb": current_size / 1024 / 1024,
+                    "sessions": len(current_sessions),
+                }
+            )
 
         current_chunk += 1
         current_size = 0
@@ -78,7 +82,7 @@ def chunk_jsonl(
         current_sessions = set()
 
         chunk_path = output_dir / f"{base_name}_chunk_{current_chunk:04d}.jsonl"
-        current_file = open(chunk_path, 'w')
+        current_file = open(chunk_path, "w")
         print(f"  Writing chunk {current_chunk}: {chunk_path.name}")
 
         return current_file
@@ -92,15 +96,15 @@ def chunk_jsonl(
 
     with open(input_path) as f:
         for line_num, line in enumerate(f, 1):
-            line_size = len(line.encode('utf-8'))
+            line_size = len(line.encode("utf-8"))
 
             # Parse to get session_id if grouping by session
             if by_session:
                 try:
                     data = json.loads(line)
-                    session_id = data.get('session_id', '')
+                    session_id = data.get("session_id", "")
                 except json.JSONDecodeError:
-                    session_id = ''
+                    session_id = ""
 
             # Check if we need a new chunk
             if current_size + line_size > chunk_size_bytes:
@@ -122,19 +126,21 @@ def chunk_jsonl(
     # Close final chunk
     if current_file:
         current_file.close()
-        stats["chunks"].append({
-            "chunk": current_chunk,
-            "rows": current_rows,
-            "size_mb": current_size / 1024 / 1024,
-            "sessions": len(current_sessions) if by_session else 0
-        })
+        stats["chunks"].append(
+            {
+                "chunk": current_chunk,
+                "rows": current_rows,
+                "size_mb": current_size / 1024 / 1024,
+                "sessions": len(current_sessions) if by_session else 0,
+            }
+        )
 
     stats["completed_at"] = datetime.now().isoformat()
     stats["total_chunks"] = len(stats["chunks"])
 
     # Write stats
     stats_path = output_dir / f"{base_name}_chunks_stats.json"
-    with open(stats_path, 'w') as f:
+    with open(stats_path, "w") as f:
         json.dump(stats, f, indent=2)
 
     print()
@@ -154,23 +160,21 @@ def main():
         "input_file",
         nargs="?",
         default="datasets/projects_tool_rows.jsonl",
-        help="Input JSONL file path"
+        help="Input JSONL file path",
     )
     parser.add_argument(
         "--chunk-size",
         type=int,
         default=100,
-        help="Target chunk size in MB (default: 100)"
+        help="Target chunk size in MB (default: 100)",
     )
     parser.add_argument(
         "--output-dir",
         default=None,
-        help="Output directory (default: <input_dir>/chunks/)"
+        help="Output directory (default: <input_dir>/chunks/)",
     )
     parser.add_argument(
-        "--by-session",
-        action="store_true",
-        help="Keep rows from same session together"
+        "--by-session", action="store_true", help="Keep rows from same session together"
     )
 
     args = parser.parse_args()
@@ -197,7 +201,7 @@ def main():
         input_path=str(input_path),
         output_dir=str(output_dir),
         chunk_size_mb=args.chunk_size,
-        by_session=args.by_session
+        by_session=args.by_session,
     )
 
     return 0

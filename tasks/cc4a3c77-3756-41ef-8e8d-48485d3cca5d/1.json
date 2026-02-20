@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Explore project context for Claude Code integration",
+  "description": "Check current state of maestro-companion, Claude CLI, and existing integration points to understand what exists and what needs to be built",
+  "activeForm": "Exploring project context",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

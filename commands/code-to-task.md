@@ -9,6 +9,11 @@ argument-hint: "[file-path] | [commit-hash] | full"
 
 Scan codebase for TODO/FIXME comments, technical debt markers, DEPRECATED, OBSOLETE, and code issues, then output findings to CURRENT_TASKS.local.md
 
+## Current State
+
+- Task markers: !`rg "TODO|FIXME|HACK|XXX|OPTIMIZE|REFACTOR" -g '!*.lock' -g '!node_modules/**' -l | wc -l`
+- Deprecated markers: !`rg "@deprecated|DEPRECATED|@obsolete" -g '!node_modules/**' -l | wc -l`
+
 ## Purpose
 
 This command scans your codebase for TODO/FIXME comments, technical debt markers, deprecated code, and other indicators that should be tracked as tasks. It generates a CURRENT_TASKS.local.md file in the project root with organized, prioritized tasks.

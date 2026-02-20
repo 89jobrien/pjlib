@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "subject": "TDD: Permission tracker cleanup - Refactor and optimize",
+  "description": "Phase 4 REFACTOR: Refactor permission cleanup implementation while keeping tests green. Apply SOLID principles, add observability (metrics, logs), optimize lock contention, improve configuration. Tests must stay green throughout.",
+  "activeForm": "Refactoring permission cleanup code",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

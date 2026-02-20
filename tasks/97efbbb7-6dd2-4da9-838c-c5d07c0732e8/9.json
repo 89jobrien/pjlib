@@ -1,0 +1,9 @@
+{
+  "id": "9",
+  "subject": "Phase 1 canary deployment ready",
+  "description": "Comprehensive deployment guide created with monitoring setup, success criteria, rollback procedures, and communication plan. Ready to deploy background cleanup + optimizations to 5% canary traffic.",
+  "activeForm": "Preparing deployment execution",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

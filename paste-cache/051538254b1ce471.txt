@@ -1,0 +1,204 @@
+I'm still encountering the same model configuration issue with the tdd-orchestrator agent, even after updating it to use `sonnet`. The agent seems to be trying to use an older model ID that no longer exists.
+
+Let me help you directly with TDD orchestration for maestro-companion instead. I'll provide a comprehensive TDD workflow plan based on your priority tasks.
+
+## TDD Orchestration Plan for maestro-companion
+
+### Recommended Approach: Bottom-Up TDD
+
+Start with **P0 signal handling bug** as your first TDD cycle - it's a quick win that demonstrates TDD discipline and improves security.
+
+---
+
+### Phase 1: Quick Wins (Red-Green-Refactor)
+
+#### Task 1.1: P0 - Fix Signal Handling Bug (15 min)
+
+**RED** - Write failing test:
+```rust
+#[test]
+fn test_liveness_check_uses_null_signal() {
+    // Test that is_running() uses signal 0 (null signal) not SIGCONT
+    // Verify no side effects occur (process not resumed)
+}
+```
+
+**GREEN** - Fix implementation in `src/session/cli_process.rs:196`:
+```rust
+signal::kill(Pid::from_raw(pid as i32), Signal::from_raw(0))
+```
+
+**REFACTOR** - Add documentation explaining null signal semantics
+
+**Verify**: `cargo test -p maestro-companion`
+
+---
+
+#### Task 1.2: P1 - Add DoS Protection (30 min)
+
+**RED** - Write failing tests:
+```rust
+#[test]
+fn test_pending_permissions_bounded() {
+    // Test that pending_permissions rejects beyond MAX_PENDING_PERMISSIONS
+}
+
+#[test]
+fn test_dos_protection_error_response() {
+    // Test proper error message when limit exceeded
+}
+```
+
+**GREEN** - Implement in `src/session/bridge.rs:243`:
+```rust
+const MAX_PENDING_PERMISSIONS: usize = 100;
+if self.pending_permissions.len() >= MAX_PENDING_PERMISSIONS {
+    return Err(anyhow!("Too many pending permissions"));
+}
+```
+
+**REFACTOR** - Extract constant, add metrics logging
+
+**Verify**: `cargo test -p maestro-companion`
+
+---
+
+### Phase 2: Architecture Improvements (Test-First)
+
+#### Task 2.1: P2 - Implement ProcessManager Trait (3-4 hours)
+
+**RED** - Define trait and write integration tests:
+```rust
+#[cfg(test)]
+mod tests {
+    use super::*;
+    
+    struct MockProcessManager { /* ... */ }
+    
+    #[test]
+    fn test_session_bridge_with_mock_process_manager() {
+        // Test SessionBridge with mock instead of real process
+    }
+}
+```
+
+**GREEN** - Implement trait:
+```rust
+trait ProcessManager {
+    fn spawn(&self, cmd: &str) -> Result<CliProcess>;
+    fn is_running(&self, pid: u32) -> bool;
+    fn shutdown(&self, pid: u32, timeout: Duration) -> Result<()>;
+}
+```
+
+**REFACTOR** - Update SessionBridge to accept `Box<dyn ProcessManager>`
+
+**Verify**: All 33+ tests still pass
+
+---
+
+#### Task 2.2: P1 - Extract Lifecycle Management (2 hours)
+
+**RED** - Write tests for new `SessionLifecycleManager`:
+```rust
+#[test]
+fn test_lifecycle_manager_spawn() { }
+
+#[test]
+fn test_lifecycle_manager_graceful_shutdown() { }
+
+#[test]
+fn test_lifecycle_manager_force_kill() { }
+```
+
+**GREEN** - Extract logic from SessionBridge to new struct
+
+**REFACTOR** - Simplify SessionBridge, update integration tests
+
+---
+
+### Phase 3: Performance Optimizations (Measure-Test-Optimize)
+
+#### Task 3.1: P1 - Arc-based Event Buffering (3-4 hours)
+
+**MEASURE** - Add benchmark to baseline current performance
+
+**RED** - Write performance regression test:
+```rust
+#[test]
+fn test_event_buffer_allocation_efficiency() {
+    // Verify Arc reduces clones by 90%
+}
+```
+
+**GREEN** - Implement `Arc<BufferedBrowserEvent>`
+
+**REFACTOR** - Update all event consumers
+
+**VERIFY** - Run benchmark, confirm 90% reduction
+
+---
+
+#### Task 3.2: P2 - Cache Process Liveness Checks (1-2 hours)
+
+**RED** - Write tests for caching behavior:
+```rust
+#[test]
+fn test_liveness_cache_hit_within_ttl() { }
+
+#[test]
+fn test_liveness_cache_miss_after_ttl() { }
+```
+
+**GREEN** - Implement `Cell<Option<(Instant, bool)>>` cache
+
+**REFACTOR** - Make TTL configurable
+
+---
+
+### Phase 4: Test Coverage Expansion (2-3 hours)
+
+**Current Coverage Gaps** (from P2 tasks):
+- Concurrent message handling race conditions
+- WebSocket frame handling with malformed data
+- Event buffer overflow behavior
+- Permission request timeout scenarios
+- Graceful shutdown with pending operations
+
+**TDD Approach**:
+1. Write test for each gap (RED)
+2. Fix any bugs discovered (GREEN)
+3. Add assertions/validation (REFACTOR)
+
+---
+
+## TDD Workflow Commands
+
+```bash
+# Red phase - Run tests (should fail)
+cargo test -p maestro-companion --test <test-name>
+
+# Green phase - Implement minimal fix
+cargo check -p maestro-companion  # Type check first
+cargo test -p maestro-companion    # Verify tests pass
+
+# Refactor phase - Clean up while keeping tests green
+cargo test -p maestro-companion    # Run after each refactor
+cargo clippy -p maestro-companion  # Check for improvements
+
+# Full regression suite
+make test  # All tests must pass before commit
+```
+
+---
+
+## Recommended Order
+
+1. **Start today**: P0 signal bug (15 min) ✅
+2. **This sprint**: P1 DoS protection (30 min), P1 Arc buffering (3-4 hours)
+3. **Next sprint**: P2 ProcessManager trait, P1 lifecycle extraction
+4. **Before Phase 2**: Expand test coverage gaps
+
+This approach balances qck wins (security fixes) with architectural improvements (testability) while maintaining development velocity.
+
+Would you like me to help you implement any of these TDD cycles? I can start with the P0 signal handling bug fix if you'd like.

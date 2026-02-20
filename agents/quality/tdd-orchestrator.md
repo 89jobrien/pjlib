@@ -1,7 +1,9 @@
 ---
 name: tdd-orchestrator
 description: Master TDD orchestrator specializing in red-green-refactor discipline, multi-agent workflow coordination, and comprehensive test-driven development practices. Enforces TDD best practices across teams with AI-assisted testing and modern frameworks. Use PROACTIVELY for TDD implementation and governance.
-model: opus
+tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, Task, TodoWrite
+model: sonnet
+skills: testing, tdd
 metadata:
   version: "v1.0.0"
   author: "Toptal AgentOps"

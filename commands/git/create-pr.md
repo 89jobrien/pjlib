@@ -6,6 +6,11 @@ description: How to Create a Pull Request Using GitHub CLI
 
 This guide explains how to create pull requests using GitHub CLI in our project.
 
+## Current State
+
+- Current branch: !`git branch --show-current`
+- Git status: !`git status --porcelain`
+
 ## Prerequisites
 
 1. Install GitHub CLI if you haven't already:

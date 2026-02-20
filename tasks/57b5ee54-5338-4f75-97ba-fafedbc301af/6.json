@@ -1,0 +1,9 @@
+{
+  "id": "6",
+  "subject": "Write unit tests for discovery and parser",
+  "description": "Add unit tests for discovery.rs and parser.rs modules. Test valid/invalid JSONL parsing, directory walking, error handling, and edge cases.",
+  "activeForm": "Writing unit tests for core modules",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

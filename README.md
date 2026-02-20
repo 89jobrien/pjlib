@@ -91,6 +91,7 @@ Comprehensive index of all agents, commands, and skills.
 - **code-reviewer**: Comprehensive code review specialist covering 6 focused aspects - architecture & design, code quality, security & dependencies, performance & scalability, testing coverage, and documentation & API design. Use PROACTIVELY after significant code changes. | Tools: Read, Grep, Glob, Bash, mcp__plugin_meta-joe_fetch__fetch | Skills: code-review, tool-presets
 - **todo-organizer**: Extract action items from code review reports and organize them into structured TODO checklists. | Tools: Read, Write, Grep | Skills: -
 - **triage-expert**: Context gathering and initial problem diagnosis specialist. Use PROACTIVELY when encountering errors, performance issues, or unexpected behavior. | Tools: Read, Grep, Glob, Bash, Edit | Skills: debugging
+- **type-design-analyzer**: Expert type design analyst specializing in evaluating type systems for encapsulation, invariant expression, and enforcement. Use PROACTIVELY when introducing new types, reviewing type changes in pull requests, or refactoring existing types to improve usefulness and safety. | Tools: Read, Grep, Glob, Bash | Skills: code-review, tool-presets, meta-cognitive-reasoning
 
 ### Ai Specialists
 
@@ -130,6 +131,7 @@ Comprehensive index of all agents, commands, and skills.
 - **report-generator**: Use this agent when you need to transform synthesized research findings into a comprehensive, well-structured final r... | Tools: Read, Write, Edit | Skills: lead-research-assistant, documentation
 - **research-brief-generator**: Use this agent when you need to transform a user's research query into a structured, actionable research brief that w... | Tools: Read, Write, Edit | Skills: lead-research-assistant
 - **research-coordinator**: Use this agent when you need to strategically plan and coordinate complex research tasks across multiple specialist r... | Tools: Read, Write, Edit, Task, TodoWrite | Skills: lead-research-assistant
+- **research-expert**: Use this agent when you need to coordinate a comprehensive research project that requires multiple specialized agents working in sequence. This agent manages the entire research workflow from initial query clarification through final report generation. | Tools: Read, Write, Edit, Task, TodoWrite | Skills: lead-research-assistant, tool-presets
 - **research-orchestrator**: Use this agent when you need to coordinate a comprehensive research project that requires multiple specialized agents... | Tools: Read, Write, Edit, Task, TodoWrite | Skills: lead-research-assistant
 - **research-synthesizer**: Use this agent when you need to consolidate and synthesize findings from multiple research sources or specialist rese... | Tools: Read, Write, Edit | Skills: lead-research-assistant
 - **technical-researcher**: Use this agent when you need to analyze code repositories, technical documentation, implementation details, or evalua... | Tools: Read, Write, Edit, WebSearch, WebFetch, Bash | Skills: lead-research-assistant
@@ -171,7 +173,7 @@ Comprehensive index of all agents, commands, and skills.
 ### Expert Advisors
 
 - **agent-expert**: Use this agent when creating specialized Claude Code agents for the claude-code-templates components system. Specializes in agent design, prompt engineering, domain expertise modeling, and agent best practices. | Tools: Read, Write, Edit, Grep | Skills: -
-- **architect-reviewer**: Use this agent to review code for architectural consistency and patterns. Specializes in SOLID principles, proper lay... | Tools: Read, Write, Edit, Grep | Skills: code-review
+- **architect-reviewer**: Architecture review specialist for code consistency, SOLID principles, proper layering, and maintainability. Use PROACTIVELY for reviewing architectural changes, evaluating service design, and ensuring pattern compliance in pull requests. | Tools: Read, Write, Edit, Grep, mcp__context7__get-library-docs, mcp__context7__resolve-library-id | Skills: global-standards, meta-cognitive-reasoning
 - **dependency-manager**: Use this agent to manage project dependencies. Specializes in dependency analysis, vulnerability scanning, and licens... | Tools: - | Skills: dependency-management
 - **documentation-expert**: Use this agent to create, improve, and maintain project documentation. Specializes in technical writing, documentatio... | Tools: Read, Write, Edit, Grep | Skills: documentation
 - **pytest-tdd-expert**: Python/pytest TDD specialist for auditing test quality, running tests with coverage, and generating comprehensive tes... | Tools: Read, Write, Edit, Bash, Grep, Glob | Skills: testing, tdd-pytest
@@ -191,6 +193,7 @@ Comprehensive index of all agents, commands, and skills.
 - **logging-specialist**: Log analysis and logging infrastructure specialist. Use PROACTIVELY for log debugging, structured logging, and security auditing. | Tools: Read, Grep, Glob, Edit, Write, Bash | Skills: debugging
 - **parallel-tdd-expert**: Parallelized TDD implementation specialist. Use PROACTIVELY for implementing multiagent features using strict TDD workflow. | Tools: Read, Write, Edit, Bash, Grep, Glob | Skills: testing, tdd-pytest
 - **performance-profiler**: Performance analysis and optimization specialist. Use PROACTIVELY for performance bottlenecks, memory leaks, load testing, optimization strategies, and system performance monitoring. | Tools: Read, Write, Edit, Bash | Skills: performance, tool-presets
+- **tdd-orchestrator**: Master TDD orchestrator specializing in red-green-refactor discipline, multi-agent workflow coordination, and comprehensive test-driven development practices. Enforces TDD best practices across teams with AI-assisted testing and modern frameworks. Use PROACTIVELY for TDD implementation and governance. | Tools: All tools | Skills: testing, tdd
 - **test-automator**: Create comprehensive test suites with unit, integration, and e2e tests. Sets up CI pipelines, mocking strategies, and test data. Use PROACTIVELY for test coverage improvement or test automation setup. | Tools: Read, Write, Edit, Bash | Skills: testing, tool-presets
 - **test-engineer**: Test automation and quality assurance specialist. Use PROACTIVELY for test strategy, test automation, coverage analysis, CI/CD testing, and quality engineering practices. | Tools: Read, Write, Edit, Bash | Skills: testing, tool-presets
 

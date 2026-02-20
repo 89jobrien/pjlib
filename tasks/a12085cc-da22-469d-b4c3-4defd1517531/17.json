@@ -1,0 +1,9 @@
+{
+  "id": "17",
+  "subject": "Phase 4.2: Move pricing.rs to actions",
+  "description": "Move src/pricing.rs to src/actions/pricing.rs using git mv. Update actions/mod.rs, lib.rs re-exports, and imports in command handlers.",
+  "activeForm": "Moving pricing to actions",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

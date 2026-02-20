@@ -1,0 +1,9 @@
+{
+  "id": "5",
+  "subject": "Write design document",
+  "description": "Save approved design to docs/plans/YYYY-MM-DD-claude-companion-integration-design.md and commit",
+  "activeForm": "Writing design doc",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

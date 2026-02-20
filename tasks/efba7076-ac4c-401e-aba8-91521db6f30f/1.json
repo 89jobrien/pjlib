@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Explore project context for Streaming Chat view",
+  "description": "Check current files, docs, and recent commits to understand the existing companion WebSocket infrastructure and any related chat components",
+  "activeForm": "Exploring project context",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

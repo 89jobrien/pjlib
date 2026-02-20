@@ -7,6 +7,11 @@ description: Git Status Command
 
 Show detailed git repository status
 
+## Current State
+
+- Current branch: !`git branch --show-current`
+- Git status: !`git status --porcelain`
+
 *Command originally created by IndyDevDan (YouTube: https://www.youtube.com/@indydevdan) / DislerH (GitHub: https://github.com/disler)*
 
 ## Instructions

@@ -1,0 +1,9 @@
+{
+  "id": "20",
+  "subject": "Phase 5.2a: Create post_tool_use event module",
+  "description": "Create events/post_tool_use/ with mod.rs (PostToolUseInput), handler.rs, tests.rs following the pre_tool_use pattern. Copy implementation from commands/post_tool_use.rs.",
+  "activeForm": "Creating post_tool_use event",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

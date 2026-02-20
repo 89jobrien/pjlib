@@ -8,6 +8,11 @@ argument-hint: "[task description]"
 
 Find the most appropriate agent(s) for a specific task or problem.
 
+## Current State
+
+- Agent count: !`find ~/.claude/agents -name "*.md" -type f | wc -l`
+- Skill count: !`find ~/.claude/skills -name "SKILL.md" -type f | wc -l`
+
 ## Arguments
 
 - `[task description]`: Describe what you need help with

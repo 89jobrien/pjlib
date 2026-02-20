@@ -102,7 +102,7 @@ PAYLOAD_SCHEMA = {
 }
 
 # Supported code file extensions
-CODE_EXTENSIONS = {".py", ".ts", ".js", ".tsx", ".jsx", ".go", ".rs", ".java"}
+CODE_EXTENSIONS = {".py", ".ts", ".js", ".tsx", ".jsx", ".go", ".rs", ".sh", ".zsh"}
 
 
 # ============================================================================
@@ -366,12 +366,9 @@ def main(test_mode: bool = False) -> None:
             if not questions:
                 sys.exit(0)
 
-            # Generate and output structured message
+            # Generate and output structured message to stdout (so Claude can read it)
             structured_msg = generate_structured_output(questions, payload)
-            print(
-                json.dumps(structured_msg, separators=(",", ":")),
-                file=sys.stderr,
-            )
+            print(json.dumps(structured_msg, separators=(",", ":")))
 
             # Human-readable output
             logger.warning("No self-review detected in session")

@@ -15,6 +15,12 @@ Design optimized database schemas with comprehensive data modeling: **$ARGUMENTS
 - Existing schema: @prisma/schema.prisma or @migrations/ or database dumps
 - Performance needs: Expected scale, query patterns, and data volume
 
+## Current State
+
+Confirm repository context before drafting schema output.
+
+!`pwd`
+
 ## Task
 
 Design comprehensive database schema with optimal structure and performance:

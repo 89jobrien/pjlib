@@ -1,0 +1,49 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Session ID: test-session-1771453861
+WebSocket: ws://localhost:8080/companion/browser/test-session-1771453861
+
+✅ API server is running
+
+Browser → Server message templates (BrowserOutgoingKnown):
+
+  1. session_subscribe - Subscribe to session events from beginning:
+     {"type":"session_subscribe","last_seq":0}
+
+  2. session_subscribe - Subscribe from specific sequence:
+     {"type":"session_subscribe","last_seq":42}
+
+  3. session_ack - Acknowledge received events:
+     {"type":"session_ack","last_seq":10}
+
+  4. permission_response - Allow tool execution:
+     {"type":"permission_response","request_id":"req-123","behavior":"allow"}
+
+  5. permission_response - Deny with message:
+     {"type":"permission_response","request_id":"req-456","behavior":"deny","message":"Access denied"}
+
+  6. user_message - Send message to Claude:
+     {"type":"user_message","content":"Hello, Claude!"}
+
+  7. interrupt - Interrupt current operation:
+     {"type":"interrupt"}
+
+  8. set_model - Change AI model:
+     {"type":"set_model","model":"claude-opus-4"}
+
+  9. set_permission_mode - Change permission mode:
+     {"type":"set_permission_mode","mode":"auto_allow"}
+
+  10. mcp_get_status - Get MCP server status:
+      {"type":"mcp_get_status"}
+
+  11. mcp_toggle - Enable/disable MCP server:
+      {"type":"mcp_toggle","serverName":"filesystem","enabled":true}
+
+Type your message (JSON format) or press Ctrl+C to exit:
+
+{"type":"user_message","content":"Hello, Claude!"}
+{"type":"mcp_toggle","serverName":"filesystem","enabled":true}
+{"type":"set_model","model":"claude-opus-4"}
+{"type":"user_message","content":"Hello, Claude!"}
+ {"type":"set_model","model":"claude-opus-4"}

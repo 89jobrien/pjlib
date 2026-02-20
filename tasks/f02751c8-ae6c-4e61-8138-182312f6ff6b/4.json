@@ -1,0 +1,9 @@
+{
+  "id": "4",
+  "subject": "Update hooks_config.yaml with setup section",
+  "description": "Add setup configuration section to hooks/hooks_config.yaml with:\n- env_validation settings (required_tools, required_env_vars, warn_only)\n- workspace_init settings (default_template, auto_git_init)\n- dependency_check settings (check_vulnerabilities, update_lockfile)\n- project_scaffold settings (auto_install_deps, create_git_repo)\n\nAll should be disabled by default (manual trigger only).",
+  "activeForm": "Updating hooks configuration",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

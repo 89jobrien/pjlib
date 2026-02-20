@@ -1,0 +1,9 @@
+{
+  "id": "27",
+  "subject": "Phase 5.2h: Create notification event module",
+  "description": "Create events/notification/ with mod.rs (NotificationInput), handler.rs, tests.rs. Copy implementation from commands/notification.rs.",
+  "activeForm": "Creating notification event",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

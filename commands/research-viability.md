@@ -39,6 +39,12 @@ Projects to Research:
  - Check: agents/, commands/, skills/, hooks/
  - Analyze component counts, test coverage, management tools
 
+## Current State
+
+Confirm the report location and current working directory.
+
+!`pwd`
+
 Research Requirements:
 - Read project files to understand current state
 - Count tests, coverage metrics where available

@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "subject": "Create slash commands for setup hooks",
+  "description": "Create 4 slash commands in commands/setup/:\n- validate-environment.md - Check tools, versions, env vars\n- init-workspace.md - Create directory structures\n- check-dependencies.md - Validate package lockfiles\n- scaffold-project.md - Initialize new projects\n\nEach command should follow the existing command frontmatter pattern with allowed-tools, argument-hint, and description.",
+  "activeForm": "Creating setup slash commands",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

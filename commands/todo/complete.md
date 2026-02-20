@@ -8,4 +8,4 @@ description: Mark todo <id> as completed in SQLite DB.
 
 Mark a todo <id> as completed in the SQLite database.
 
-!cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli done $ID
+!`cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli done $ID`

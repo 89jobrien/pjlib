@@ -1,0 +1,31 @@
+# joe @ Josephs-MacBook-Air in ~/dev/maestro on git:main x [13:17:14]
+$ maestro start
+[INFO ] Starting maestro environment for: /Users/joe/dev/maestro
+Creating session 'session-aba66fff' with isolation: Worktree
+Creating git worktree for isolated workspace...
+Fetching latest changes from main...
+✓ Fetched main
+✓ Created worktree: /Users/joe/dev/maestro/.maestro/worktrees/session-aba66fff-aba66fff
+  Branch: session-aba66fff-aba66fff (based on origin/main)
+Using existing devcontainer.json
+[INFO ] Found Claude credentials in macOS Keychain
+[INFO ] Running initializeCommand on host...
+[INFO ]   Host: mkdir -p .maestro && { setfacl -R -m user:1000:rwx -m default:user:1000:rwx -m default:other::rw .maestro 2>/dev/null || chmod -R a+rwX .maestro 2>/dev/null;  not found in registry or pull failed: Failed to pull image
+Image not found in registry, will build locally
+Building Maestro image: maestro:4cc0567fc954eacb9f63cb1fb4fd4768-arm64
+[INFO ] Fetching devcontainer features...
+[INFO ] Downloading 6 feature(s) in parallel...
+[INFO ] Using base image: mcr.microsoft.com/devcontainers/base:ubuntu-22.04
+[INFO ] Processing 6 feature(s)...
+[INFO ] Using optimized Maestro layer for devcontainers base image
+[INFO ] Building Docker image (this may take a few minutes)...
+[INFO ] Build context: 132.0 KB (39 files)
+[INFO ] Building Docker image: maestro:4cc0567fc954eacb9f63cb1fb4fd4768-arm64
+[INFO ] Build context compressed to 46.4 KB (35.1% of original)
+[INFO ]   [buildkit] [internal] load remote build context
+Error: Failed to auto-build Maestro image
+
+Caused by:
+    0: Failed to build Docker image
+    1: Failed to build image
+    2: Docker stream error: failed to read downloaded context: failed to load cache key: failed to prepare  as y4jb9iyuzexnr5h6kvyokas50: failed to create prepare snapshot dir: failed to create temp dir: mkdir /var/lib/desktop-containerd/daemon/io.containerd.snapshotter.v1.overlayfs/snapshots/new-471726659: no space left on device

@@ -1,0 +1,9 @@
+{
+  "id": "14",
+  "subject": "Phase 3.3: Move config.rs to helpers",
+  "description": "Move src/config.rs to src/helpers/config.rs using git mv. Update helpers/mod.rs and lib.rs re-exports.",
+  "activeForm": "Moving config to helpers",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

@@ -1,0 +1,47 @@
+
+Session ID: bidirectional-1771457466
+Browser WS: ws://localhost:8080/companion/browser/bidirectional-1771457466
+CLI WS: ws://localhost:8080/companion/cli/bidirectional-1771457466
+
+✅ API server is running
+
+Starting persistent WebSocket connections...
+✅ Persistent connections established
+   CLI WebSocket PID: 90346
+   Browser WebSocket PID: 90347
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Scenario 1: Browser subscribes to new session
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[BROWSER] → Sending: session_subscribe with last_seq=0
+{"type":"session_subscribe","last_seq":0}
+
+[SERVER] → Browser:
+{
+  "type": "event_replay",
+  "events": []
+}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Scenario 2: CLI sends assistant message
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[CLI] → Sending: assistant message
+{
+  "type": "assistant",
+  "message": {
+    "role": "assistant",
+    "content": "Hello from the CLI! I'm Claude."
+  }
+}
+
+[SERVER] Processing: CLI message → Event buffer (seq=1)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Scenario 3: Browser subscribes and receives buffered events
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[BROWSER] → Sending: session_subscribe with last_seq=0
+{"type":"session_subscribe","last_seq":0}
+                                                                     `^C./scripts/ws-bidirectional-demo.sh: line 94: /var/folders/s4/mnhb7ddn1zbgy2x4h_hf1dnc0000gn/T//maestro-browser-pipe-90333: Interrupted system call

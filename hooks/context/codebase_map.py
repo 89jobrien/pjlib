@@ -167,11 +167,22 @@ def main() -> None:
         )
 
         print("[Success] Codebase map generated", file=sys.stderr)
-        print("\n" + "=" * 60)
-        print("CODEBASE STRUCTURE")
-        print("=" * 60)
-        print(codebase_map)
-        print("=" * 60 + "\n")
+
+        # Output via JSON with hookSpecificOutput structure
+        if codebase_map:
+            output = {
+                "hookSpecificOutput": {
+                    "hookEventName": "SessionStart",
+                    "additionalContext": (
+                        "=" * 60 + "\n"
+                        "CODEBASE STRUCTURE\n" +
+                        "=" * 60 + "\n" +
+                        codebase_map + "\n" +
+                        "=" * 60
+                    )
+                }
+            }
+            print(json.dumps(output))
 
         SESSION_CACHE.add(session_id)
 

@@ -4,6 +4,11 @@ description: Convert code analysis to Linear tasks using full project context
 
 # Convert code analysis to Linear tasks using full project context
 
+## Current State
+
+- Repo status: !`git status --porcelain`
+- Recent commits: !`git log --oneline -5`
+
 ## Purpose
 
 This command performs **context-aware** analysis of your codebase to identify actionable work items. Unlike simple pattern matching for TODO comments, it uses:

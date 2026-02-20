@@ -1,0 +1,9 @@
+{
+  "id": "10",
+  "subject": "Phase 2.2: Create types/hook_output.rs with tests",
+  "description": "Move HookJsonOutput and HookSpecificOutput to types/hook_output.rs with tests. Update types/mod.rs and lib.rs re-exports.",
+  "activeForm": "Creating types/hook_output.rs",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

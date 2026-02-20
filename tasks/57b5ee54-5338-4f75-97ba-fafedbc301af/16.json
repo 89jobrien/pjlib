@@ -1,0 +1,9 @@
+{
+  "id": "16",
+  "subject": "Add configurable output format via config.yaml",
+  "description": "Implement config.yaml support with template-based output formatting. Add placeholders like %datetime, %time, %date, %pid, %filepath, %message, %emoji, %func, %session, %project, etc. Users can customize the output format string to their preference.",
+  "activeForm": "Adding configurable output format",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

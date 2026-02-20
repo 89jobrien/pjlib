@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Add dependencies to Cargo.toml",
+  "description": "Update Cargo.toml with all required dependencies: notify, serde, serde_json, anyhow, chrono, colored, clap, walkdir, dirs, and tempfile (dev). Keep edition as \"2024\" per user preference.",
+  "activeForm": "Adding dependencies to Cargo.toml",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

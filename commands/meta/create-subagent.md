@@ -9,6 +9,11 @@ argument-hint: '[agent description] - e.g., "recent changes", "src/components", 
 
 Create a specialized AI subagent following the domain expert principles. This command helps you build concentrated domain expertise rather than single-task agents.
 
+## Current State
+
+- Personal agents: !`find ~/.claude/agents -name "*.md" 2>/dev/null | wc -l`
+- Repo root: !`pwd`
+
 ## Setup
 
 First, specify the subagent location:

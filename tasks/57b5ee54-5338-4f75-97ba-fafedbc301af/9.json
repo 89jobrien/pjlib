@@ -1,0 +1,9 @@
+{
+  "id": "9",
+  "subject": "Implement main.rs orchestration",
+  "description": "Update src/main.rs with CLI using clap, orchestrate discovery → watching → display flow, handle Ctrl+C gracefully, implement zero-config startup sequence.",
+  "activeForm": "Implementing main.rs orchestration",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

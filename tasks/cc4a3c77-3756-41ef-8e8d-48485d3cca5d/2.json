@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Ask clarifying questions about integration goals",
+  "description": "Understand user's specific goals, constraints, and success criteria for the Claude Code + companion integration",
+  "activeForm": "Asking clarifying questions",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

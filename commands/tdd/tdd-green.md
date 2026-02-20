@@ -7,6 +7,12 @@ Implement minimal code to make failing tests pass in TDD green phase:
 
 [Extended thinking: This tool uses the test-automator agent to implement the minimal code necessary to make tests pass. It focuses on simplicity, avoiding over-engineering while ensuring all tests become green.]
 
+## Current State
+
+Confirm the working directory before reviewing failing tests.
+
+!`pwd`
+
 ## Implementation Process
 
 Use Task tool with subagent_type="unit-testing::test-automator" to implement minimal passing code.

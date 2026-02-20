@@ -1,0 +1,16 @@
+INFO ]   [buildkit] [ 3/16] RUN chmod -R 0755 /tmp/build-features && ls /tmp/build-features
+[INFO ]   [buildkit] [ 2/16] COPY ./devpod-context/features/ /tmp/build-features/
+[INFO ]   [buildkit] [13/16] RUN mkdir -p /etc/ssh/sshd_config.d     && printf 'AllowAgentForwarding yes\nPasswordAuthentication no\nPubkeyAuthentication yes\n'        > /etc/ssh/sshd_config.d/maestro.conf
+[INFO ]   [buildkit] [15/16] RUN cat <<'MAESTRO_ENTRYPOINT_EOF' > /entrypoint.sh
+[INFO ]   [buildkit] [ 6/16] RUN cd /tmp/build-features/1 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+[INFO ]   [buildkit] [ 1/16] FROM mcr.microsoft.com/devcontainers/rust:latest@sha256:1435dfe4083cddbb68e909b7ea6b370b2aa43e01a17f780e3410b422dfd93507
+[INFO ] aestro-prebuild-49bd9e10
+[INFO ] Skipping SSH agent setup (prebuild mode)
+[INFO ] AWS directory detected, mounting to container
+[INFO ] AWS directory mounted at /home/vscode/.aws
+[INFO ] Extra mounts from options: None
+[INFO ] No extra mounts from devcontainer.json
+[INFO ] Created container: maestro-prebuild-49bd9e10 (id: 7403e8d77a6ad3eea5979826583c6262d1bb072a5dbc82540f53b274f6249a2c)
+[INFO ] Starting container: 7403e8d77a6ad3eea5979826583c6262d1bb072a5dbc82540f53b274f6249a2c
+[INFO ] Container started: 7403e8d77a6ad3eea5979826583c6262d1bb072a5dbc82540f53b274f6249a2c
+[INFO ] Executing onCreateCommand during pre-build as vscode...

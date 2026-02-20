@@ -7,6 +7,12 @@ description: File Analysis Tool
 
 Perform comprehensive analysis of $ARGUMENTS to identify code quality issues, security vulnerabilities, and optimization opportunities.
 
+## Current State
+
+Confirm the working directory before analyzing a file.
+
+!`pwd`
+
 ## Task
 
 I'll analyze the specified file and provide detailed insights on:

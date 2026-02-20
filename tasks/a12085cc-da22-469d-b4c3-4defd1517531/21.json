@@ -1,0 +1,9 @@
+{
+  "id": "21",
+  "subject": "Phase 5.2b: Create stop event module",
+  "description": "Create events/stop/ with mod.rs (StopInput), handler.rs, tests.rs. Copy implementation from commands/stop.rs.",
+  "activeForm": "Creating stop event",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

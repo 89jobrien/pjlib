@@ -1,0 +1,9 @@
+{
+  "id": "25",
+  "subject": "Phase 5.2f: Create pre_compact event module",
+  "description": "Create events/pre_compact/ with mod.rs (PreCompactInput), handler.rs, tests.rs. Copy implementation from commands/pre_compact.rs.",
+  "activeForm": "Creating pre_compact event",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

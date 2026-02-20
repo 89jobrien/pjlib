@@ -7,6 +7,11 @@ argument-hint: "[command-name] [description]"
 
 Create a new Claude Code slash command based on the user's requirements: $ARGUMENTS
 
+## Current State
+
+- Personal commands: !`find ~/.claude/commands -name "*.md" 2>/dev/null | wc -l`
+- Repo root: !`pwd`
+
 For complete slash command documentation, see: <https://docs.claude.com/en/docs/claude-code/slash-commands>
 
 First, ask the user to specify the command type:

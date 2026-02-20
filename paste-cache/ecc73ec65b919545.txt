@@ -1,0 +1,125 @@
+# joe @ Josephs-MacBook-Air in ~/dev/maestro/maestro-ui on git:feature/maestro-companion x [12:44:02] C:130
+$ maestro start
+[INFO ] Starting maestro environment for: /Users/joe/dev/maestro/maestro-ui
+Note: No remote origin configured, using current HEAD instead of 'main'
+Creating session 'session-bb4dbf48' with isolation: Copy
+Creating workspace copy for isolated environment...
+Transfer starting: 107 files
+.DS_Store
+.gitignore
+CLAUDE.md
+README.md
+bun.lock
+eslint.config.js
+index.html
+package-lock.json
+package.json
+tsconfig.app.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+dist/
+dist/index.html
+dist/vite.svg
+dist/__e2e/
+dist/__e2e/companion/
+dist/assets/
+dist/assets/index-C76WV5kx.css
+dist/assets/index-DKQ5SMwq.js
+public/
+public/vite.svg
+public/__e2e/
+public/__e2e/companion/
+src/
+src/.DS_Store
+src/App.tsx
+src/index.css
+src/main.tsx
+src/assets/
+src/assets/react.svg
+src/assets/icons/
+src/assets/icons/index.ts
+src/assets/icons/logos.tsx
+src/assets/icons/separators.tsx
+src/components/
+src/components/theme-provider.tsx
+src/components/theme-toggle.tsx
+src/components/auth/
+src/components/auth/AuthProvider.tsx
+src/components/auth/GoogleLogin.tsx
+src/components/auth/index.ts
+src/components/chat/
+src/components/chat/Chat.tsx
+src/components/chat/MarkdownRenderer.tsx
+src/components/chat/PermissionDialog.tsx
+src/components/companion/
+src/components/companion/CompanionView.tsx
+src/components/companion/CompanionWsProbe.tsx
+src/components/companion/index.ts
+src/components/debug/
+src/components/debug/CompanionWsProbe.tsx
+src/components/icons/
+src/components/icons/ToptalLogo.tsx
+src/components/icons/ToptalWordmark.tsx
+src/components/icons/index.ts
+src/components/layout/
+src/components/layout/Shell.tsx
+src/components/layout/SidebarFooter.tsx
+src/components/layout/SidebarHeader.tsx
+src/components/layout/TopBar.tsx
+src/components/sessions/
+src/components/sessions/CreateSessionDialog.tsx
+src/components/sessions/SessionCard.tsx
+src/components/sessions/SessionList.tsx
+src/components/sessions/SessionProgressDialog.tsx
+src/components/sessions/index.ts
+src/components/settings/
+src/components/settings/JiraSettingsDialog.tsx
+src/components/settings/index.ts
+src/components/terminal/
+src/components/terminal/GhosttyTerminal.tsx
+src/components/terminal/TerminalView.tsx
+src/components/terminal/index.ts
+src/components/ui/
+src/components/ui/alert-dialog.tsx
+src/components/ui/avatar.tsx
+src/components/ui/button.tsx
+src/components/ui/buttonVariants.ts
+src/components/ui/dialog.tsx
+src/components/ui/dropdown-menu.tsx
+src/components/ui/input.tsx
+src/components/ui/scroll-area.tsx
+src/contexts/
+src/contexts/ThemeContext.ts
+src/hooks/
+src/hooks/useAuth.ts
+src/hooks/useChatWebSocket.ts
+src/hooks/useCompanionWebSocket.ts
+src/hooks/useTheme.ts
+src/hooks/useWebSocket.ts
+src/lib/
+src/lib/crypto.ts
+src/lib/utils.ts
+src/services/
+src/services/api.ts
+src/stores/
+src/stores/authStore.ts
+src/stores/sessionStore.ts
+src/stores/settingsStore.ts
+src/types/
+src/types/auth.ts
+src/types/chat.ts
+src/types/jira.ts
+src/types/session.ts
+
+sent 2540367 bytes  received 1920 bytes  90472846 bytes/sec
+total size is 2531086  speedup is 1.00
+✓ Created workspace copy: /Users/joe/dev/maestro/maestro-ui/.maestro/workspaces/session-bb4dbf48-bb4dbf48
+No devcontainer.json found, creating default configuration...
+✓ Created .devcontainer/devcontainer.json
+Error: Docker daemon returned an error:
+EOF
+Try: docker version
+
+# joe @ Josephs-MacBook-Air in ~/dev/maestro/maestro-ui on git:feature/maestro-companion x [12:44:15] C:1
+$

@@ -8,6 +8,10 @@ argument-hint: <keyword>
 
 Search for agents matching a keyword in their name, description, or skills.
 
+## Current State
+
+- Agent index size: !`find ~/.claude/agents -name "*.md" -type f | wc -l`
+
 ## Arguments
 
 - `<keyword>`: The search term to find in agent names, descriptions, and skills

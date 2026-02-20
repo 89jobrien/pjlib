@@ -1,0 +1,9 @@
+{
+  "id": "11",
+  "subject": "Manual testing and verification",
+  "description": "Perform manual testing: verify zero-config startup, real-time monitoring with actual Claude Code, error handling, performance (<2s startup, <10MB RAM), multi-project support.",
+  "activeForm": "Performing manual testing",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

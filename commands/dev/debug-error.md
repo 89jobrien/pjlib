@@ -7,6 +7,11 @@ description: Systematically Debug and Fix Errors
 
 Systematically debug and fix errors
 
+## Current State
+
+- Repo status: !`git status --porcelain`
+- Recent commits: !`git log --oneline -5`
+
 ## Instructions
 
 Follow this comprehensive debugging methodology to resolve: **$ARGUMENTS**

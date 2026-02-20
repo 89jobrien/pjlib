@@ -1,0 +1,9 @@
+{
+  "id": "30",
+  "subject": "Phase 5.3: Update main.rs to use new event modules",
+  "description": "Update main.rs to import from events:: instead of commands::. Update all subcommand handlers to call event handlers (events::pre_tool_use::handle, etc.). Verify CLI functionality.",
+  "activeForm": "Updating main.rs imports",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

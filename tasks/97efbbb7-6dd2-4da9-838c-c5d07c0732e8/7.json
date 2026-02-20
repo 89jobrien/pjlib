@@ -1,0 +1,9 @@
+{
+  "id": "7",
+  "subject": "Integration complete: Background cleanup enabled in production",
+  "description": "Background permission cleanup successfully integrated into CompanionSession. Cleanup runs every 60s (configurable), sends timeout errors to CLI, and exits automatically when session drops. All tests passing.",
+  "activeForm": "Documenting integration completion",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

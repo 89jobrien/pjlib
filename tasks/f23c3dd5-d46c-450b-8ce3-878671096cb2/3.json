@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "subject": "Wire companion config into session startup",
+  "description": "Update session creation in commands/start.rs to call .with_companion_config() on ContainerEnv when building environment variables. Ensure COMPANION_ENABLED, MAESTRO_SESSION_ID, and SDK URL are properly injected.",
+  "activeForm": "Wiring companion config into session startup",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

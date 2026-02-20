@@ -58,6 +58,13 @@ This is a personal Claude Code workspace containing specialized agents, slash co
 - `/test:run [options]` - Run tests with framework detection
 - `/test:report [options]` - Generate test audit and coverage report
 
+**Setup & Environment:**
+
+- `/setup:validate-environment [--strict]` - Check tools, versions, and env vars
+- `/setup:init-workspace [--template=type]` - Initialize directory structure (basic|python|node|full-stack)
+- `/setup:check-dependencies [--update]` - Validate lockfiles and check for outdated packages
+- `/setup:scaffold-project [--type=framework]` - Scaffold new project (nextjs|fastapi|django|flask|rust|go)
+
 **Memory & Knowledge:**
 
 - `/memory:add` - Add entities/observations to knowledge graph

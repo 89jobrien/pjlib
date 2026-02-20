@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/hooks/validate-code.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "agent",
+            "init_messages": [{"role": "user", "content": "Verify Rust changes. Glob diffs, check idiomatic code, tests, no unwraps. Output ONLY JSON {\"ok\": bool, \"reason\": \"brief\"}. Context: $ARGUMENTS Files: $ARGUMENTS.tool_output.files."}],
+            "model": "haiku",
+            "tools": ["Read", "Grep", "Glob", "Bash"],
+            "maxTurns": 5,
+            "skills": ["rust-security"]
+          }
+        ]
+      }
+    ]
+  }
+}

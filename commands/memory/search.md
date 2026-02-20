@@ -6,6 +6,11 @@ description: Search and query the knowledge graph for stored information
 
 Searches the persistent knowledge graph for entities, relationships, and observations.
 
+## Current State
+
+- Memory files: !`find ~/.claude/memory -type f 2>/dev/null | wc -l`
+- Knowledge graph cache: !`find ~/.claude -name "*.local.md" 2>/dev/null | wc -l`
+
 ## Usage
 
 ```

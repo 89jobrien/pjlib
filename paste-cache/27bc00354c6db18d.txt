@@ -1,0 +1,151 @@
+[{
+    "resource": "/Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs",
+    "owner": "rustc",
+    "code": {
+        "value": "Click for full compiler diagnostic",
+        "target": {
+            "$mid": 1,
+            "path": "/diagnostic message [0]",
+            "scheme": "rust-analyzer-diagnostics-view",
+            "query": "0",
+            "fragment": "file:///Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs"
+        }
+    },
+    "severity": 4,
+    "message": "this `if` statement can be collapsed\nfor further information visit https://rust-lang.github.io/rust-clippy/rust-1.91.0/index.html#collapsible_if\n`#[warn(clippy::collapsible_if)]` on by default",
+    "source": "clippy",
+    "startLineNumber": 36,
+    "startColumn": 5,
+    "endLineNumber": 40,
+    "endColumn": 6,
+    "relatedInformation": [
+        {
+            "startLineNumber": 36,
+            "startColumn": 50,
+            "endLineNumber": 36,
+            "endColumn": 52,
+            "message": "collapse nested if block: `&&`",
+            "resource": "/Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs"
+        }
+    ]
+},{
+    "resource": "/Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs",
+    "owner": "rustc",
+    "code": {
+        "value": "Click for full compiler diagnostic",
+        "target": {
+            "$mid": 1,
+            "path": "/diagnostic message [2]",
+            "scheme": "rust-analyzer-diagnostics-view",
+            "query": "2",
+            "fragment": "file:///Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs"
+        }
+    },
+    "severity": 4,
+    "message": "this `if` statement can be collapsed\nfor further information visit https://rust-lang.github.io/rust-clippy/rust-1.91.0/index.html#collapsible_if",
+    "source": "clippy",
+    "startLineNumber": 192,
+    "startColumn": 9,
+    "endLineNumber": 196,
+    "endColumn": 10,
+    "relatedInformation": [
+        {
+            "startLineNumber": 192,
+            "startColumn": 49,
+            "endLineNumber": 192,
+            "endColumn": 51,
+            "message": "collapse nested if block: `&&`",
+            "resource": "/Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs"
+        }
+    ]
+},{
+    "resource": "/Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs",
+    "owner": "rustc",
+    "code": {
+        "value": "Click for full compiler diagnostic",
+        "target": {
+            "$mid": 1,
+            "path": "/diagnostic message [4]",
+            "scheme": "rust-analyzer-diagnostics-view",
+            "query": "4",
+            "fragment": "file:///Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs"
+        }
+    },
+    "severity": 4,
+    "message": "this `if` statement can be collapsed\nfor further information visit https://rust-lang.github.io/rust-clippy/rust-1.91.0/index.html#collapsible_if",
+    "source": "clippy",
+    "startLineNumber": 197,
+    "startColumn": 9,
+    "endLineNumber": 201,
+    "endColumn": 10,
+    "relatedInformation": [
+        {
+            "startLineNumber": 197,
+            "startColumn": 50,
+            "endLineNumber": 197,
+            "endColumn": 52,
+            "message": "collapse nested if block: `&&`",
+            "resource": "/Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs"
+        }
+    ]
+},{
+    "resource": "/Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs",
+    "owner": "rustc",
+    "code": {
+        "value": "Click for full compiler diagnostic",
+        "target": {
+            "$mid": 1,
+            "path": "/diagnostic message [6]",
+            "scheme": "rust-analyzer-diagnostics-view",
+            "query": "6",
+            "fragment": "file:///Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs"
+        }
+    },
+    "severity": 4,
+    "message": "this `if` statement can be collapsed\nfor further information visit https://rust-lang.github.io/rust-clippy/rust-1.91.0/index.html#collapsible_if",
+    "source": "clippy",
+    "startLineNumber": 202,
+    "startColumn": 9,
+    "endLineNumber": 206,
+    "endColumn": 10,
+    "relatedInformation": [
+        {
+            "startLineNumber": 202,
+            "startColumn": 49,
+            "endLineNumber": 202,
+            "endColumn": 51,
+            "message": "collapse nested if block: `&&`",
+            "resource": "/Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs"
+        }
+    ]
+},{
+    "resource": "/Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs",
+    "owner": "rustc",
+    "code": {
+        "value": "Click for full compiler diagnostic",
+        "target": {
+            "$mid": 1,
+            "path": "/diagnostic message [8]",
+            "scheme": "rust-analyzer-diagnostics-view",
+            "query": "8",
+            "fragment": "file:///Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs"
+        }
+    },
+    "severity": 4,
+    "message": "this `if` statement can be collapsed\nfor further information visit https://rust-lang.github.io/rust-clippy/rust-1.91.0/index.html#collapsible_if",
+    "source": "clippy",
+    "startLineNumber": 241,
+    "startColumn": 9,
+    "endLineNumber": 248,
+    "endColumn": 10,
+    "relatedInformation": [
+        {
+            "startLineNumber": 241,
+            "startColumn": 82,
+            "endLineNumber": 241,
+            "endColumn": 84,
+            "message": "collapse nested if block: `&&`",
+            "resource": "/Users/joe/dev/maestro/maestro-hooks/src/commands/stop.rs"
+        }
+    ]
+}]

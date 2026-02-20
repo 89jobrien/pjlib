@@ -39,12 +39,17 @@
       "Bash(uv add:*)",
       "Bash(uv remove:*)",
       "Bash(uv update:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(cargo:*)",
+      "Bash(git:*)",
+      "Bash(gh:*)",
+      "Bash(jira:*)",
+      "Bash(acli:*)"
     ],
     "deny": [],
-    "ask": []
+    "ask": [],
+    "defaultMode": "acceptEdits"
   },
-  "model": "claude-opus-4-5",
   "enabledMcpjsonServers": [],
   "disabledMcpjsonServers": [
     "memory",
@@ -58,7 +63,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "uv run ~/.claude/hooks/workflows/post_tool_use.py"
+            "command": "uv run ~/.claude/hooks/workflows/post_tool_use_workflow.py"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/validate-code.sh"
           }
         ]
       },
@@ -67,18 +76,22 @@
         "hooks": [
           {
             "type": "command",
-            "command": "uv run ~/.claude/hooks/workflows/todo_sync.py"
+            "command": "uv run ~/.claude/hooks/workflows/todo_sync_workflow.py"
           }
         ]
       }
     ],
     "PreCompact": [
       {
-        "matcher": "",
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
             "command": "bd prime"
+          },
+          {
+            "type": "command",
+            "command": "uv run ~/.claude/hooks/lifecycle/self_review.py"
           }
         ]
       }
@@ -108,7 +121,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "uv run ~/.claude/hooks/workflows/session_end.py"
+            "command": "uv run ~/.claude/hooks/workflows/session_end_workflow.py"
           }
         ]
       }
@@ -118,17 +131,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "uv run ~/.claude/hooks/workflows/session_start.py"
+            "command": "uv run ~/.claude/hooks/workflows/session_start_workflow.py"
           },
           {
             "type": "command",
             "command": "uv run ~/.claude/hooks/context/codebase_map.py"
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
+          },
           {
             "type": "command",
             "command": "bd prime"
@@ -141,7 +149,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "uv run ~/.claude/hooks/workflows/stop.py"
+            "command": "uv run ~/.claude/hooks/workflows/stop_workflow.py"
           }
         ]
       }
@@ -151,7 +159,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "uv run ~/.claude/hooks/workflows/subagent_stop.py"
+            "command": "uv run ~/.claude/hooks/workflows/subagent_stop_workflow.py"
           }
         ]
       }
@@ -161,7 +169,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "uv run ~/.claude/hooks/workflows/user_prompt.py"
+            "command": "uv run ~/.claude/hooks/workflows/user_prompt_workflow.py"
           },
           {
             "type": "command",
@@ -183,7 +191,6 @@
     "code-review@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": false,
-    "github@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "gopls@claude-code-lsps": false,
     "greptile@claude-plugins-official": false,
@@ -193,7 +200,19 @@
     "pyright@claude-code-lsps": false,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": false,
-    "claude-hud@claude-hud": true
+    "claude-hud@claude-hud": true,
+    "context7@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "coderabbit@claude-plugins-official": true,
+    "individual-jobrien@toptal-agent-playbooks": true,
+    "rust-analyzer@claude-code-lsps": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "semgrep@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true
   },
-  "alwaysThinkingEnabled": false
+  "skipDangerousModePermissionPrompt": true
 }

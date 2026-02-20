@@ -1,0 +1,36 @@
+Starting persistent WebSocket connections...
+✅ Persistent connections established
+   CLI WebSocket PID: 93397
+   Browser WebSocket PID: 93398
+✅ Connections verified healthy
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Scenario 1: Browser subscribes to new session
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[BROWSER] → Sending: session_subscribe with last_seq=0
+{"type":"session_subscribe","last_seq":0}
+
+[SERVER] → Browser:
+{
+  "type": "event_replay",
+  "events": []
+}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Scenario 2: CLI sends assistant message
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[CLI] → Sending: assistant message
+{
+  "type": "assistant",
+  "message": {
+    "role": "assistant",
+    "content": "Hello from the CLI! I'm Claude."
+  }
+}
+
+[SERVER] Processing: CLI message → Event buffer (seq=1)
+❌ Browser WebSocket connection died
+Check server logs for errors
+./scripts/ws-bidirectional-demo.sh: line 151: /var/folders/s4/mnhb7ddn1zbgy2x4h_hf1dnc0000gn/T//maestro-cli-pipe-93389: Interrupted system call

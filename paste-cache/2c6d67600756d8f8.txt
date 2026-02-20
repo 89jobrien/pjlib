@@ -1,0 +1,35 @@
+$ maestro init
+[INFO ] Initializing maestro workspace at: /Users/joe/dev/maestro
+[INFO ] Found existing devcontainer config, using it
+[INFO ] No JWT found, registry operations will be skipped
+Building Maestro image: maestro:a98419025a3e9244973f7b9c0194e60b-arm64
+[INFO ] Fetching devcontainer features...
+[INFO ] Downloading 5 feature(s) in parallel...
+[INFO ] Using base image: mcr.microsoft.com/devcontainers/rust:latest
+[INFO ] Processing 5 feature(s)...
+[INFO ] Using optimized Maestro layer for devcontainers base image
+[INFO ] Building Docker image (this may take a few minutes)...
+[INFO ] Build context: 111.4 KB (33 files)
+[INFO ] Building Docker image: maestro:a98419025a3e9244973f7b9c0194e60b-arm64
+[INFO ] Build context compressed to 39.2 KB (35.2% of] RUN ARCH=$(dpkg --print-architecture | sed 's/amd64/x86_64/;s/arm64/arm64/')     && JIRA_VERSION=$(curl -s https://api.github.com/repos/ankitpokhrel/jira-cli/releases/latest | jq -r '.tag_name' | sed 's/^v//')     && curl -fsSL "https://github.com/ankitpokhrel/jira-cli/releases/download/v${JIRA_VERSION}/jira_${JIRA_VERSION}_linux_${ARCH}.tar.gz"        | tar -xz --strip-components=2 -C /usr/local/bin     && chmod +x /usr/local/bin/jira
+[INFO ]   [buildkit] [18/18] RUN chmod +x /entrypoint.sh
+[INFO ]   [buildkit] [ 7/18] RUN cd /tmp/build-features/2 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+[INFO ]   [buildkit] [17/18] RUN cat <<'MAESTRO_ENTRYPOINT_EOF' > /entrypoint.sh
+[INFO ]   [buildkit] [14/18] RUN mkdir -p /.maestro /run/sshd     && git config --system --add safe.directory /workspace     && git config --system --add safe.directory /.git
+[INFO ]   [buildkit] [16/18] RUN tmux -V && gcloud --version && bq version && gsutil version && jira version
+[INFO ]   [buildkit] [ 5/18] RUN cd /tmp/build-features/0 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+[INFO ]   [buildkit] [ 4/18] RUN echo "_CONTAINER_USER_HOME=$(getent passwd root | cut -d: -f6)" >> /tmp/build-features/devcontainer-features.builtin.env && echo "_REMOTE_USER_HOME=$(getent passwd root | cut -d: -f6)" >> /tmp/build-features/devcontainer-features.builtin.env
+[INFO ]   [buildkit] [ 3/18] RUN chmod -R 0755 /tmp/build-features && ls /tmp/build-features
+[INFO ]   [buildkit] [ 2/18] COPY ./devpod-context/features/ /tmp/build-features/
+[INFO ]   [buildkit] [13/18] RUN echo 'export PATH="/usr/local/google-cloud-sdk/bin:$PATH"' > /etc/profile.d/gcloud.sh     && chmod +x /etc/profile.d/gcloud.sh
+[INFO ]   [buildkit] [15/18] RUN mkdir -p /etc/ssh/sshd_config.d     && printf 'AllowAgentForwarding yes\nPasswordAuthentication no\nPubkeyAuthentication yes\n'        > /etc/ssh/sshd_config.d/maestro.conf
+[INFO ]   [buildkit] [ 6/18] RUN cd /tmp/build-features/1 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+[INFO ]   [buildkit] [ 1/18] FROM mcr.microsoft.com/devcontainers/rust:latest@sha256:1435dfe4083cddbb68e909b7ea6b370b2aa43e01a17f780e3410b422dfd93507
+[INFO ]   [buildkit] [ 8/18] RUN cd /tmp/build-features/3 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+[INFO ]   [buildkit] [10/18] RUN apt-get update     && apt-get install -y --no-install-recommends tmux acl openssh-server gosu jq     && rm -rf /var/lib/apt/lists/*
+[INFO ]   [buildkit] [ 9/18] RUN cd /tmp/build-features/4 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+Error: Failed to build Docker image
+
+Caused by:
+    0: Failed to build image
+    1: Docker stream error: process "/bin/sh -c cd /tmp/build-features/2 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh" did not complete successfully: exit code: 1

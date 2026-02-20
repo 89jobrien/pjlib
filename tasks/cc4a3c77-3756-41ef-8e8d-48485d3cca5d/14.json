@@ -1,0 +1,9 @@
+{
+  "id": "14",
+  "subject": "Re-enable maestro-api Authentication",
+  "description": "Update cli_ws_handler and browser_ws_handler to check X-Local-Dev header. If not local dev, require JWT authentication and verify session access. Remove #[allow(dead_code)] from auth functions.\n\nFiles:\n- Modify: maestro-api/src/routes/companion.rs\n\nExpected: Tests pass with auth or X-Local-Dev header",
+  "activeForm": "Re-enabling maestro-api authentication",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

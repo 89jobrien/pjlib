@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "subject": "Create error.rs module",
+  "description": "Create src/error.rs for error types and handling. Use anyhow::Result for most cases with user-friendly error messages.",
+  "activeForm": "Creating error.rs module",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

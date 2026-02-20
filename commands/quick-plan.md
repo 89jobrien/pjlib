@@ -13,6 +13,12 @@ Create a detailed implementation plan based on the user's requirements provided 
 USER_PROMPT: $ARGUMENTS
 PLAN_OUTPUT_DIRECTORY: `specs/`
 
+## Current State
+
+Confirm the plan output directory exists.
+
+!`ls specs`
+
 ## Instructions
 
 - Carefully analyze the user's requirements provided in the USER_PROMPT variable

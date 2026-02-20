@@ -7,6 +7,12 @@ description: Code Permutation Tester
 
 Test multiple code variations through simulation before implementation with quality gates and performance prediction.
 
+## Current State
+
+Confirm the working directory before evaluating permutations.
+
+!`pwd`
+
 ## Instructions
 
 You are tasked with systematically testing multiple code implementation approaches through simulation to optimize decisions before actual development. Follow this approach: **$ARGUMENTS**

@@ -8,7 +8,7 @@ description: Add a todo to SQLite DB using joecc CLI.
 
 Add a new todo to the SQLite database.
 
-!cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli add $DESCRIPTION --priority $PRIORITY --project $PROJECT --tags $TAGS
+!`cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli add $DESCRIPTION --priority $PRIORITY --project $PROJECT --tags $TAGS`
 
 ## Examples
 

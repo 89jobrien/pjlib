@@ -6,6 +6,11 @@ argument-hint: [issue-key] e.g., PROJ-123
 
 Get full details for Jira issue: **$1**
 
+## Current State
+
+- Jira CLI: !`jira --version 2>/dev/null || echo "jira-cli not installed"`
+- Current user: !`jira me 2>/dev/null || echo "Not authenticated"`
+
 ## Instructions
 
 1. First, try using the MCP Atlassian tool `getJiraIssue` with the issue key

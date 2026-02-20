@@ -6,6 +6,11 @@ description: Add new entities or observations to the knowledge graph
 
 Adds new information to the persistent knowledge graph.
 
+## Current State
+
+- Memory files: !`find ~/.claude/memory -type f 2>/dev/null | wc -l`
+- Knowledge graph cache: !`find ~/.claude -name "*.local.md" 2>/dev/null | wc -l`
+
 ## Usage
 
 ```

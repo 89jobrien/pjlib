@@ -8,6 +8,12 @@ description: Write tests using TDD methodology. Context-aware analysis of conver
 
 Write tests following strict Test-Driven Development methodology. Automatically detects test framework and follows appropriate conventions.
 
+## Current State
+
+Confirm the working directory before evaluating test targets.
+
+!`pwd`
+
 ## Arguments
 
 `$ARGUMENTS` - Optional path to file/function to test, or description of what to test.

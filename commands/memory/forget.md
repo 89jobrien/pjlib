@@ -6,6 +6,11 @@ description: Remove entities, relationships, or observations from the knowledge 
 
 Removes information from the knowledge graph including entities, relationships, and observations.
 
+## Current State
+
+- Memory files: !`find ~/.claude/memory -type f 2>/dev/null | wc -l`
+- Knowledge graph cache: !`find ~/.claude -name "*.local.md" 2>/dev/null | wc -l`
+
 ## Usage
 
 ```

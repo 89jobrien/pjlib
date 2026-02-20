@@ -1,0 +1,13 @@
+[INFO ]   [buildkit] [15/19] RUN mkdir -p /.maestro /run/sshd     && git config --system --add safe.directory /workspace     && git config --system --add safe.directory /.git
+[INFO ]   [buildkit] [ 6/19] RUN cd /tmp/build-features/1 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+[INFO ]   [buildkit] [ 8/19] RUN cd /tmp/build-features/3 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+[INFO ]   [buildkit] [19/19] RUN chmod +x /entrypoint.sh
+[INFO ]   [buildkit] [ 3/19] RUN chmod -R 0755 /tmp/build-features && ls /tmp/build-features
+[INFO ]   [buildkit] [10/19] RUN cd /tmp/build-features/5 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+[INFO ]   [buildkit] [ 9/19] RUN cd /tmp/build-features/4 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh
+Error: Failed to auto-build Maestro image
+
+Caused by:
+    0: Failed to build Docker image
+    1: Failed to build image
+    2: Docker stream error: process "/bin/sh -c cd /tmp/build-features/0 && chmod +x ./devcontainer-features-install.sh && ./devcontainer-features-install.sh" did not complete successfully: exit code: 100

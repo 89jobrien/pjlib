@@ -8,6 +8,12 @@ description: Initialize test configuration by detecting framework (pytest, Jest,
 
 Set up a complete testing environment for this project by detecting the framework and configuring it appropriately.
 
+## Current State
+
+Confirm the working directory before detecting the framework.
+
+!`pwd`
+
 ## Instructions
 
 ### 1. Detect Project Type and Framework

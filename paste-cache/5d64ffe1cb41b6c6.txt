@@ -1,0 +1,27 @@
+# joe @ Josephs-MacBook-Air in ~/dev/maestro/maestro-companion on git:feature/validated-protocol-types x [16:58:35]
+$ ./scripts/test-local.sh api
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Starting Local API Server
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Environment:
+  - Port: 8080
+  - Mock OAuth (simulated auth)
+  - File-based secrets (~/.maestro/secrets/)
+  - WebSocket companion endpoint available
+Server will be at: http://localhost:8080
+Companion WS at: ws://localhost:8080/companion/browser/{session_id}
+
+⚠️  Press Ctrl+C to stop
+                                                                                             Finished `release` profile [optimized] target(s) in 0.78s
+     Running `/Users/joe/dev/maestro/target/release/maestro-api`
+2026-02-18T21:58:39.829209Z  INFO maestro_api: Starting Maestro API Server
+2026-02-18T21:58:39.829318Z  INFO maestro_api: Bucket: test-bucket
+2026-02-18T21:58:39.829322Z  INFO maestro_api: Port: 8080
+2026-02-18T21:58:40.029559Z ERROR maestro_api::state: OAUTH_STATE_SECRET not set in production environment. Deriving from JWT_SECRET is less secure. Set OAUTH_STATE_SECRET to a separate random value for better security.
+2026-02-18T21:58:40.029682Z  WARN maestro_api::state: OAuth credentials not configured, using mock provider
+2026-02-18T21:58:40.029701Z  INFO maestro_api::state: Atlassian OAuth not configured, Jira OAuth disabled
+2026-02-18T21:58:40.029704Z  WARN maestro_api::state: GSM client not available (GSM service unavailable: GCP_PROJECT_ID not set), trying file-based fallback
+2026-02-18T21:58:40.029738Z  INFO maestro_api::state: Using file-based secret store at ~/.maestro/secrets/
+2026-02-18T21:58:40.032482Z  INFO maestro_api::state: Kubernetes client initialized
+2026-02-18T21:58:40.032487Z  INFO maestro_api::state: Using in-memory session store (local development mode)
+2026-02-18T21:58:40.042459Z  INFO maestro_api: Listening on 0.0.0.0:8080

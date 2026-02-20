@@ -1,0 +1,9 @@
+{
+  "id": "18",
+  "subject": "Add Documentation",
+  "description": "Create docs/companion-integration.md with setup instructions, environment variables, events, testing, troubleshooting. Update maestro-companion/ARCHITECTURE.md with integration overview.\n\nFiles:\n- Create: docs/companion-integration.md\n- Modify: maestro-companion/ARCHITECTURE.md\n\nExpected: Documentation complete and accurate",
+  "activeForm": "Adding documentation",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

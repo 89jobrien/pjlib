@@ -1,0 +1,9 @@
+{
+  "id": "11",
+  "subject": "Create Minimal HTML Test Page",
+  "description": "Create standalone HTML page for testing companion protocol locally without maestro-ui. Includes WebSocket connection, event display, session subscribe on connect.\n\nFiles:\n- Create: maestro-companion/scripts/companion-test.html\n\nExpected: HTML page loads, can connect to ws://localhost:8080, displays events",
+  "activeForm": "Creating minimal HTML test page",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

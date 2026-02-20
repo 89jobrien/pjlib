@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Audit and organize settings.json and hooks directory",
+  "description": "Comprehensive review and cleanup of hooks configuration including:\n1. Remove duplicate/unused hooks.json file\n2. Move inline bash guards to proper guard files\n3. Remove duplicate \"bd prime\" from SessionStart\n4. Audit hooks_config.yaml for unused options\n5. Create hooks/README.md documentation\n6. Verify all workflow files are properly configured",
+  "activeForm": "Auditing hooks configuration",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

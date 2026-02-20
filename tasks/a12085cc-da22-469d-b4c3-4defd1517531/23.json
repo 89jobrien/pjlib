@@ -1,0 +1,9 @@
+{
+  "id": "23",
+  "subject": "Phase 5.2d: Create session_end event module",
+  "description": "Create events/session_end/ with mod.rs (SessionEndInput), handler.rs, tests.rs. Copy implementation from commands/session_end.rs.",
+  "activeForm": "Creating session_end event",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

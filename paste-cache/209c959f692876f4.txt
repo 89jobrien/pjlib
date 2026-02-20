@@ -1,0 +1,18 @@
+     Running `/Users/joe/dev/maestro/target/release/maestro-api`
+2026-02-18T23:08:19.412298Z  INFO maestro_api: Starting Maestro API Server
+2026-02-18T23:08:19.412409Z  INFO maestro_api: Bucket: test-bucket
+2026-02-18T23:08:19.412411Z  INFO maestro_api: Port: 8080
+2026-02-18T23:08:19.612625Z ERROR maestro_api::state: OAUTH_STATE_SECRET not set in production environment. Deriving from JWT_SECRET is less secure. Set OAUTH_STATE_SECRET to a separate random value for better security.
+2026-02-18T23:08:19.612723Z  WARN maestro_api::state: OAuth credentials not configured, using mock provider
+2026-02-18T23:08:19.612741Z  INFO maestro_api::state: Atlassian OAuth not configured, Jira OAuth disabled
+2026-02-18T23:08:19.612743Z  WARN maestro_api::state: GSM client not available (GSM service unavailable: GCP_PROJECT_ID not set), trying file-based fallback
+2026-02-18T23:08:19.612792Z  INFO maestro_api::state: Using file-based secret store at ~/.maestro/secrets/
+2026-02-18T23:08:19.614436Z  INFO maestro_api::state: Kubernetes client initialized
+2026-02-18T23:08:19.614446Z  INFO maestro_api::state: Using in-memory session store (local development mode)
+2026-02-18T23:08:19.620278Z  INFO maestro_api: Listening on 0.0.0.0:8080
+2026-02-18T23:09:36.457315Z  WARN maestro_api::routes::companion: failed to apply browser message error=unknown request_id: perm-123 session_id=bidirectional-1771456166
+2026-02-18T23:09:38.485971Z  WARN maestro_api::routes::companion: failed to send to CLI error=CLI not connected session_id=bidirectional-1771456166
+2026-02-18T23:13:34.158346Z  WARN maestro_api::routes::companion: failed to send to CLI error=CLI not connected session_id=e2e-test-1771456404
+2026-02-18T23:13:35.687013Z  WARN maestro_api::routes::companion: failed to apply browser message error=unknown request_id: test-req-1 session_id=e2e-test-1771456404
+2026-02-18T23:13:37.222999Z  WARN maestro_api::routes::companion: failed to apply browser message error=unknown request_id: test-req-2 session_id=e2e-test-1771456404
+2026-02-18T23:13:38.756459Z  WARN maestro_api::routes::companion: failed to apply browser message error=unknown request_id: test-req-3 session_id=e2e-test-1771456404
