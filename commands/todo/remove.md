@@ -1,11 +1,17 @@
 ---
-allowed-tools: Bash
+allowed-tools: Bash(joedb:*)
 argument-hint: " <id>"
 description: Remove todo <id> entirely from SQLite DB.
 ---
 
 # Remove Todo
 
-Remove a todo <id> entirely from the SQLite database.
+Remove a todo entirely from the SQLite database: $ARGUMENTS
 
-!`cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli delete $ID`
+!`joedb todo delete $ARGUMENTS`
+
+## Example
+
+```bash
+joedb todo delete 42
+```

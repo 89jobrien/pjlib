@@ -1,11 +1,17 @@
 ---
-allowed-tools: Bash
+allowed-tools: Bash(joedb:*)
 argument-hint: " <id>"
 description: Mark todo <id> as completed in SQLite DB.
 ---
 
 # Complete Todo
 
-Mark a todo <id> as completed in the SQLite database.
+Mark a todo as completed in the SQLite database: $ARGUMENTS
 
-!`cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli done $ID`
+!`joedb todo complete $ARGUMENTS`
+
+## Example
+
+```bash
+joedb todo complete 42
+```
