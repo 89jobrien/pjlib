@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(joedb:*)
+allowed-tools: Bash(doob:*)
 argument-hint: " <id> --due <YYYY-MM-DD|clear>"
 description: Set or update the due date for todo <id> in SQLite DB.
 ---
@@ -29,16 +29,16 @@ Set or update the due date for a specific todo in the SQLite database.
 
 ## Command
 
-!`joedb todo update $ARGUMENTS`
+!`doob todo due $ARGUMENTS`
 
 ## Examples
 
 ```bash
 # Set due date to specific date
-joedb todo update 42 --due 2025-12-31
+doob todo due 42 2025-12-31
 
 # Clear/remove due date
-joedb todo update 42 --due clear
+doob todo due 42 clear
 ```
 
 ## Date Format

@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(joedb:*)
+allowed-tools: Bash(doob:*)
 argument-hint: " <id>"
 description: Mark todo <id> as completed in SQLite DB.
 ---
@@ -8,10 +8,10 @@ description: Mark todo <id> as completed in SQLite DB.
 
 Mark a todo as completed in the SQLite database: $ARGUMENTS
 
-!`joedb todo complete $ARGUMENTS`
+!`doob todo complete $ARGUMENTS`
 
 ## Example
 
 ```bash
-joedb todo complete 42
+doob todo complete 42
 ```

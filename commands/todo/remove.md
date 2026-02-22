@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(joedb:*)
+allowed-tools: Bash(doob:*)
 argument-hint: " <id>"
 description: Remove todo <id> entirely from SQLite DB.
 ---
@@ -8,10 +8,10 @@ description: Remove todo <id> entirely from SQLite DB.
 
 Remove a todo entirely from the SQLite database: $ARGUMENTS
 
-!`joedb todo delete $ARGUMENTS`
+!`doob todo remove $ARGUMENTS`
 
 ## Example
 
 ```bash
-joedb todo delete 42
+doob todo remove 42
 ```

@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(joedb:*)
+allowed-tools: Bash(doob:*)
 argument-hint: " <id>"
 description: Mark completed todo <id> as incomplete in SQLite DB.
 ---
@@ -22,16 +22,13 @@ Mark a completed todo as incomplete (pending) in the SQLite database.
 
 ## Command
 
-!`joedb todo update $ARGUMENTS --status pending`
+!`doob todo undo $ARGUMENTS`
 
 ## Examples
 
 ```bash
-# Mark todo #42 as incomplete
-joedb todo update 42 --status pending
-
-# Or mark as in_progress instead
-joedb todo update 42 --status in_progress
+# Mark todo #42 as incomplete (back to pending)
+doob todo undo 42
 ```
 
 ## Status Options
