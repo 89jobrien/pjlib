@@ -90,3 +90,44 @@ def test_find_old_items_empty_directory():
         cutoff = datetime.now() - timedelta(days=7)
         old_items = find_old_items(Path(tmpdir), cutoff)
         assert len(old_items) == 0
+
+
+def test_get_size_file():
+    """Test calculating size of a file"""
+    from cleanup_claude_data import get_size
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp_path = Path(tmpdir)
+        test_file = tmp_path / 'test.txt'
+        test_file.write_text('x' * 1024)  # 1KB file
+
+        size = get_size(test_file)
+        assert size == 1024
+
+
+def test_get_size_directory():
+    """Test calculating size of a directory recursively"""
+    from cleanup_claude_data import get_size
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp_path = Path(tmpdir)
+
+        # Create nested structure
+        (tmp_path / 'file1.txt').write_text('x' * 512)
+        subdir = tmp_path / 'subdir'
+        subdir.mkdir()
+        (subdir / 'file2.txt').write_text('x' * 1024)
+
+        size = get_size(tmp_path)
+        assert size == 512 + 1024
+
+
+def test_format_size():
+    """Test human-readable size formatting"""
+    from cleanup_claude_data import format_size
+
+    assert format_size(0) == '0B'
+    assert format_size(1024) == '1.0KB'
+    assert format_size(1024 * 1024) == '1.0MB'
+    assert format_size(1024 * 1024 * 1024) == '1.0GB'
+    assert format_size(500) == '500B'
