@@ -6,6 +6,8 @@ Reclaims disk space by archiving old session data to iCloud
 and deleting temporary files based on configurable retention policy.
 """
 import argparse
+import fnmatch
+import logging
 import shutil
 from dataclasses import dataclass
 from datetime import datetime, timedelta
@@ -110,6 +112,43 @@ def find_old_items(directory: Path, cutoff_date: datetime) -> list[Path]:
         pass
 
     return old_items
+
+
+def find_temp_files(directory: Path, patterns: list[str]) -> list[Path]:
+    """
+    Find files matching temporary file patterns.
+
+    Args:
+        directory: Directory to search
+        patterns: List of patterns to match (supports glob patterns and directory names)
+
+    Returns:
+        List of matching paths
+    """
+    if not directory.exists():
+        return []
+
+    temp_files: list[Path] = []
+
+    for pattern in patterns:
+        if '/' not in pattern and '*' not in pattern:
+            # Directory name pattern
+            target = directory / pattern
+            if target.exists():
+                if target.is_dir():
+                    # Add all files in directory
+                    temp_files.extend(target.rglob('*'))
+                    # Add directory itself
+                    temp_files.append(target)
+                else:
+                    temp_files.append(target)
+        else:
+            # Glob pattern
+            for item in directory.rglob('*'):
+                if fnmatch.fnmatch(item.name, pattern):
+                    temp_files.append(item)
+
+    return temp_files
 
 
 def get_size(path: Path) -> int:
@@ -261,6 +300,34 @@ def delete_item(item: Path, dry_run: bool) -> bool:
         return False
 
 
+def setup_logging(claude_dir: Path, dry_run: bool) -> None:
+    """
+    Configure logging for cleanup operations.
+
+    Args:
+        claude_dir: Claude directory for log file location
+        dry_run: Whether this is a dry-run
+    """
+    logs_dir = claude_dir / 'logs'
+    logs_dir.mkdir(exist_ok=True)
+
+    timestamp = datetime.now().strftime('%Y-%m-%d-%H%M%S')
+    log_file = logs_dir / f'cleanup-{timestamp}.log'
+
+    # Create handlers
+    handlers: list[logging.Handler] = [logging.FileHandler(log_file)]
+    if not dry_run:
+        handlers.append(logging.StreamHandler())
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=handlers
+    )
+
+    logging.info(f'Cleanup started - dry_run={dry_run}')
+
+
 def run_cleanup(config: CleanupConfig, dry_run: bool) -> CleanupResults:
     """
     Run cleanup operation.
@@ -274,17 +341,24 @@ def run_cleanup(config: CleanupConfig, dry_run: bool) -> CleanupResults:
     """
     results = CleanupResults()
 
+    logging.info(f'Cutoff date: {config.cutoff_date}')
+    logging.info(f'Archive directory: {config.archive_dir}')
+
     # Process archive directories
     for dir_name in config.archive_dirs:
         dir_path = config.claude_dir / dir_name
+        logging.info(f'Processing archive directory: {dir_name}')
 
         if not dir_path.exists():
+            logging.info('  Directory does not exist, skipping')
             continue
 
         old_items = find_old_items(dir_path, config.cutoff_date)
+        logging.info(f'  Found {len(old_items)} old items')
 
         for item in old_items:
             size = get_size(item)
+            logging.debug(f'  Archiving {item.name} ({format_size(size)})')
 
             # Archive item
             if archive_item(item, dir_path, config.archive_dir / dir_name, dry_run):
@@ -294,29 +368,65 @@ def run_cleanup(config: CleanupConfig, dry_run: bool) -> CleanupResults:
                     # Delete original
                     if delete_item(item, dry_run):
                         results.add_archived(item, size)
+                        logging.info(f'  Archived: {item.name}')
                     else:
-                        results.add_error(f'Failed to delete {item} after archiving')
+                        msg = f'Failed to delete {item} after archiving'
+                        results.add_error(msg)
+                        logging.error(f'  {msg}')
                 else:
-                    results.add_error(f'Archive verification failed for {item}')
+                    msg = f'Archive verification failed for {item}'
+                    results.add_error(msg)
+                    logging.error(f'  {msg}')
             else:
-                results.add_error(f'Failed to archive {item}')
+                msg = f'Failed to archive {item}'
+                results.add_error(msg)
+                logging.error(f'  {msg}')
 
     # Process delete-only directories
     for dir_name in config.delete_only_dirs:
         dir_path = config.claude_dir / dir_name
+        logging.info(f'Processing delete-only directory: {dir_name}')
 
         if not dir_path.exists():
+            logging.info('  Directory does not exist, skipping')
             continue
 
         old_items = find_old_items(dir_path, config.cutoff_date)
+        logging.info(f'  Found {len(old_items)} old items')
 
         for item in old_items:
             size = get_size(item)
+            logging.debug(f'  Deleting {item.name} ({format_size(size)})')
 
             if delete_item(item, dry_run):
                 results.add_deleted(item, size)
+                logging.info(f'  Deleted: {item.name}')
             else:
-                results.add_error(f'Failed to delete {item}')
+                msg = f'Failed to delete {item}'
+                results.add_error(msg)
+                logging.error(f'  {msg}')
+
+    # Process temp files
+    logging.info('Processing temp files')
+    temp_files = find_temp_files(config.claude_dir, config.temp_patterns)
+    logging.info(f'  Found {len(temp_files)} temp files')
+
+    for item in temp_files:
+        if not item.exists():
+            continue
+
+        size = get_size(item)
+
+        if delete_item(item, dry_run):
+            results.add_deleted(item, size)
+            logging.info(f'  Deleted temp: {item.name}')
+        else:
+            msg = f'Failed to delete temp file {item}'
+            results.add_error(msg)
+            logging.error(f'  {msg}')
+
+    logging.info(f'Cleanup complete - archived: {format_size(results.total_archived_size)}, '
+                 f'deleted: {format_size(results.total_deleted_size)}')
 
     return results
 
@@ -435,8 +545,44 @@ def parse_args(argv: list[str] | None = None) -> Args:
 def main() -> int:
     """Main entry point"""
     args = parse_args()
-    print(f"Args: dry_run={args.dry_run}, execute={args.execute}, days={args.days}")
-    return 0
+
+    # Setup configuration
+    today = datetime.now().strftime('%Y-%m-%d')
+    claude_dir = Path.home() / '.claude'
+    archive_dir = Path.home() / 'Documents' / 'claude-archives' / today
+
+    config = CleanupConfig(
+        claude_dir=claude_dir,
+        archive_dir=archive_dir,
+        retention_days=args.days
+    )
+
+    # Pre-flight checks
+    if not claude_dir.exists():
+        print(f'Error: Claude directory not found: {claude_dir}')
+        return 1
+
+    documents_dir = Path.home() / 'Documents'
+    if not documents_dir.exists():
+        print(f'Error: Documents directory not found: {documents_dir}')
+        return 1
+
+    # Setup logging
+    setup_logging(claude_dir, args.dry_run)
+
+    # Create archive directory if executing
+    if args.execute and not config.archive_dir.exists():
+        config.archive_dir.mkdir(parents=True, exist_ok=True)
+
+    # Run cleanup
+    results = run_cleanup(config, dry_run=args.dry_run)
+
+    # Display results
+    output = format_results(results, config, dry_run=args.dry_run)
+    print(output)
+
+    # Return error code if there were errors
+    return 1 if results.errors else 0
 
 
 if __name__ == "__main__":

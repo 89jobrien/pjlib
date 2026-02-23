@@ -13,6 +13,7 @@ from cleanup_claude_data import (
     CleanupConfig,
     CleanupResults,
     find_old_items,
+    find_temp_files,
     format_results,
     parse_args,
     run_cleanup,
@@ -488,3 +489,33 @@ def test_format_results_execute():
     assert 'DRY RUN MODE' not in output
     assert 'ARCHIVED' in output or 'Archive' in output
     assert '100.0MB' in output
+
+
+# Task 12: Handle Temp Files and Patterns
+def test_find_temp_files_paste_cache():
+    """Test finding paste-cache files"""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp_path = Path(tmpdir)
+
+        paste_cache = tmp_path / 'paste-cache'
+        paste_cache.mkdir()
+        (paste_cache / 'file1.txt').write_text('temp')
+        (paste_cache / 'file2.txt').write_text('temp')
+
+        temp_files = find_temp_files(tmp_path, ['paste-cache'])
+        assert len(temp_files) >= 2
+
+
+def test_find_temp_files_backup_pattern():
+    """Test finding backup files"""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp_path = Path(tmpdir)
+
+        (tmp_path / 'settings.json.backup').write_text('{}')
+        (tmp_path / 'config.backup.20260222').write_text('{}')
+        (tmp_path / 'normal.json').write_text('{}')
+
+        temp_files = find_temp_files(tmp_path, ['*.backup*'])
+
+        assert len(temp_files) == 2
+        assert all('.backup' in f.name for f in temp_files)
