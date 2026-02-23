@@ -48,6 +48,36 @@ class CleanupConfig:
         return ['paste-cache', '*.backup*', '.DS_Store']
 
 
+def find_old_items(directory: Path, cutoff_date: datetime) -> list[Path]:
+    """
+    Find files and directories older than cutoff date.
+
+    Args:
+        directory: Directory to search
+        cutoff_date: Files older than this are returned
+
+    Returns:
+        List of paths to old items
+    """
+    if not directory.exists():
+        return []
+
+    old_items: list[Path] = []
+
+    try:
+        for item in directory.iterdir():
+            # Get modification time
+            mtime = datetime.fromtimestamp(item.stat().st_mtime)
+
+            if mtime < cutoff_date:
+                old_items.append(item)
+    except (PermissionError, OSError):
+        # Skip directories we can't read
+        pass
+
+    return old_items
+
+
 def parse_args(argv: list[str] | None = None) -> Args:
     """Parse command line arguments"""
     parser = argparse.ArgumentParser(
