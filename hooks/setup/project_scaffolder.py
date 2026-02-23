@@ -22,8 +22,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from hook_logging import hook_invocation  # noqa: E402, I001
 from lib.detection import detect_project_type  # noqa: E402, I001
+from lib.setup import SetupReport, ValidationResult, load_setup_config  # noqa: E402, I001
 from lib.subprocess import command_exists  # noqa: E402, I001
-from setup import SetupReport, ValidationResult, load_setup_config  # noqa: E402, I001
 
 
 # Framework initialization commands

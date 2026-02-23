@@ -13,6 +13,7 @@ skills:
   - rust-advanced-patterns
   - rust-safety-engineering
   - rust-optimization-patterns
+color: orange
 ---
 
 # Rust Patterns Expert

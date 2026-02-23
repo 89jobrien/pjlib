@@ -2,7 +2,9 @@
   "env": {
     "CLOUD_ML_REGION": "global",
     "CLOUDSDK_ACTIVE_CONFIG_NAME": "toptal-agent-ops",
-    "CLAUDE_CODE_USE_VERTEX": "1"
+    "CLAUDE_CODE_USE_VERTEX": "1",
+    "MAESTRO_COMPANION_WS": "ws://localhost:8765",
+    "MAESTRO_COMPANION_DEBUG": "0"
   },
   "permissions": {
     "allow": [
@@ -67,7 +69,7 @@
           },
           {
             "type": "command",
-            "command": "~/.claude/hooks/validate-code.sh"
+            "command": "/Users/joe/.claude/hooks/validate-code.sh"
           }
         ]
       },
@@ -85,10 +87,6 @@
       {
         "matcher": "*",
         "hooks": [
-          {
-            "type": "command",
-            "command": "bd prime"
-          },
           {
             "type": "command",
             "command": "uv run ~/.claude/hooks/lifecycle/self_review.py"
@@ -129,6 +127,10 @@
     "SessionStart": [
       {
         "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/joe/dev/maestro/maestro-companion/hooks/stream-events.sh"
+          },
           {
             "type": "command",
             "command": "uv run ~/.claude/hooks/workflows/session_start_workflow.py"
@@ -212,7 +214,8 @@
     "rust-analyzer@claude-code-lsps": true,
     "typescript-lsp@claude-plugins-official": true,
     "semgrep@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true
+    "skill-creator@claude-plugins-official": true,
+    "review-loop@hamel-review": true
   },
   "skipDangerousModePermissionPrompt": true
 }

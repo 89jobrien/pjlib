@@ -12,6 +12,7 @@ model: sonnet
 skills:
   - rust-async-patterns
   - performance
+color: orange
 ---
 
 # Rust Async Reviewer

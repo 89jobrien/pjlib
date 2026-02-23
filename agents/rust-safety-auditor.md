@@ -12,6 +12,7 @@ model: sonnet
 skills:
   - rust-safety-engineering
   - rust-optimization-patterns
+color: orange
 ---
 
 # Rust Safety Auditor

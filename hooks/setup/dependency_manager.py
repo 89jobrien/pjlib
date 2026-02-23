@@ -24,8 +24,8 @@ import asyncio  # noqa: E402, F401, I001
 
 from hook_logging import hook_invocation  # noqa: E402, I001
 from lib.detection import PACKAGE_MANAGER_MARKERS, detect_package_manager  # noqa: E402, I001
+from lib.setup import SetupReport, ValidationResult, load_setup_config  # noqa: E402, I001
 from lib.subprocess import command_exists  # noqa: E402, I001
-from setup import SetupReport, ValidationResult, load_setup_config  # noqa: E402, I001
 
 
 def check_lockfile(cwd: Path, package_manager: str) -> ValidationResult:

@@ -3,6 +3,7 @@ logs/exported_chatlogs/
 docs/**
 *.local.md
 *.local.json
+tasks/**
 
 # IDE / Editor state
 .claude/

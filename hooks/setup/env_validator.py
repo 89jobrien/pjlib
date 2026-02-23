@@ -23,13 +23,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from hook_logging import hook_invocation  # noqa: E402, I001
-from lib.subprocess import command_exists  # noqa: E402, I001
-from setup import (  # noqa: E402, I001
+from lib.setup import (  # noqa: E402, I001
     SetupReport,
     ValidationResult,
     check_env_var,
     load_setup_config,
 )
+from lib.subprocess import command_exists  # noqa: E402, I001
 
 
 def parse_version(version_str: str) -> tuple[int, ...]:

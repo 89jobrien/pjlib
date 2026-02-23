@@ -12,6 +12,7 @@ model: sonnet
 skills:
   - rust-testing-strategies
   - tdd
+color: orange
 ---
 
 # Rust Test Generator
