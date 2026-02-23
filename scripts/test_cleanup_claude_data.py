@@ -9,7 +9,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from cleanup_claude_data import CleanupConfig, find_old_items, parse_args
+from cleanup_claude_data import (
+    CleanupConfig,
+    CleanupResults,
+    find_old_items,
+    format_results,
+    parse_args,
+    run_cleanup,
+)
 
 
 def test_parse_args_defaults():
@@ -319,3 +326,165 @@ def test_delete_item_dry_run():
 
         assert result is True
         assert test_file.exists()  # Should still exist in dry-run
+
+
+# Task 8: Cleanup Results Dataclass
+def test_cleanup_results_init():
+    """Test cleanup results initialization"""
+    results = CleanupResults()
+
+    assert results.archived_items == []
+    assert results.deleted_items == []
+    assert results.errors == []
+    assert results.total_archived_size == 0
+    assert results.total_deleted_size == 0
+
+
+def test_cleanup_results_add_archived():
+    """Test adding archived item"""
+    results = CleanupResults()
+    results.add_archived(Path('/test/file.txt'), 1024)
+
+    assert len(results.archived_items) == 1
+    assert results.archived_items[0][0] == Path('/test/file.txt')
+    assert results.archived_items[0][1] == 1024
+    assert results.total_archived_size == 1024
+
+
+def test_cleanup_results_add_deleted():
+    """Test adding deleted item"""
+    results = CleanupResults()
+    results.add_deleted(Path('/test/file.txt'), 512)
+
+    assert len(results.deleted_items) == 1
+    assert results.total_deleted_size == 512
+
+
+def test_cleanup_results_add_error():
+    """Test adding error"""
+    results = CleanupResults()
+    results.add_error('Test error message')
+
+    assert len(results.errors) == 1
+    assert results.errors[0] == 'Test error message'
+
+
+# Task 9: Main Cleanup Orchestration
+def test_run_cleanup_archive_workflow():
+    """Test end-to-end archive workflow"""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp_path = Path(tmpdir)
+
+        # Setup claude_dir with old project
+        claude_dir = tmp_path / '.claude'
+        projects_dir = claude_dir / 'projects'
+        projects_dir.mkdir(parents=True)
+
+        old_project = projects_dir / 'old-project'
+        old_project.mkdir()
+        (old_project / 'file.txt').write_text('x' * 1024)
+
+        # Make it old (10 days)
+        old_time = time.time() - (10 * 24 * 60 * 60)
+        os.utime(old_project, (old_time, old_time))
+
+        # Setup archive destination
+        archive_base = tmp_path / 'Documents' / 'claude-archives'
+        archive_dir = archive_base / '2026-02-23'
+
+        # Create config
+        config = CleanupConfig(
+            claude_dir=claude_dir,
+            archive_dir=archive_dir,
+            retention_days=7
+        )
+
+        # Run cleanup
+        results = run_cleanup(config, dry_run=False)
+
+        # Verify archived
+        assert len(results.archived_items) == 1
+        assert results.total_archived_size > 0
+
+        # Verify source deleted
+        assert not old_project.exists()
+
+        # Verify archive exists
+        archived = archive_dir / 'projects' / 'old-project'
+        assert archived.exists()
+
+
+def test_run_cleanup_delete_workflow():
+    """Test end-to-end delete workflow"""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp_path = Path(tmpdir)
+
+        # Setup claude_dir with old debug data
+        claude_dir = tmp_path / '.claude'
+        debug_dir = claude_dir / 'debug'
+        debug_dir.mkdir(parents=True)
+
+        old_file = debug_dir / 'old.log'
+        old_file.write_text('x' * 512)
+
+        # Make it old
+        old_time = time.time() - (10 * 24 * 60 * 60)
+        os.utime(old_file, (old_time, old_time))
+
+        archive_dir = tmp_path / 'Documents' / 'claude-archives' / '2026-02-23'
+
+        config = CleanupConfig(
+            claude_dir=claude_dir,
+            archive_dir=archive_dir,
+            retention_days=7
+        )
+
+        results = run_cleanup(config, dry_run=False)
+
+        # Verify deleted
+        assert len(results.deleted_items) == 1
+        assert not old_file.exists()
+
+        # Verify NOT archived
+        assert not (archive_dir / 'debug').exists()
+
+
+# Task 10: Output Formatting and Reporting
+def test_format_results_dry_run():
+    """Test formatting dry-run results"""
+    results = CleanupResults()
+    results.add_archived(Path('/claude/projects/old'), 100 * 1024 * 1024)
+    results.add_deleted(Path('/claude/debug/old.log'), 50 * 1024 * 1024)
+
+    config = CleanupConfig(
+        claude_dir=Path.home() / '.claude',
+        archive_dir=Path.home() / 'Documents' / 'claude-archives' / '2026-02-23',
+        retention_days=7
+    )
+
+    output = format_results(results, config, dry_run=True)
+
+    assert 'DRY RUN MODE' in output
+    assert 'WILL ARCHIVE' in output
+    assert 'WILL DELETE' in output
+    assert '100.0MB' in output
+    assert '50.0MB' in output
+    assert 'Run with --execute' in output
+
+
+def test_format_results_execute():
+    """Test formatting execute results"""
+    results = CleanupResults()
+    results.add_archived(Path('/claude/projects/old'), 100 * 1024 * 1024)
+
+    config = CleanupConfig(
+        claude_dir=Path.home() / '.claude',
+        archive_dir=Path.home() / 'Documents' / 'claude-archives' / '2026-02-23',
+        retention_days=7
+    )
+
+    output = format_results(results, config, dry_run=False)
+
+    assert 'DRY RUN MODE' not in output
+    assert 'ARCHIVED' in output or 'Archive' in output
+    assert '100.0MB' in output
