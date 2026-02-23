@@ -6,6 +6,7 @@ Reclaims disk space by archiving old session data to iCloud
 and deleting temporary files based on configurable retention policy.
 """
 import argparse
+import shutil
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -127,6 +128,104 @@ def format_size(size_bytes: int) -> str:
     if unit_index == 0:
         return f'{int(size)}{units[unit_index]}'
     return f'{size:.1f}{units[unit_index]}'
+
+
+def archive_item(item: Path, source_base: Path, dest_base: Path, dry_run: bool) -> bool:
+    """
+    Archive file or directory to destination preserving structure.
+
+    Args:
+        item: Path to file or directory to archive
+        source_base: Base path for source (to calculate relative path)
+        dest_base: Base path for destination archive
+        dry_run: If True, don't actually copy files
+
+    Returns:
+        True if successful, False otherwise
+    """
+    try:
+        # Calculate relative path to preserve directory structure
+        relative_path = item.relative_to(source_base)
+        dest_path = dest_base / relative_path
+
+        if dry_run:
+            # In dry-run mode, just return success without copying
+            return True
+
+        # Create parent directories if needed
+        dest_path.parent.mkdir(parents=True, exist_ok=True)
+
+        if item.is_file():
+            # Copy file with metadata
+            shutil.copy2(item, dest_path)
+        else:
+            # Copy directory tree
+            shutil.copytree(item, dest_path, dirs_exist_ok=True)
+
+        return True
+    except (OSError, shutil.Error):
+        return False
+
+
+def verify_archive(source: Path, dest: Path) -> bool:
+    """
+    Verify archive integrity by comparing sizes and file counts.
+
+    Args:
+        source: Original source path
+        dest: Archived destination path
+
+    Returns:
+        True if archive is valid, False otherwise
+    """
+    # Check if destination exists
+    if not dest.exists():
+        return False
+
+    try:
+        # For files, compare sizes
+        if source.is_file():
+            return source.stat().st_size == dest.stat().st_size
+
+        # For directories, compare total sizes and file counts
+        source_size = get_size(source)
+        dest_size = get_size(dest)
+
+        if source_size != dest_size:
+            return False
+
+        # Count files in both
+        source_files = sum(1 for _ in source.rglob('*') if _.is_file())
+        dest_files = sum(1 for _ in dest.rglob('*') if _.is_file())
+
+        return source_files == dest_files
+    except (OSError, PermissionError):
+        return False
+
+
+def delete_item(item: Path, dry_run: bool) -> bool:
+    """
+    Delete file or directory.
+
+    Args:
+        item: Path to file or directory to delete
+        dry_run: If True, don't actually delete
+
+    Returns:
+        True if successful, False otherwise
+    """
+    if dry_run:
+        # In dry-run mode, just return success without deleting
+        return True
+
+    try:
+        if item.is_file():
+            item.unlink()
+        else:
+            shutil.rmtree(item)
+        return True
+    except (OSError, shutil.Error):
+        return False
 
 
 def parse_args(argv: list[str] | None = None) -> Args:
