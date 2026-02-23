@@ -4,9 +4,9 @@
 # dependencies = []
 # ///
 """
-PostToolUse hook for TodoWrite - syncs Claude's todos to joedb SQLite database.
+PostToolUse hook for TodoWrite - syncs Claude's todos to doob SurrealDB database.
 
-This hook captures TodoWrite tool calls and syncs them to the local joedb todo system.
+This hook captures TodoWrite tool calls and syncs them to the local doob todo system.
 """
 
 from __future__ import annotations
@@ -24,9 +24,9 @@ sys.path.insert(0, str(HOOKS_ROOT))
 from hook_logging import hook_invocation  # noqa: E402
 
 
-def sync_todos_to_joedb(todos: list[dict]) -> tuple[int, int]:
+def sync_todos_to_doob(todos: list[dict]) -> tuple[int, int]:
     """
-    Sync todos to joedb.
+    Sync todos to doob.
 
     Returns tuple of (synced_count, error_count).
     """
@@ -44,12 +44,11 @@ def sync_todos_to_joedb(todos: list[dict]) -> tuple[int, int]:
         if status == "completed":
             continue
 
-        # Build joedb command
+        # Build doob command
         cmd = [
-            "joedb", "todo", "add",
+            "doob", "todo", "add",
             content,
-            "--project", "claude-session",
-            "--tags", f"claude,{status}"
+            "-t", f"claude,{status}"
         ]
 
         try:
@@ -91,11 +90,11 @@ def main() -> int:
         if not active_todos:
             return 0
 
-        synced, errors = sync_todos_to_joedb(active_todos)
+        synced, errors = sync_todos_to_doob(active_todos)
 
         # Output for Claude to see
         if synced > 0:
-            print(f"Synced {synced} todo(s) to joedb", file=sys.stderr)
+            print(f"Synced {synced} todo(s) to doob", file=sys.stderr)
 
     return 0
 
