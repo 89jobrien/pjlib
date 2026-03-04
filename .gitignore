@@ -237,3 +237,8 @@ pyrightconfig.json
 # Ignore all local history of files
 .history
 .ionide
+# Archived directory
+archived-2026-03/
+
+# Ephemeral cache
+paste-cache/*.txt
