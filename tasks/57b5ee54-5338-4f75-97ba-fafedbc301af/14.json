@@ -1,0 +1,9 @@
+{
+  "id": "14",
+  "subject": "Add conversation activity preview to display",
+  "description": "Enhance the display to show previews of conversation activity including: message text snippets (first 80 chars), tool calls being made (name and description), and message types. Parse the last line of conversation files to extract this context and display it alongside session info.",
+  "activeForm": "Adding conversation activity preview",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

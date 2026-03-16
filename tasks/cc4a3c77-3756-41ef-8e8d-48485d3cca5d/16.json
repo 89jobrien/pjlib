@@ -1,0 +1,9 @@
+{
+  "id": "16",
+  "subject": "Integrate CompanionClient into Claude Session",
+  "description": "Add companion field to ClaudeSessionContext, initialize in create_session(), send session_init event. Make CompanionClient cloneable.\n\nFiles:\n- Modify: maestro-cli/src/claude/session.rs\n- Modify: maestro-cli/src/claude/companion.rs\n\nExpected: Build succeeds, companion initialized on session start",
+  "activeForm": "Integrating CompanionClient into Claude session",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

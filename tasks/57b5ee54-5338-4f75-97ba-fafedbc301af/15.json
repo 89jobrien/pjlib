@@ -1,0 +1,9 @@
+{
+  "id": "15",
+  "subject": "Remove turn count from display output",
+  "description": "Remove the turn count \"(X turns)\" from the event display as it's not useful information. Focus on showing session ID, project, and activity preview only.",
+  "activeForm": "Removing turn count from display",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

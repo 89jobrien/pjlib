@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Add companion flag to session context",
+  "description": "Extend ClaudeSessionContext trait to include companion_enabled() method. Update implementations in commands/start.rs and remote/session.rs to check for COMPANION_ENABLED environment variable or CLI flag.",
+  "activeForm": "Adding companion flag to session context",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

@@ -1,0 +1,39 @@
+{
+  "eval_id": 2,
+  "eval_name": "review-existing-baml-code",
+  "prompt": "can you review this baml code and tell me whats wrong?\n\nclass user_profile {\n  userName string\n  Email string\n  phoneNumber string\n}\n\nfunction extractUserProfile(data: string) -> user_profile {\n  client GPT4\n  prompt #\"\n    Extract user profile from: {{ data }}\n  \"#\n}\n\ntest test1 {\n  functions [extractUserProfile]\n  args {\n    data \"John Doe, john@example.com, 555-1234\"\n  }\n}",
+  "assertions": [
+    {
+      "text": "Identifies class naming issue (user_profile should be UserProfile)",
+      "description": "Should catch that class names must be PascalCase"
+    },
+    {
+      "text": "Identifies field naming issues (Email should be email, or mentions inconsistent naming)",
+      "description": "Should catch that field names must be snake_case consistently"
+    },
+    {
+      "text": "Identifies missing @description annotations",
+      "description": "Should mention that all fields need @description annotations"
+    },
+    {
+      "text": "Identifies missing {{ ctx.output_format }} in prompt",
+      "description": "Should catch that the function prompt is missing ctx.output_format"
+    },
+    {
+      "text": "Identifies poor test naming (test1 should be descriptive)",
+      "description": "Should suggest a more descriptive test name"
+    },
+    {
+      "text": "Provides corrected code",
+      "description": "Should include a fixed version of the code with all issues resolved"
+    },
+    {
+      "text": "Mentions should mark optional fields with ?",
+      "description": "Should suggest marking fields like email and phone_number as optional if they might be missing"
+    },
+    {
+      "text": "Suggests adding more test cases",
+      "description": "Should recommend adding edge case tests"
+    }
+  ]
+}

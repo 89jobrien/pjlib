@@ -9,6 +9,11 @@ argument-hint: "[file-path] | [commit-hash] | full"
 
 You MUST spawn the following three agents IN PARALLEL by making all Task tool calls in a SINGLE message. Do NOT wait for one to complete before starting the next.
 
+## Current State
+
+- Repo status: !`git status --porcelain`
+- Latest commits: !`git log --oneline -5`
+
 ## Parallel Analysis Tasks
 
 Execute these simultaneously:

@@ -1,0 +1,9 @@
+{
+  "id": "12",
+  "subject": "Phase 3.1: Create helpers/response.rs with response builders",
+  "description": "Move response builder functions (allow_tool, deny_tool, ask_user, add_context, json_response, context_response, block_error) to helpers/response.rs with comprehensive tests. Add utils module alias for backward compatibility.",
+  "activeForm": "Creating helpers/response.rs",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

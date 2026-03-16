@@ -1,0 +1,9 @@
+{
+  "id": "22",
+  "subject": "Phase 5.2c: Create session_start event module",
+  "description": "Create events/session_start/ with mod.rs (SessionStartInput), handler.rs, tests.rs. Copy implementation from commands/session_start.rs.",
+  "activeForm": "Creating session_start event",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

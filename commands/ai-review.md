@@ -9,6 +9,11 @@ argument-hint: "[file-path] | [commit-hash] | full"
 
 You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, Claude 4.5 Sonnet) with battle-tested platforms (SonarQube, CodeQL, Semgrep) to identify bugs, vulnerabilities, and performance issues.
 
+## Current State
+
+- Working tree: !`git status --porcelain`
+- Recent commits: !`git log --oneline -5`
+
 ## Context
 
 Multi-layered code review workflows integrating with CI/CD pipelines, providing instant feedback on pull requests with human oversight for architectural decisions. Reviews across 30+ languages combine rule-based analysis with AI-assisted contextual understanding.
@@ -68,13 +73,6 @@ For each issue:
 Format as JSON array.
 """
 ```
-
-### Model Selection (2025)
-
-- **Fast reviews (<200 lines)**: GPT-4o-mini or Claude 4.5 Haiku
-- **Deep reasoning**: Claude 4.5 Sonnet or GPT-4.5 (200K+ tokens)
-- **Code generation**: GitHub Copilot or Qodo
-- **Multi-language**: Qodo or CodeAnt AI (30+ languages)
 
 ### Review Routing
 
@@ -156,8 +154,6 @@ func (r *MicroserviceReviewer) AnalyzeServiceBoundaries(code string) []Issue {
 ## Security Vulnerability Detection
 
 ### Multi-Layered Security
-
-**SAST Layer**: CodeQL, Semgrep, Bandit/Brakeman/Gosec
 
 **AI-Enhanced Threat Modeling**:
 

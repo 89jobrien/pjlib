@@ -1,0 +1,9 @@
+{
+  "id": "13",
+  "subject": "Add history.jsonl index parsing for project mapping",
+  "description": "Parse ~/.claude/history.jsonl to build a sessionId -> project path mapping. Use this index to enrich conversation file metadata with accurate project information instead of relying solely on individual conversation files.",
+  "activeForm": "Adding history.jsonl index parsing",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

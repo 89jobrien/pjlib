@@ -7,6 +7,12 @@ description: Analyze and Explain Code Functionality
 
 Analyze and explain code functionality
 
+## Current State
+
+Confirm the working directory before analyzing code.
+
+!`pwd`
+
 ## Instructions
 
 Follow this systematic approach to explain code: **$ARGUMENTS**

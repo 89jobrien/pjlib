@@ -4,10 +4,16 @@ paths: "**/*.md"
 
 # Markdown Rules
 
+## No Emojis
+
+- Never use emojis in code or documentation unless explicitly requested.
+- All diagrams should be created using ASCII art or simple text descriptions.
+- Status indicators should be written in plain text.
+
 ## Formatting
 
 - Line length: 120 characters max
-- Use fenced code blocks with language identifier (```python,```bash)
+- Use fenced code blocks with language identifier (e.g., `python`, `bash`)
 - No trailing whitespace
 
 ## Auto-formatting

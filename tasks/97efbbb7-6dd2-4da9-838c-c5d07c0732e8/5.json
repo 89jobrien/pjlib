@@ -1,0 +1,9 @@
+{
+  "id": "5",
+  "subject": "TDD: WebSocket health monitoring - Implement minimal code",
+  "description": "Phase 3 GREEN: Implement minimal WebSocket PING/PONG code to pass tests. Add keepalive task (pattern from terminal.rs), PONG timeout detection, graceful close on timeout. No extra features beyond test requirements.",
+  "activeForm": "Implementing WebSocket health monitoring (minimal)",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

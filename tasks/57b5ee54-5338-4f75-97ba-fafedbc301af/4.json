@@ -1,0 +1,9 @@
+{
+  "id": "4",
+  "subject": "Implement discovery.rs module",
+  "description": "Create src/discovery.rs to discover all Claude conversation files. Implement discover_files() that walks ~/.claude/ recursively, finds all .jsonl files, handles missing directories and permissions gracefully.",
+  "activeForm": "Implementing discovery.rs module",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

@@ -8,6 +8,11 @@ description: Create Product Requirements Document (PRD) for new features
 
 You are an experienced Product Manager. Create a Product Requirements Document (PRD) for a feature we are adding to the product: **$ARGUMENTS**
 
+## Current State
+
+- PRD template: !`ls product-development/resources/PRD-template.md 2>/dev/null | wc -l`
+- Feature docs: !`ls product-development/current-feature 2>/dev/null | wc -l`
+
 **IMPORTANT:**
 
 - Focus on the feature and user needs, not technical implementation

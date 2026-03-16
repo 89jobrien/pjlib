@@ -1,0 +1,9 @@
+{
+  "id": "32",
+  "subject": "Phase 6.1: Clean up lib.rs and finalize public API",
+  "description": "Final cleanup of lib.rs: remove all old module declarations and commented-out code. Verify re-exports are complete and correct. Run clippy to check for unused imports.",
+  "activeForm": "Cleaning up lib.rs",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

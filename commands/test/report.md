@@ -8,6 +8,12 @@ description: Generate or update TESTING_REPORT.local.md with comprehensive test 
 
 Create or update the `TESTING_REPORT.local.md` file with comprehensive test analysis. Automatically detects test framework and adapts reporting format.
 
+## Current State
+
+Confirm the working directory before scanning test files.
+
+!`pwd`
+
 ## Instructions
 
 ### 1. Detect Test Framework

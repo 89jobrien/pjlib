@@ -6,6 +6,11 @@ description: View the knowledge graph or specific entities with their relationsh
 
 Displays the current state of the knowledge graph or specific entities.
 
+## Current State
+
+- Memory files: !`find ~/.claude/memory -type f 2>/dev/null | wc -l`
+- Knowledge graph cache: !`find ~/.claude -name "*.local.md" 2>/dev/null | wc -l`
+
 ## Usage
 
 ```

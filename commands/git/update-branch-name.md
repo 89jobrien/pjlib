@@ -4,6 +4,11 @@ description: Update Branch Name
 
 # Update Branch Name
 
+## Current State
+
+- Current branch: !`git branch --show-current`
+- Repo status: !`git status --porcelain`
+
 Follow these steps to update the current branch name:
 
 1. Check differences between current branch and main branch HEAD using `git diff main...HEAD`

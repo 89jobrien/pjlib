@@ -1,0 +1,9 @@
+{
+  "id": "13",
+  "subject": "Add Reconnection Logic",
+  "description": "Add maintain_connection() loop, reconnect() with backoff, handle_message() for incoming events. Send session_subscribe after reconnect with last_seq tracking.\n\nFiles:\n- Modify: maestro-cli/src/claude/companion.rs\n\nExpected: Build succeeds, reconnection methods available",
+  "activeForm": "Adding reconnection logic",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

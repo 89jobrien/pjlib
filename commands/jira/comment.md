@@ -6,6 +6,11 @@ argument-hint: [issue-key] [comment-text]
 
 Add a comment to Jira issue **$1**.
 
+## Current State
+
+- Jira CLI: !`jira --version 2>/dev/null || echo "jira-cli not installed"`
+- Current user: !`jira me 2>/dev/null || echo "Not authenticated"`
+
 ## Arguments
 
 - `$1` - Issue key (required)

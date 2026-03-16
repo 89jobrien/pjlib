@@ -1,6 +1,6 @@
 ---
-allowed-tools: Bash
-argument-hint: " <id> [due date]"
+allowed-tools: Bash(doob:*)
+argument-hint: " <id> --due <YYYY-MM-DD|clear>"
 description: Set or update the due date for todo <id> in SQLite DB.
 ---
 
@@ -29,16 +29,16 @@ Set or update the due date for a specific todo in the SQLite database.
 
 ## Command
 
-!cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli todo update $ID --due $DUE_DATE
+!`doob todo due $ARGUMENTS`
 
 ## Examples
 
 ```bash
 # Set due date to specific date
-cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli todo update 42 --due 2025-12-31
+doob todo due 42 2025-12-31
 
 # Clear/remove due date
-cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli todo update 42 --due clear
+doob todo due 42 clear
 ```
 
 ## Date Format

@@ -1,0 +1,14 @@
+{
+  "id": "746fa485-0571-4818-8cfa-e77fc3d522ba",
+  "status": "running",
+  "startedAt": "2026-01-20T09:38:10.442Z",
+  "updatedAt": "2026-01-20T09:38:57.376Z",
+  "agentPlugin": "opencode",
+  "trackerPlugin": "beads",
+  "epicId": ".claude-8jh",
+  "currentIteration": 4,
+  "maxIterations": 10,
+  "totalTasks": 0,
+  "tasksCompleted": 0,
+  "cwd": "/Users/joe/.claude"
+}

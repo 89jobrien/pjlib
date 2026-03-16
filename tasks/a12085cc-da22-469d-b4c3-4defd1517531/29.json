@@ -1,0 +1,9 @@
+{
+  "id": "29",
+  "subject": "Phase 5.2j: Create init event module",
+  "description": "Create events/init/ with mod.rs, handler.rs, tests.rs. Copy implementation from commands/init.rs. This is the last event module.",
+  "activeForm": "Creating init event",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

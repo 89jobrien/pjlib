@@ -1,0 +1,9 @@
+{
+  "id": "19",
+  "subject": "Phase 5.1: Create pre_tool_use event module",
+  "description": "Create events/pre_tool_use/ directory with mod.rs (PreToolUseInput type), handler.rs (skeleton handler), and tests.rs (integration tests). Update events/mod.rs. This establishes the pattern for all other events.",
+  "activeForm": "Creating pre_tool_use event",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

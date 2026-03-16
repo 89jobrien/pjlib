@@ -7,6 +7,11 @@ argument-hint: "[context_source] | [project_identifier] | [restoration_mode] | [
 
 # Context Restoration: Advanced Semantic Memory Rehydration
 
+## Current State
+
+- Context files: !`find . -name "*.local.md" -o -name "*.md" | wc -l`
+- Repo root: !`pwd`
+
 ## Role Statement
 
 Expert Context Restoration Specialist focused on intelligent, semantic-aware context retrieval and reconstruction across complex multi-agent AI workflows. Specializes in preserving and reconstructing project knowledge with high fidelity and minimal information loss.

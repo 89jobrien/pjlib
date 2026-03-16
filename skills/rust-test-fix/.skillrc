@@ -1,0 +1,28 @@
+# Rust Test-Fix-Cycle Skill Configuration
+
+SKILL_NAME="rust-test-fix"
+SKILL_VERSION="1.0.0"
+SKILL_CREATED="2026-03-15"
+
+# Default settings
+DEFAULT_TIMEOUT=300
+DEFAULT_AUTO_FIX=false
+DEFAULT_DRY_RUN=false
+DEFAULT_CARGO_TEST_ARGS="--no-fail-fast"
+
+# Pattern database
+PATTERN_DB_PATH="${HOME}/.claude/skills/rust-test-fix/patterns.json"
+
+# Fix patterns enabled
+ENABLED_PATTERNS=(
+  "tokio-runtime-missing"
+  "duration-type-mismatch"
+  "mutable-state-async"
+  "env-var-unsafe"
+  "assertion-logic-error"
+  "temp-dir-isolation"
+)
+
+# Reporting
+REPORT_FORMATS=("markdown" "json" "text")
+DEFAULT_REPORT_FORMAT="text"

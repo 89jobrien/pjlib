@@ -1,0 +1,198 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                          MINIBOX ARCHITECTURE                                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                             USER INTERACTION                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    ┌──────────────────┐
+    │  minibox-cli     │  Command-line interface
+    │                  │  - Parse arguments (run, stop, rm, ps)
+    │  • run           │  - Connect to daemon via Unix socket
+    │  • stop          │  - Send DaemonRequest
+    │  • rm            │  - Receive DaemonResponse
+    │  • ps            │
+    └────────┬─────────┘
+             │
+             │ Unix Socket
+             │ /var/run/minibox.sock
+             ↓
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            DAEMON LAYER (miniboxd)                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    ┌──────────────────────────────────────────────────────────────────────┐
+    │  Tokio Runtime                                                        │
+    │  ┌────────────┐  ┌────────────┐  ┌────────────┐  ┌────────────┐    │
+    │  │ Request    │  │ Request    │  │ Request    │  │ Request    │    │
+    │  │ Handler 1  │  │ Handler 2  │  │ Handler 3  │  │ Handler 4  │    │
+    │  └──────┬─────┘  └──────┬─────┘  └──────┬─────┘  └──────┬─────┘    │
+    │         │                │                │                │          │
+    │         └────────────────┴────────────────┴────────────────┘          │
+    │                                  │                                    │
+    │                    ┌─────────────┴─────────────┐                     │
+    │                    │  State Management         │                     │
+    │                    │  ┌─────────────────────┐  │                     │
+    │                    │  │ RwLock<HashMap>     │  │                     │
+    │                    │  │ container_id →      │  │                     │
+    │                    │  │   ContainerInfo     │  │                     │
+    │                    │  └─────────────────────┘  │                     │
+    │                    └───────────────────────────┘                     │
+    └──────────────────────────────────────────────────────────────────────┘
+
+             │ Request Handlers
+             ↓
+
+    ┌────────────────────┐  ┌────────────────────┐  ┌────────────────────┐
+    │  handle_run()      │  │  handle_stop()     │  │  handle_remove()   │
+    │                    │  │                    │  │                    │
+    │  1. Pull image     │  │  1. Send SIGTERM   │  │  1. Check stopped  │
+    │  2. Setup overlay  │  │  2. Wait 10s       │  │  2. Unmount overlay│
+    │  3. Create cgroup  │  │  3. Send SIGKILL   │  │  3. Remove cgroup  │
+    │  4. Spawn process  │  │                    │  │  4. Delete dirs    │
+    │  5. Return ID      │  │                    │  │                    │
+    └─────────┬──────────┘  └─────────┬──────────┘  └─────────┬──────────┘
+              │                       │                        │
+              ↓                       ↓                        ↓
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       CORE LIBRARY (minibox crate)                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌───────────────────────┐  ┌───────────────────────┐  ┌──────────────────────┐
+│  Image Management     │  │  Container Primitives │  │  Network (future)    │
+│                       │  │                       │  │                      │
+│  ┌─────────────────┐  │  │  ┌─────────────────┐  │  │  ┌────────────────┐  │
+│  │ Registry Client │  │  │  │ Namespace Setup │  │  │  │ Network NS     │  │
+│  │ - Docker Hub    │  │  │  │ - clone()       │  │  │  │ - veth pairs   │  │
+│  │ - Auth tokens   │  │  │  │ - CLONE_NEW*    │  │  │  │ - bridges      │  │
+│  │ - Manifest      │  │  │  └─────────────────┘  │  │  └────────────────┘  │
+│  └─────────────────┘  │  │                       │  │                      │
+│                       │  │  ┌─────────────────┐  │  │                      │
+│  ┌─────────────────┐  │  │  │ Cgroup Mgmt     │  │  │                      │
+│  │ Layer Extract   │  │  │  │ - Create        │  │  │                      │
+│  │ - tar.gz        │  │  │  │ - Set limits    │  │  │                      │
+│  │ - Lower dirs    │  │  │  │ - Add process   │  │  │                      │
+│  └─────────────────┘  │  │  └─────────────────┘  │  │                      │
+│                       │  │                       │  │                      │
+│  ┌─────────────────┐  │  │  ┌─────────────────┐  │  │                      │
+│  │ Image Cache     │  │  │  │ Process Spawn   │  │  │                      │
+│  │ - Layer reuse   │  │  │  │ - clone()       │  │  │                      │
+│  │ - Deduplication │  │  │  │ - execvp()      │  │  │                      │
+│  └─────────────────┘  │  │  └─────────────────┘  │  │                      │
+│                       │  │                       │  │                      │
+│                       │  │  ┌─────────────────┐  │  │                      │
+│                       │  │  │ Rootfs Ops      │  │  │                      │
+│                       │  │  │ - Overlay mount │  │  │                      │
+│                       │  │  │ - pivot_root    │  │  │                      │
+│                       │  │  │ - mount /proc   │  │  │                      │
+│                       │  │  └─────────────────┘  │  │                      │
+└───────────────────────┘  └───────────────────────┘  └──────────────────────┘
+
+             │                      │                       │
+             ↓                      ↓                       ↓
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          LINUX KERNEL LAYER                                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
+    │   Namespaces     │  │   Cgroups v2     │  │   Overlayfs      │
+    │                  │  │                  │  │                  │
+    │  • PID           │  │  • memory.max    │  │  • lowerdir      │
+    │  • Mount         │  │  • memory.curr   │  │  • upperdir      │
+    │  • Network       │  │  • cpu.weight    │  │  • workdir       │
+    │  • IPC           │  │  • cgroup.procs  │  │  • merged        │
+    │  • UTS           │  │                  │  │                  │
+    └──────────────────┘  └──────────────────┘  └──────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          CONTAINER LIFECYCLE                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    ┌─────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌─────────┐
+    │ PULL    │──▶│ CREATE   │──▶│ RUNNING  │──▶│ STOPPING │──▶│ REMOVED │
+    │ IMAGE   │   │ OVERLAY  │   │ PROCESS  │   │ SIGTERM/ │   │ CLEANUP │
+    │         │   │ CGROUP   │   │ ISOLATED │   │ SIGKILL  │   │         │
+    └─────────┘   └──────────┘   └──────────┘   └──────────┘   └─────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          FILESYSTEM LAYOUT                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    /var/lib/minibox/
+    │
+    ├── containers/
+    │   └── <container-id>/
+    │       ├── pid                    # Process ID file
+    │       ├── overlay/
+    │       │   ├── lower/            # Image layers (read-only)
+    │       │   ├── upper/            # Container changes (writable)
+    │       │   ├── work/             # Overlay working directory
+    │       │   └── merged/           # Combined view → container root
+    │       └── rootfs/               # Symlink to merged/
+    │
+    └── images/
+        └── <image-name>/
+            ├── manifest.json
+            └── layers/
+                ├── <sha256>.tar.gz
+                └── ...
+
+    /sys/fs/cgroup/
+    └── minibox/
+        └── <container-id>/
+            ├── cgroup.procs          # PIDs in cgroup
+            ├── memory.max            # Memory limit
+            ├── memory.current        # Current memory usage
+            └── cpu.weight            # CPU scheduling weight
+
+    /var/run/
+    └── minibox.sock                  # Daemon Unix socket
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          DATA FLOW: RUN COMMAND                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    CLI                 Daemon              Core Library         Kernel
+    │                   │                   │                    │
+    │ run ubuntu bash   │                   │                    │
+    ├──────────────────▶│                   │                    │
+    │                   │ Pull image        │                    │
+    │                   ├──────────────────▶│ HTTP GET layers    │
+    │                   │◀──────────────────┤ Extract to cache   │
+    │                   │                   │                    │
+    │                   │ Setup overlay     │                    │
+    │                   ├──────────────────▶│ mount overlay      │
+    │                   │                   ├───────────────────▶│
+    │                   │                   │◀───────────────────┤
+    │                   │◀──────────────────┤                    │
+    │                   │                   │                    │
+    │                   │ Create cgroup     │                    │
+    │                   ├──────────────────▶│ mkdir, write files │
+    │                   │◀──────────────────┤                    │
+    │                   │                   │                    │
+    │                   │ Spawn process     │                    │
+    │                   ├──────────────────▶│ clone()            │
+    │                   │                   ├───────────────────▶│
+    │                   │                   │                    │ [child]
+    │                   │                   │                    │ set hostname
+    │                   │                   │                    │ add to cgroup
+    │                   │                   │                    │ pivot_root
+    │                   │                   │                    │ close fds
+    │                   │                   │                    │ execvp bash
+    │                   │                   │                    │
+    │                   │                   │◀───[PID]───────────┤ [parent]
+    │                   │◀──────────────────┤                    │
+    │                   │                   │                    │
+    │◀────[ID]──────────┤                   │                    │
+    │                   │                   │                    │
+    │                   │ [background]      │                    │
+    │                   │ wait_for_exit()   │                    │
+    │                   │                   │                    │
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TRACING: All components instrumented with #[instrument] for observability   ║
+║ Set RUST_LOG=debug for detailed logging of all operations                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝

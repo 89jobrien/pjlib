@@ -1,0 +1,9 @@
+{
+  "id": "8",
+  "subject": "Create CompanionEvent Types",
+  "description": "Add CompanionEvent enum with User, System, ControlRequest, ControlResponse variants. Match maestro-companion protocol format with proper serde annotations. Add serialization tests.\n\nFiles:\n- Modify: maestro-cli/src/claude/companion.rs\n\nExpected: 3 tests pass (user event, permission request, system init)",
+  "activeForm": "Creating CompanionEvent types",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

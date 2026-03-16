@@ -20,6 +20,12 @@ description: Research Task Breakdown: Project Viability Assessment
   - Competitive: 8 tasks
   - Synthesizer: 1 task
 
+## Current State
+
+Confirm location before starting phase work.
+
+!`pwd`
+
 ## Phase 1: Foundation (BLOCKING)
 
 This phase establishes the research framework and validates project locations.

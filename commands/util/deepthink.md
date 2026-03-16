@@ -5,6 +5,12 @@ description: When users request "deep iterative thinking", "exploratory iteratio
 
 # Deep Iterative Thinking
 
+## Current State
+
+Confirm the working directory before starting iterative analysis.
+
+!`pwd`
+
 ## Step Zero: Understand the Problem (MANDATORY)
 
 Before starting any thinking, you must:

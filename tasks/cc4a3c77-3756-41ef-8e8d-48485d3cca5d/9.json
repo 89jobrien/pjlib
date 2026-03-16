@@ -1,0 +1,9 @@
+{
+  "id": "9",
+  "subject": "Create CompanionClient with WebSocket Connection",
+  "description": "Implement CompanionClient with WebSocket connection using tokio-tungstenite. Support graceful degradation for local mode, fail-fast for remote mode. Add send_event() method. Add futures-util dependency.\n\nFiles:\n- Modify: maestro-cli/src/claude/companion.rs\n- Modify: maestro-cli/Cargo.toml\n\nExpected: Test passes for client disabled when env missing",
+  "activeForm": "Creating CompanionClient with WebSocket",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

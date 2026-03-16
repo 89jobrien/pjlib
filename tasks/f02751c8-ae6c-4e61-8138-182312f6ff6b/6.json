@@ -1,0 +1,9 @@
+{
+  "id": "6",
+  "subject": "Update documentation for setup hooks",
+  "description": "Update documentation files:\n- CLAUDE.md - Add setup commands to quick reference\n- README.md - Add setup commands to command index\n- hooks/LOGGING.md - Document setup hook logging (if needed)\n\nEnsure all new commands are discoverable and documented.",
+  "activeForm": "Updating documentation",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

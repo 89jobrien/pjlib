@@ -7,6 +7,11 @@ description: PR Review
 
 **PR Link/Number**: $ARGUMENTS
 
+## Current State
+
+- Current branch: !`git branch --show-current`
+- Repo status: !`git status --porcelain`
+
 > **Instructions**: Execute each task in the order given to conduct a thorough code review.  Update GitHub with this review.
 > **Important**: The future is now—any improvements or “future” recommendations must be addressed **immediately**.
 

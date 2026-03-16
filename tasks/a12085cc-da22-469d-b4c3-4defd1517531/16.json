@@ -1,0 +1,9 @@
+{
+  "id": "16",
+  "subject": "Phase 4.1: Move security.rs to actions",
+  "description": "Move src/security.rs to src/actions/security.rs using git mv. Update actions/mod.rs, lib.rs re-exports, and any imports in command handlers.",
+  "activeForm": "Moving security to actions",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

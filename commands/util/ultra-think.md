@@ -7,6 +7,12 @@ argument-hint: [problem or question to analyze]
 
 Deep analysis and problem solving mode
 
+## Current State
+
+Confirm the working directory before starting the analysis.
+
+!`pwd`
+
 ## Instructions
 
 1. **Initialize Ultra Think Mode**

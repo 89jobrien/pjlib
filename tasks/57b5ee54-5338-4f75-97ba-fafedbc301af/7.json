@@ -1,0 +1,9 @@
+{
+  "id": "7",
+  "subject": "Implement watcher.rs module",
+  "description": "Create src/watcher.rs using notify crate. Implement start_watching() with RecursiveMode, filter for .jsonl files, convert notify events to FileEvent enum, handle errors gracefully.",
+  "activeForm": "Implementing watcher.rs module",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

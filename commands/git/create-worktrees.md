@@ -5,6 +5,11 @@ description: Git Worktree Commands
 
 # Git Worktree Commands
 
+## Current State
+
+- Current branch: !`git branch --show-current`
+- Existing worktrees: !`git worktree list | wc -l`
+
 ## Create Worktrees for All Open PRs
 
 This command fetches all open pull requests using GitHub CLI, then creates a git worktree for each PR's branch in the `./tree/<BRANCH_NAME>` directory.

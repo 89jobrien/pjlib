@@ -14,6 +14,12 @@ Conduct deep, parallel research on any topic using multiple specialized subagent
 
 "$ARGUMENTS"
 
+## Current State
+
+Verify the working directory before launching research.
+
+!`pwd`
+
 ## Research Process
 
 ### Phase 1: Query Classification (CRITICAL FIRST STEP)

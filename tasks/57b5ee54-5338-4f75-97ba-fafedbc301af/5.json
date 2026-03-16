@@ -1,0 +1,9 @@
+{
+  "id": "5",
+  "subject": "Implement parser.rs module",
+  "description": "Create src/parser.rs with streaming JSONL parser. Implement parse_metadata() using BufReader for memory efficiency, extract session ID and turn count, skip malformed lines gracefully.",
+  "activeForm": "Implementing parser.rs module",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

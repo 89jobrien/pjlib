@@ -8,6 +8,11 @@ description: Shortcut to see all available Claude tools
 
 Display All Available Development Tools
 
+## Current State
+
+- Tooling docs: !`find ~/.claude -name "*.md" -maxdepth 3 | wc -l`
+- Repo root: !`pwd`
+
 ## Instructions
 
 Display all available tools from your system prompt in the following format:

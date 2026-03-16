@@ -1,0 +1,9 @@
+{
+  "id": "10",
+  "subject": "Write integration tests",
+  "description": "Create tests/integration_test.rs to verify end-to-end functionality: file discovery, watching, event handling with temporary test directories.",
+  "activeForm": "Writing integration tests",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

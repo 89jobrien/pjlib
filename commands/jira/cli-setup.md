@@ -8,6 +8,11 @@ argument-hint: [--cloud|--server]
 
 Install and configure `jira-cli` (ankitpokhrel/jira-cli) for command-line Jira access.
 
+## Current State
+
+- Jira CLI: !`jira --version 2>/dev/null || echo "jira-cli not installed"`
+- Config path: !`ls ~/.config/jira-cli/.config.yml 2>/dev/null | wc -l`
+
 ## Instructions
 
 ### Step 1: Check if jira-cli is installed

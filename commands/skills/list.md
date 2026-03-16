@@ -14,6 +14,12 @@ Display all available skills in the `~/.claude/skills/` directory.
 - `--used-by`: Show which agents use each skill
 - `--references`: Show reference files for each skill
 
+## Current State
+
+Check the skills directory before listing.
+
+!`ls ~/.claude/skills`
+
 ## Execution
 
 ```bash

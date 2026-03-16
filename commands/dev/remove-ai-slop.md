@@ -18,13 +18,10 @@ If no argument provided, default to `dev`. Common options:
 - `main` or `--main` - Compare against main branch
 - `master` or `--master` - Compare against master branch
 
-## Current Branch Context
+## Current State
 
-!git branch --show-current 2>/dev/null
-
-## Changed Files
-
-!git diff $(git merge-base HEAD ${ARGUMENTS:-dev})..HEAD --name-only 2>/dev/null | head -30
+- Current branch: !`git branch --show-current 2>/dev/null`
+- Changed files: !`git diff $(git merge-base HEAD ${ARGUMENTS:-dev})..HEAD --name-only 2>/dev/null | head -30`
 
 ## Slop Patterns to Remove
 

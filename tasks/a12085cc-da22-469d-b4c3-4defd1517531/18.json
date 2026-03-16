@@ -1,0 +1,9 @@
+{
+  "id": "18",
+  "subject": "Phase 4.3: Move remaining action modules (batch)",
+  "description": "Batch move context.rs, reporting.rs, state.rs, deployment.rs, telemetry.rs, metrics.rs, migration.rs, validation.rs, debug.rs to actions/ directory. Update actions/mod.rs with all re-exports and lib.rs declarations.",
+  "activeForm": "Moving remaining actions",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

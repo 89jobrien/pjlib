@@ -1,0 +1,9 @@
+{
+  "id": "4",
+  "subject": "TDD: WebSocket health monitoring - Write failing tests",
+  "description": "Phase 2 RED: Write comprehensive failing tests for WebSocket PING/PONG health monitoring. Tests must fail initially. Cover: keepalive task spawn, PING sending, PONG timeout detection, graceful close, task lifecycle, concurrent scenarios.",
+  "activeForm": "Writing failing tests for WebSocket health",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

@@ -1,0 +1,9 @@
+{
+  "id": "8",
+  "subject": "Implement display.rs module",
+  "description": "Create src/display.rs with terminal output formatting. Implement print_banner(), print_summary(), and print_event() with colored output (green/yellow/red) and timestamp formatting.",
+  "activeForm": "Implementing display.rs module",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

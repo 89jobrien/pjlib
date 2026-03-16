@@ -22,6 +22,12 @@ Modern remote-first teams rely on async standup notes to maintain visibility, co
 - `atlassian`: Jira ticket queries (graceful fallback if unavailable)
 - Optional: Calendar integrations for meeting context
 
+## Current State
+
+Check recent Git history before assembling standup data.
+
+!`git log -5 --oneline`
+
 ## Data Source Orchestration
 
 **Primary Sources:**

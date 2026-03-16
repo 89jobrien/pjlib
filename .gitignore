@@ -3,10 +3,17 @@ logs/exported_chatlogs/
 docs/**
 *.local.md
 *.local.json
+tasks/**
+reviews/
+backups/
+.sisyphus/
+paste-cache/
+.ralph-tui/
 
 # IDE / Editor state
 .claude/
 .cursor/
+.opencode/
 
 # Auto-generated / managed (per CLAUDE.md)
 file-history/
@@ -15,8 +22,13 @@ projects/
 debug/
 statsig/
 ide/
+design/
+cache/
+*.backup.*/
 shell-snapshots/
 session-diffs/
+session-env/
+.hooks/
 
 # Local state & caches
 stats-cache.json
@@ -236,3 +248,8 @@ pyrightconfig.json
 # Ignore all local history of files
 .history
 .ionide
+# Archived directory
+archived-2026-03/
+
+# Ephemeral cache
+paste-cache/*.txt

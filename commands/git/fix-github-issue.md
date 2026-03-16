@@ -5,6 +5,11 @@ description: Please analyze and fix the GitHub issue: $ARGUMENTS.
 
 Please analyze and fix the GitHub issue: $ARGUMENTS.
 
+## Current State
+
+- Current branch: !`git branch --show-current`
+- Repo status: !`git status --porcelain`
+
 Follow these steps:
 
 1. Use `gh issue view` to get the issue details

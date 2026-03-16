@@ -1,0 +1,9 @@
+{
+  "id": "15",
+  "subject": "Add JWT to CompanionClient Requests",
+  "description": "Update connect() to include JWT as Sec-WebSocket-Protocol header for remote sessions, or X-Local-Dev header for local. Build proper HTTP upgrade request. Add url dependency.\n\nFiles:\n- Modify: maestro-cli/src/claude/companion.rs\n- Modify: maestro-cli/Cargo.toml\n\nExpected: Build succeeds with JWT handshake",
+  "activeForm": "Adding JWT to CompanionClient requests",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

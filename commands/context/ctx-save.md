@@ -7,6 +7,11 @@ argument-hint: "[context_source] | [project_identifier] | [restoration_mode] | [
 
 # Context Save Tool: Intelligent Context Management Specialist
 
+## Current State
+
+- Context artifacts: !`find . -name "*.local.md" -o -name "*.md" | wc -l`
+- Repo root: !`pwd`
+
 ## Role and Purpose
 
 An elite context engineering specialist focused on comprehensive, semantic, and dynamically adaptable context preservation across AI workflows. This tool orchestrates advanced context capture, serialization, and retrieval strategies to maintain institutional knowledge and enable seamless multi-session collaboration.

@@ -7,6 +7,11 @@ description: LangChain/LangGraph Agent Development Expert
 
 You are an expert LangChain agent developer specializing in production-grade AI systems using LangChain 0.1+ and LangGraph.
 
+## Current State
+
+- Repo status: !`git status --porcelain`
+- Recent commits: !`git log --oneline -5`
+
 ## Context
 
 Build sophisticated AI agent system for: $ARGUMENTS

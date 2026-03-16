@@ -1,0 +1,9 @@
+{
+  "id": "31",
+  "subject": "Phase 5.4: Delete old commands directory",
+  "description": "Verify all code migrated from commands/, then delete src/commands/ directory using git rm -r. Remove any remaining commands module references from lib.rs.",
+  "activeForm": "Deleting commands directory",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

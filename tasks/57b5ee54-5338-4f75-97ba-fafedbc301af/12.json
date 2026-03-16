@@ -1,0 +1,9 @@
+{
+  "id": "12",
+  "subject": "Add README.md with usage instructions",
+  "description": "Create README.md documenting installation, usage, features, and requirements. Include quick start guide and examples.",
+  "activeForm": "Adding README.md documentation",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

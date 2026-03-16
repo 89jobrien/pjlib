@@ -8,6 +8,12 @@ description: Run tests with framework detection. Supports pytest, Jest, Vitest, 
 
 Execute the test suite with coverage reporting. Automatically detects and uses the appropriate test framework.
 
+## Current State
+
+Confirm the working directory before running tests.
+
+!`pwd`
+
 ## Instructions
 
 ### 1. Detect Test Framework

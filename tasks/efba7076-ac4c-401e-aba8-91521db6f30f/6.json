@@ -1,0 +1,9 @@
+{
+  "id": "6",
+  "subject": "Invoke writing-plans skill",
+  "description": "Transition to implementation planning by invoking the writing-plans skill",
+  "activeForm": "Invoking writing-plans skill",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

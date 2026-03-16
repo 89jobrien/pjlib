@@ -12,6 +12,12 @@ Search for skills matching a keyword in their name, description, or content.
 
 - `<keyword>`: The search term to find in skill names and descriptions
 
+## Current State
+
+Check that skills are available before searching.
+
+!`ls ~/.claude/skills`
+
 ## Execution
 
 Search for skills matching the provided keyword:

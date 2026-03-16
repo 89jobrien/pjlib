@@ -1,21 +1,29 @@
 ---
-allowed-tools: Bash
-argument-hint: " <description> [--priority low|medium|high] [--project <project>] [--tags <tags>]"
-description: Add a todo to SQLite DB using joecc CLI.
+allowed-tools: Bash(doob:*)
+argument-hint: " <description> [--priority 0-5] [--project <project>] [--tags <tags>]"
+description: Add a todo to SQLite DB using doob CLI.
 ---
 
 # Add Todo
 
-Add a new todo to the SQLite database.
+Add a new todo to the SQLite database: $ARGUMENTS
 
-!cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli add $DESCRIPTION --priority $PRIORITY --project $PROJECT --tags $TAGS
+!`doob todo add $ARGUMENTS`
 
 ## Examples
 
 ```bash
-cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli todo add "Fix SetLevel() losing JSON config in logging.go" --priority 1 --project /Users/joe/Documents/GitHub/gaw --tags "bug,logging"
+doob todo add "Fix SetLevel() losing JSON config in logging.go" --priority 1 --project gaw --tags bug,logging
 ```
 
 ```bash
-cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli todo add "Add security tests for ValidatePathWithin()" --priority 1 --project /Users/joe/Documents/GitHub/gaw --tags "critical,testing,security"
+doob todo add "Add security tests for ValidatePathWithin()" --priority 1 --project gaw --tags critical,testing,security
 ```
+
+## Options
+
+- `--priority <0-5>`: Priority level (0=highest, 5=lowest)
+- `--project <name>`: Associate with project
+- `--file <path>`: Associate with file
+- `--due <YYYY-MM-DD>`: Set due date
+- `--tags <tag1,tag2>`: Comma-separated tags

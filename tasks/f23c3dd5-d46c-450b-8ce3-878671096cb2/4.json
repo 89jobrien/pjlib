@@ -1,0 +1,9 @@
+{
+  "id": "4",
+  "subject": "Test end-to-end Claude Code companion integration",
+  "description": "Manual testing: Start maestro-api, create session with companion enabled, verify Claude Code connects to WebSocket, send permission request from browser UI, verify Claude receives response. Automated: Add integration test that validates --sdk-url is present in claude command when companion is enabled.",
+  "activeForm": "Testing end-to-end Claude companion integration",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

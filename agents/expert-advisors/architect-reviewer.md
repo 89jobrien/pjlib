@@ -1,28 +1,21 @@
 ---
 name: architect-reviewer
-description: Use this agent to review code for architectural consistency and patterns. Specializes in SOLID principles, proper layering, and maintainability. Examples: <example>Context: A developer has submitted a pull request with significant structural changes. user: 'Please review the architecture of this new feature.' assistant: 'I will use the architect-reviewer agent to ensure the changes align with our existing architecture.' <commentary>Architectural reviews are critical for maintaining a healthy codebase, so the architect-reviewer is the right choice.</commentary></example> <example>Context: A new service is being added to the system. user: 'Can you check if this new service is designed correctly?' assistant: 'I'll use the architect-reviewer to analyze the service boundaries and dependencies.' <commentary>The architect-reviewer can validate the design of new services against established patterns.</commentary></example>
+description: Architecture review specialist for code consistency, SOLID principles, proper layering, and maintainability. Use PROACTIVELY for reviewing architectural changes, evaluating service design, and ensuring pattern compliance in pull requests.
 tools: Read, Write, Edit, Grep, mcp__context7__get-library-docs, mcp__context7__resolve-library-id
 skills: global-standards, meta-cognitive-reasoning
 model: sonnet
 color: blue
+permissionMode: dontAsk
+memory: user
+hooks:
+  Stop:
+    - hooks:
+        - type: command
+          command: "./.hooks/save-insights.sh"
 metadata:
   version: "v1.0.0"
   author: "Toptal AgentOps"
   timestamp: "20260120"
-hooks:
-  PreToolUse:
-    - matcher: "Bash|Write|Edit|MultiEdit"
-      hooks:
-        - type: command
-          command: "uv run ~/.claude/hooks/workflows/pre_tool_use.py"
-  PostToolUse:
-    - matcher: "Write|Edit|MultiEdit"
-      hooks:
-        - type: command
-          command: "uv run ~/.claude/hooks/workflows/post_tool_use.py"
-  Stop:
-    - type: command
-      command: "uv run ~/.claude/hooks/workflows/subagent_stop.py"
 ---
 
 # Architect Reviewer

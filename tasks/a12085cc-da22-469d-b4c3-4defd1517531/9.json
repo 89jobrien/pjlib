@@ -1,0 +1,9 @@
+{
+  "id": "9",
+  "subject": "Phase 2.1: Create types/hook_input.rs with tests",
+  "description": "Move CommonHookFields and HookInput<T> to types/hook_input.rs with comprehensive tests for serialization and deserialization. Update types/mod.rs and lib.rs re-exports.",
+  "activeForm": "Creating types/hook_input.rs",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

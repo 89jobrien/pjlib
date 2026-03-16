@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash
+allowed-tools: Bash(doob:*)
 argument-hint: " <id>"
 description: Mark completed todo <id> as incomplete in SQLite DB.
 ---
@@ -22,16 +22,13 @@ Mark a completed todo as incomplete (pending) in the SQLite database.
 
 ## Command
 
-!cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli todo update $ID --status pending
+!`doob todo undo $ARGUMENTS`
 
 ## Examples
 
 ```bash
-# Mark todo #42 as incomplete
-cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli todo update 42 --status pending
-
-# Or mark as in_progress instead
-cd /Users/joe/Documents/Projects/joecc && uv run python -m joecc.storage.cli todo update 42 --status in_progress
+# Mark todo #42 as incomplete (back to pending)
+doob todo undo 42
 ```
 
 ## Status Options

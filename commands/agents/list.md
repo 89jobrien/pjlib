@@ -8,6 +8,11 @@ argument-hint: "[--category <name>] | [--skills] | [--verbose]"
 
 Display all available agents in the `~/.claude/agents/` directory organized by category.
 
+## Current State
+
+- Agent count: !`find ~/.claude/agents -name "*.md" -type f | wc -l`
+- Root categories: !`ls ~/.claude/agents | wc -l`
+
 ## Options
 
 - `--category <name>`: Filter to specific category (e.g., dev, database, testing)

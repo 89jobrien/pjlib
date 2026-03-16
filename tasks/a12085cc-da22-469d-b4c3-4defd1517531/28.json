@@ -1,0 +1,9 @@
+{
+  "id": "28",
+  "subject": "Phase 5.2i: Create permission_request event module",
+  "description": "Create events/permission_request/ with mod.rs (PermissionRequestInput), handler.rs, tests.rs. Copy implementation from commands/permission_request.rs.",
+  "activeForm": "Creating permission_request event",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Create setup workflow orchestrator",
+  "description": "Create hooks/workflows/setup.py that:\n- Orchestrates all setup tasks\n- Takes JSON payload from stdin\n- Runs validators based on arguments\n- Returns structured JSON results\n- Uses hook_logging for tracking",
+  "activeForm": "Creating setup workflow orchestrator",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

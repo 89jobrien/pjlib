@@ -6,6 +6,11 @@ argument-hint: [query] e.g., "my open bugs" or "project=AOP AND status='In Progr
 
 Search Jira for issues matching: **$ARGUMENTS**
 
+## Current State
+
+- Jira CLI: !`jira --version 2>/dev/null || echo "jira-cli not installed"`
+- Current user: !`jira me 2>/dev/null || echo "Not authenticated"`
+
 ## Instructions
 
 ### Step 1: Determine Query Type

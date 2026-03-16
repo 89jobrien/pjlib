@@ -1,0 +1,9 @@
+{
+  "id": "12",
+  "subject": "Add Exponential Backoff for Reconnection",
+  "description": "Implement ExponentialBackoff with 1s → 30s max delay. Doubles delay each attempt with reset() method. Unit tested.\n\nFiles:\n- Modify: maestro-cli/src/claude/companion.rs\n\nExpected: Test passes for backoff sequence (1s, 2s, 4s, 8s, 16s, 30s, 30s)",
+  "activeForm": "Adding exponential backoff",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

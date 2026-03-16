@@ -9,6 +9,11 @@ argument-hint: "[directory]"
 
 Analyze directory structure and purpose
 
+## Current State
+
+- Target preview: !`ls -1 "${ARGUMENTS:-.}" | head -5`
+- Working dir: !`pwd`
+
 ## Instructions
 
 1. **Target Directory**

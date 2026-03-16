@@ -1,0 +1,9 @@
+{
+  "id": "17",
+  "subject": "Add Environment Variable Injection",
+  "description": "Create inject_companion_env() function to set COMPANION_ENABLED, MAESTRO_SESSION_ID, MAESTRO_SESSION_MODE env vars in container. Include MAESTRO_JWT and MAESTRO_API_URL for remote.\n\nFiles:\n- Modify: maestro-cli/src/claude/session.rs\n\nExpected: Build succeeds, env vars injected on session creation",
+  "activeForm": "Adding environment variable injection",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

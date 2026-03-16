@@ -6,6 +6,11 @@ argument-hint: [issue-key] [status] e.g., PROJ-123 "In Progress"
 
 Transition Jira issue **$1** to status: **$2**
 
+## Current State
+
+- Jira CLI: !`jira --version 2>/dev/null || echo "jira-cli not installed"`
+- Current user: !`jira me 2>/dev/null || echo "Not authenticated"`
+
 ## Instructions
 
 ### Step 1: Get Current State

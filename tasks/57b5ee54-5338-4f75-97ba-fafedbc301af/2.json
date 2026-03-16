@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Create types.rs module",
+  "description": "Create src/types.rs with core data structures: ConversationFile, FileEvent enum (Created/Updated/Deleted), and ConversationMetadata.",
+  "activeForm": "Creating types.rs module",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

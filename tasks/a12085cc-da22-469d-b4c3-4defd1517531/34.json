@@ -1,0 +1,9 @@
+{
+  "id": "34",
+  "subject": "Phase 6.3: Update README.md and documentation",
+  "description": "Update README.md with new architecture section documenting types/, events/, actions/, helpers/ modules. Update code examples to use new import paths.",
+  "activeForm": "Updating documentation",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

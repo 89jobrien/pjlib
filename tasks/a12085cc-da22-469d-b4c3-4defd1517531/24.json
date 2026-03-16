@@ -1,0 +1,9 @@
+{
+  "id": "24",
+  "subject": "Phase 5.2e: Create subagent_stop event module",
+  "description": "Create events/subagent_stop/ with mod.rs (SubagentStopInput), handler.rs, tests.rs. Copy implementation from commands/subagent_stop.rs.",
+  "activeForm": "Creating subagent_stop event",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

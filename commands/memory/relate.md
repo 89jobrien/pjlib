@@ -6,6 +6,11 @@ description: Create relationships between entities in the knowledge graph
 
 Creates relationships between entities in the knowledge graph to build connections and context.
 
+## Current State
+
+- Memory files: !`find ~/.claude/memory -type f 2>/dev/null | wc -l`
+- Knowledge graph cache: !`find ~/.claude -name "*.local.md" 2>/dev/null | wc -l`
+
 ## Usage
 
 ```

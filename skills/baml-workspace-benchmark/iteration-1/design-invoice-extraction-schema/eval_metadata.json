@@ -1,0 +1,47 @@
+{
+  "eval_id": 1,
+  "eval_name": "design-invoice-extraction-schema",
+  "prompt": "hey can you help me design a baml schema for extracting data from invoices? I need to pull out like vendor info, line items with prices and quantities, tax amounts, and total. also sometimes invoices have multiple currencies so need to handle that",
+  "assertions": [
+    {
+      "text": "Classes use PascalCase naming (Invoice, VendorInfo, LineItem)",
+      "description": "All class names should follow PascalCase convention"
+    },
+    {
+      "text": "Fields use snake_case naming (vendor_name, line_total, tax_rate)",
+      "description": "All field names should follow snake_case convention"
+    },
+    {
+      "text": "All fields have @description annotations",
+      "description": "Every field should have a clear @description explaining its purpose"
+    },
+    {
+      "text": "Multi-currency support implemented (currency fields, CurrencyAmount class, or per-item currency)",
+      "description": "Schema should handle invoices with items in different currencies"
+    },
+    {
+      "text": "Includes line items with quantities, prices, and totals",
+      "description": "LineItem class should have quantity, unit_price, and line_total fields"
+    },
+    {
+      "text": "Includes vendor information class/fields",
+      "description": "Schema should capture vendor name, address, contact info, tax ID"
+    },
+    {
+      "text": "Includes tax handling (tax amounts, rates, or tax breakdown)",
+      "description": "Schema should handle sales tax, VAT, or other tax types"
+    },
+    {
+      "text": "Includes at least 3 diverse test cases",
+      "description": "Should have tests for simple invoices, multi-currency, and edge cases"
+    },
+    {
+      "text": "Function prompt ends with {{ ctx.output_format }}",
+      "description": "All function prompts should include the output format template variable"
+    },
+    {
+      "text": "Test names are descriptive (not test1, test2)",
+      "description": "Tests should have meaningful names like extract_multicurrency_invoice"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "26",
+  "subject": "Phase 5.2g: Create user_prompt_submit event module",
+  "description": "Create events/user_prompt_submit/ with mod.rs (UserPromptSubmitInput), handler.rs, tests.rs. Copy implementation from commands/user_prompt_submit.rs.",
+  "activeForm": "Creating user_prompt_submit event",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

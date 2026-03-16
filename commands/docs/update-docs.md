@@ -21,10 +21,9 @@ Update project documentation systematically: $ARGUMENTS
 ## Documentation Analysis
 
 1. Review current documentation status:
-   - Check `specs/implementation_status.md` for overall project status
-   - Review implemented phase document (`specs/phase{N}_implementation_plan.md`)
-   - Review `specs/flutter_structurizr_implementation_spec.md` and `specs/flutter_structurizr_implementation_spec_updated.md`
-   - Review `specs/testing_plan.md` to ensure it is current given recent test passes, failures, and changes
+   - Check `.ctx/specs/implementation_status.md` for overall project status
+   - Review implemented phase document (`.ctx/specs/phase{N}_implementation_plan.md`)
+   - Review `.ctx/specs/testing_plan.md` to ensure it is current given recent test passes, failures, and changes
    - Examine `CLAUDE.md` and `README.md` for project-wide documentation
    - Check for and document any new lessons learned or best practices in CLAUDE.md
 
@@ -38,7 +37,7 @@ Update project documentation systematically: $ARGUMENTS
 ## Documentation Updates
 
 1. Update phase implementation document:
-   - Mark completed tasks with ✅ status
+   - Mark completed tasks with status
    - Update implementation percentages
    - Add detailed notes on implementation approach
    - Document any deviations from original plan with justification
@@ -54,7 +53,7 @@ Update project documentation systematically: $ARGUMENTS
    - Note any challenges overcome and solutions implemented
 
 3. Update implementation specification documents:
-   - Mark completed items with ✅ or strikethrough but preserve original requirements
+   - Mark completed items with or strikethrough but preserve original requirements
    - Add notes on implementation details where appropriate
    - Add references to implemented files and classes
    - Update any implementation guidance based on experience
@@ -77,7 +76,7 @@ Update project documentation systematically: $ARGUMENTS
 1. Maintain consistent documentation style:
    - Use clear headings and sections
    - Include code examples where helpful
-   - Use status indicators (✅, ⚠️, ❌) consistently
+   - Use status indicators (OK, ❌) consistently
    - Maintain proper Markdown formatting
 
 2. Ensure documentation completeness:
@@ -89,7 +88,7 @@ Update project documentation systematically: $ARGUMENTS
 ## Guidelines
 
 - DO NOT CREATE new specification files
-- UPDATE existing files in the `specs/` directory
+- UPDATE existing files in the `.ctx/specs/` directory
 - Maintain consistent documentation style
 - Include practical examples where appropriate
 - Cross-reference related documentation sections

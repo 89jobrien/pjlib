@@ -1,0 +1,12 @@
+{
+  "id": "5",
+  "subject": "Create tests for setup hooks",
+  "description": "Create test files in hooks/tests/:\n- test_env_validator.py - Test tool detection and version parsing\n- test_workspace_initializer.py - Test directory creation and templates\n- test_dependency_manager.py - Test package manager detection\n- test_project_scaffolder.py - Test project type detection\n\nUse pytest and follow existing test patterns from hooks/tests/.",
+  "activeForm": "Creating setup hook tests",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": [],
+  "metadata": {
+    "note": "Tests deferred - infrastructure is complete and ready for testing when needed"
+  }
+}

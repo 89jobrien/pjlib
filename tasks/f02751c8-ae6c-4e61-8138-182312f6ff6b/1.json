@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Create hooks/setup/ directory structure",
+  "description": "Create the hooks/setup/ directory with:\n- __init__.py with shared utilities\n- env_validator.py for environment validation\n- workspace_initializer.py for workspace setup\n- dependency_manager.py for dependency checking\n- project_scaffolder.py for project initialization\n\nEach module should follow existing hook patterns with hook_invocation logging and proper error handling.",
+  "activeForm": "Creating hooks/setup directory structure",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

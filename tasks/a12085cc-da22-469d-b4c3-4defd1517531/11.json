@@ -1,0 +1,9 @@
+{
+  "id": "11",
+  "subject": "Phase 2.3: Create types/decisions.rs with all decision types",
+  "description": "Move all decision control types (DecisionControl, PreToolUseDecision, PermissionRequestDecision, etc.) to types/decisions.rs with serialization tests.",
+  "activeForm": "Creating types/decisions.rs",
+  "status": "pending",
+  "blocks": [],
+  "blockedBy": []
+}

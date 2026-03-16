@@ -6,6 +6,11 @@ argument-hint: [project] [summary] e.g., PROJ "Fix login bug"
 
 Create a new Jira issue.
 
+## Current State
+
+- Jira CLI: !`jira --version 2>/dev/null || echo "jira-cli not installed"`
+- Current user: !`jira me 2>/dev/null || echo "Not authenticated"`
+
 ## Arguments
 
 - `$1` - Project key (optional, will prompt if missing)

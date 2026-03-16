@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "TDD: Permission tracker cleanup - Write failing tests",
+  "description": "Phase 2 RED: Write comprehensive failing unit tests for background cleanup task in PermissionTracker. Tests must fail initially due to missing implementation. Cover: periodic cleanup, expiration logic, concurrent requests during cleanup, shutdown scenarios, weak reference lifecycle.",
+  "activeForm": "Writing failing tests for permission cleanup",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

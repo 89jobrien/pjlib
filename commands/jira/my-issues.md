@@ -6,6 +6,11 @@ argument-hint: [--all | --sprint | --overdue]
 
 List my Jira issues.
 
+## Current State
+
+- Jira CLI: !`jira --version 2>/dev/null || echo "jira-cli not installed"`
+- Current user: !`jira me 2>/dev/null || echo "Not authenticated"`
+
 ## Options
 
 - `--all` or no args: All my open issues
