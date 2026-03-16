@@ -1,37 +1,122 @@
 ---
 allowed-tools: Read, Write, Edit, Bash
-argument-hint: [language] | --javascript | --typescript | --python | --multi-language
-description: Configure comprehensive code linting and quality analysis tools with automated enforcement
+argument-hint: [--strict] | [--workspace]
+description: Configure comprehensive code linting and quality analysis with Clippy for Rust projects
 ---
 
 # Setup Code Linting
 
-Configure comprehensive code linting and quality analysis: **$ARGUMENTS**
+Configure comprehensive Rust code linting and quality analysis: **$ARGUMENTS**
 
 ## Current Code Quality State
 
-- Languages detected: !`find . -name "*.js" -o -name "*.ts" -o -name "*.py" -o -name "*.rs" | head -5`
-- Existing linters: @.eslintrc.* or @pyproject.toml or @tslint.json
-- Package manager: @package.json or @requirements.txt or @Cargo.toml
-- Code quality tools: !`which eslint flake8 pylint mypy clippy 2>/dev/null | wc -l`
+- Rust files detected: !`find . -name "*.rs" | head -10`
+- Existing clippy config: @clippy.toml
+- Cargo workspace: @Cargo.toml with [workspace] section
+- Installed linters: !`cargo clippy --version 2>/dev/null || echo "clippy not installed"`
 
 ## Task
 
-Setup comprehensive code linting system with quality analysis and automated enforcement:
+Setup comprehensive Rust linting system with Clippy quality analysis and automated enforcement:
 
-**Language Focus**: Use $ARGUMENTS to configure JavaScript/TypeScript ESLint, Python linting, or multi-language quality analysis
+**Configuration Mode**: Use `--strict` for error-level lints or `--workspace` for workspace-wide configuration
 
-**Linting Configuration**:
+**Clippy Configuration**:
 
-1. **Tool Installation** - ESLint, Flake8, Pylint, MyPy, Clippy, language-specific linters and plugins
-2. **Rule Configuration** - Code style rules, error detection, best practices, security patterns, performance guidelines
-3. **IDE Integration** - Real-time linting, error highlighting, quick fixes, workspace settings
-4. **Quality Gates** - Pre-commit validation, CI/CD integration, pull request checks, quality metrics
-5. **Custom Rules** - Project-specific patterns, architectural constraints, team conventions
-6. **Performance** - Incremental linting, caching strategies, parallel execution, optimization
+1. **Tool Installation** - Install clippy via rustup, configure nightly features if needed
+2. **Configuration File** - Create `clippy.toml` with custom rules, disallowed methods, and project-specific constraints
+3. **IDE Integration** - Configure rust-analyzer for real-time linting, error highlighting, and quick fixes
+4. **CI/CD Integration** - Add clippy checks to GitHub Actions with `-D warnings` flag
+5. **Custom Lint Rules** - Define project-specific patterns, architecture constraints, and safety requirements
+6. **Workspace Configuration** - Shared clippy.toml for monorepos with per-crate overrides
 
-**Advanced Features**: Security linting, accessibility checks, performance analysis, dependency analysis, code complexity metrics.
+**Clippy Configuration Example**:
 
-**Team Standards**: Shared configurations, style guides, review guidelines, onboarding documentation.
+```toml
+# clippy.toml
+# Disallow unsafe patterns and enforce testability
+[[disallowed-methods]]
+path = "std::env::set_var"
+reason = "Use dependency injection for testability; env::set_var is not thread-safe"
 
-**Output**: Complete linting system with automated quality gates, team standards enforcement, and comprehensive code analysis.
+[[disallowed-methods]]
+path = "std::thread::sleep"
+reason = "Use tokio::time::sleep in async contexts; thread::sleep blocks the executor"
+
+[[disallowed-methods]]
+path = "std::env::var"
+reason = "Prefer explicit configuration structs over direct env::var calls"
+
+# Enforce explicit error handling
+[[disallowed-types]]
+path = "std::result::Result<T, Box<dyn std::error::Error>>"
+reason = "Use concrete error types (anyhow::Error or custom types) instead of Box<dyn Error>"
+```
+
+**CI/CD Integration Example**:
+
+```yaml
+# .github/workflows/ci.yml
+jobs:
+  clippy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Run Clippy
+        run: cargo clippy --all-targets --all-features --locked -- -D warnings
+
+      - name: Run Clippy (pedantic)
+        run: cargo clippy --all-targets --all-features --locked -- -W clippy::pedantic
+```
+
+**Common Clippy Lint Groups**:
+
+- `clippy::all` - All lints enabled by default
+- `clippy::pedantic` - Stricter lints for code quality
+- `clippy::nursery` - Experimental lints (may have false positives)
+- `clippy::cargo` - Lints for Cargo.toml issues
+- `clippy::restriction` - Lints that restrict language features (use selectively)
+
+**Workspace Configuration**:
+
+For Cargo workspaces, create a root-level `clippy.toml`:
+
+```toml
+# Root clippy.toml for workspace
+avoid-breaking-exported-api = true
+cognitive-complexity-threshold = 15
+```
+
+**Advanced Features**:
+
+- **Security Linting**: Enable `clippy::suspicious`, `clippy::unwrap_used`, `clippy::expect_used`
+- **Performance Analysis**: Enable `clippy::perf` group for optimization hints
+- **Complexity Metrics**: Configure `cognitive-complexity-threshold` and `type-complexity-threshold`
+- **Custom Allow Lists**: Use `#[allow(clippy::lint_name)]` for justified exceptions with comments
+
+**IDE Integration**:
+
+Configure rust-analyzer in `.vscode/settings.json`:
+
+```json
+{
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.check.allTargets": true,
+  "rust-analyzer.check.extraArgs": ["--all-features", "--", "-D", "warnings"],
+  "editor.formatOnSave": true
+}
+```
+
+**Team Standards**:
+
+- Shared `clippy.toml` in repository root
+- Documented exception policy for `#[allow()]` attributes
+- CI enforcement with `--locked` flag for reproducible builds
+- Pre-commit hooks for local validation
+
+**Output**: Complete Clippy linting system with automated quality gates, workspace configuration, and CI/CD integration for comprehensive Rust code analysis.

@@ -1,0 +1,26 @@
+{
+  "skill_name": "baml-standards",
+  "evals": [
+    {
+      "id": 1,
+      "name": "design-invoice-extraction-schema",
+      "prompt": "hey can you help me design a baml schema for extracting data from invoices? I need to pull out like vendor info, line items with prices and quantities, tax amounts, and total. also sometimes invoices have multiple currencies so need to handle that",
+      "expected_output": "Complete BAML schema with Invoice, LineItem, Vendor classes following naming conventions (PascalCase classes, snake_case fields), proper @description annotations, appropriate types (optional for vendor_email, arrays for line_items), and test cases covering basic invoices, multi-currency, and edge cases",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "review-existing-baml-code",
+      "prompt": "can you review this baml code and tell me whats wrong?\n\nclass user_profile {\n  userName string\n  Email string\n  phoneNumber string\n}\n\nfunction extractUserProfile(data: string) -> user_profile {\n  client GPT4\n  prompt #\"\n    Extract user profile from: {{ data }}\n  \"#\n}\n\ntest test1 {\n  functions [extractUserProfile]\n  args {\n    data \"John Doe, john@example.com, 555-1234\"\n  }\n}",
+      "expected_output": "Detailed review identifying: (1) class should be PascalCase (UserProfile not user_profile), (2) fields should be snake_case (user_name, email, phone_number), (3) missing @description on all fields, (4) prompt missing ctx.output_format, (5) test needs descriptive name, (6) should mark optional fields with ?, (7) should add more test cases for edge cases. Provide corrected version with explanations",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "generate-comprehensive-tests",
+      "prompt": "i have this baml function that analyzes git commits to classify them as feature/bugfix/refactor/docs/etc. can you generate a comprehensive test suite? currently i only have one basic test and i know i need way more coverage\n\nfunction ClassifyCommit(commit_message: string, diff_summary: string) -> CommitClassification {\n  client CustomGPT5Mini\n  prompt #\"\n    Classify this git commit:\n    Message: {{ commit_message }}\n    Changes: {{ diff_summary }}\n    {{ ctx.output_format }}\n  \"#\n}",
+      "expected_output": "Comprehensive test suite with 8-10 tests covering: (1) basic classifications (feature, bugfix, refactor, docs, test), (2) edge cases (empty message, very long message, ambiguous), (3) complex scenarios (mixed changes, breaking changes, reverts), (4) all tests with descriptive names like classify_feature_with_new_files, classify_bugfix_with_test, classify_ambiguous_refactor, using realistic commit messages and diff summaries",
+      "files": []
+    }
+  ]
+}

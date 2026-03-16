@@ -1,0 +1,15 @@
+# CI/CD Test Pipeline Template
+# See SKILL.md for full configuration
+
+name: Test Automation Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    # See SKILL.md for complete pipeline

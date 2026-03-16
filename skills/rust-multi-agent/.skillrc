@@ -1,0 +1,20 @@
+# Rust Multi-Agent Workflow Configuration
+
+SKILL_NAME="rust-multi-agent"
+SKILL_VERSION="1.0.0"
+SKILL_CREATED="2026-03-15"
+
+# Agents used by this skill
+AGENTS=(
+  "architect-reviewer"
+  "rust-optimization-scanner"
+  "test-engineer"
+)
+
+# Execution mode
+PARALLEL_EXECUTION=true
+TIMEOUT_SECONDS=300
+
+# Output
+GENERATE_REPORT=true
+REPORT_FORMAT="markdown"

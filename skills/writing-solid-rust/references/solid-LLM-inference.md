@@ -2,9 +2,11 @@
 
 Here’s the pattern adapted for AI/LLM work: a domain-level `LLM` trait as the port, concrete agent components, and adapters for OpenAI, Claude (Anthropic), and a local Ollama backend. [dev](https://dev.to/leapcell/trait-in-rust-explained-from-basics-to-advanced-usage-14mn)
 
-```rust
-// ai/domain.rs
+## Code
 
+### ai/domain.rs
+
+```rust
 use async_trait::async_trait;
 use serde_json::Value;
 
@@ -36,9 +38,9 @@ pub trait LlmProvider {
 
 ## Domain components
 
-```rust
-// ai/agents.rs
+### ai/agents.rs
 
+```rust
 use crate::ai::domain::{LlmProvider, ChatMessage, Role, LlmError};
 
 pub struct CodeReviewer<P: LlmProvider> {
@@ -91,9 +93,10 @@ impl<P: LlmProvider> QaAgent<P> {
 
 ## Adapters
 
-```rust
-// infra/openai.rs (simplified; use async reqwest + tokio in real code)
+### infra/openai.rs
 
+```rust
+// simplified; use async reqwest + tokio in real code
 use crate::ai::domain::{LlmProvider, ChatMessage, Role, LlmError};
 use async_trait::async_trait;
 use reqwest::Client;
@@ -131,9 +134,9 @@ impl LlmProvider for OpenAiAdapter {
 }
 ```
 
-```rust
-// infra/claude.rs
+### infra/claude.rs
 
+```rust
 use crate::ai::domain::{LlmProvider, ChatMessage, Role, LlmError};
 use async_trait::async_trait;
 
@@ -160,9 +163,9 @@ impl LlmProvider for ClaudeAdapter {
 }
 ```
 
-```rust
-// infra/ollama.rs (local)
+### infra/ollama.rs
 
+```rust
 use crate::ai::domain::{LlmProvider, ChatMessage, Role, LlmError};
 use async_trait::async_trait;
 
@@ -191,9 +194,9 @@ impl LlmProvider for OllamaAdapter {
 
 ## Composition root
 
-```rust
-// main.rs
+### main.rs
 
+```rust
 mod ai {
     pub mod domain;
     pub mod agents;
@@ -232,13 +235,15 @@ async fn main() -> Result<(), LlmError> {
 }
 ```
 
+---
+
 ## Where SOLID shows up
 
-- **SRP**  
+- **SRP**
   - `CodeReviewer` only reviews code (business rule); adapters only handle API calls; no leakage. [github](https://github.com/graniet/llm)
 
-- **OCP**  
+- **OCP**
   - New agents: `impl` via new generics. New providers: new `impl LlmProvider` (e.g., Grok, Gemini). [lib](https://lib.rs/crates/llmao)
 
-- **DIP**  
+- **DIP**
   - Domain depends on `LlmProvider` trait; `main` injects concrete adapters. Test with mocks easily. [github](https://github.com/graniet/llm)

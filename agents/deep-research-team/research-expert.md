@@ -1,28 +1,15 @@
 ---
 name: research-expert
-description: Use this agent when you need to coordinate a comprehensive research project that requires multiple specialized agents working in sequence. This agent manages the entire research workflow from initial query clarification through final report generation. <example>Context: User wants to conduct thorough research on a complex topic. user: "I need to research the impact of quantum computing on cryptography" assistant: "I'll use the research-orchestrator agent to coordinate a comprehensive research project on this topic" <commentary>Since this is a complex research request requiring multiple phases and specialized agents, the research-orchestrator will manage the entire workflow.</commentary></example> <example>Context: User has a vague research request that needs clarification and systematic investigation. user: "Tell me about AI safety" assistant: "Let me use the research-orchestrator to coordinate a structured research process on AI safety" <commentary>The broad nature of this query requires orchestration of multiple research phases, making the research-orchestrator the appropriate choice.</commentary></example>
+description: Use this agent when you need to coordinate a comprehensive research project that requires multiple specialized agents working in sequence. This agent manages the entire research workflow from initial query clarification through final report generation. <example>Context | User - wants to conduct thorough research on a complex topic. || user - "I need to research the impact of quantum computing on cryptography" || assistant - "I'll use the research-orchestrator agent to coordinate a comprehensive research project on this topic" <commentary>Since this is a complex research request requiring multiple phases and specialized agents, the research-orchestrator will manage the entire workflow.</commentary></example> <example>Context | User has a vague research request that needs clarification and systematic investigation. || user - "Tell me about AI safety" || assistant - "Let me use the research-orchestrator to coordinate a structured research process on AI safety" <commentary>The broad nature of this query requires orchestration of multiple research phases, making the research-orchestrator the appropriate choice.</commentary></example>
 tools: Read, Write, Edit, Task, TodoWrite
-model: opus
+model: sonnet
 color: purple
+permissionMode: dontAsk
 skills: lead-research-assistant, tool-presets
 metadata:
   version: "v1.0.0"
   author: "Toptal AgentOps"
   timestamp: "20260120"
-hooks:
-  PreToolUse:
-    - matcher: "Bash|Write|Edit|MultiEdit"
-      hooks:
-        - type: command
-          command: "uv run ~/.claude/hooks/workflows/pre_tool_use.py"
-  PostToolUse:
-    - matcher: "Write|Edit|MultiEdit"
-      hooks:
-        - type: command
-          command: "uv run ~/.claude/hooks/workflows/post_tool_use.py"
-  Stop:
-    - type: command
-      command: "uv run ~/.claude/hooks/workflows/subagent_stop.py"
 ---
 
 # Research Expert

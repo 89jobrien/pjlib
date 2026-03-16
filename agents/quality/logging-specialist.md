@@ -2,26 +2,12 @@
 name: logging-specialist
 description: Expert in analyzing, debugging, and improving logging infrastructure across codebases. Use proactively for log analysis, structured logging setup, log level optimization, security auditing (PII/secrets detection), and performance impact assessment. Specializes in Python (logging/structlog), Node.js (winston/pino), and distributed tracing patterns.
 tools: Read, Grep, Glob, Edit, Write, Bash
-model: sonnet
+model: inherit
 color: cyan
 metadata:
   version: "v1.0.0"
   author: "Toptal AgentOps"
   timestamp: "20260120"
-hooks:
-  PreToolUse:
-    - matcher: "Bash|Write|Edit|MultiEdit"
-      hooks:
-        - type: command
-          command: "uv run ~/.claude/hooks/workflows/pre_tool_use.py"
-  PostToolUse:
-    - matcher: "Write|Edit|MultiEdit"
-      hooks:
-        - type: command
-          command: "uv run ~/.claude/hooks/workflows/post_tool_use.py"
-  Stop:
-    - type: command
-      command: "uv run ~/.claude/hooks/workflows/subagent_stop.py"
 ---
 
 # Purpose
@@ -122,10 +108,10 @@ except PaymentError as e:
 // ✅ GOOD: Structured logging with pino
 const logger = pino();
 logger.info({
-  event: 'user_login',
+  event: "user_login",
   userId: user.id,
   ipAddress: req.ip,
-  durationMs: elapsedTime
+  durationMs: elapsedTime,
 });
 
 // ❌ BAD: Unstructured string
@@ -136,7 +122,7 @@ app.use((req, res, next) => {
   req.log = logger.child({
     requestId: req.id,
     method: req.method,
-    path: req.path
+    path: req.path,
   });
   next();
 });
@@ -145,11 +131,14 @@ app.use((req, res, next) => {
 try {
   await processPayment(order);
 } catch (err) {
-  logger.error({
-    err,
-    orderId: order.id,
-    amount: order.total
-  }, 'Payment processing failed');
+  logger.error(
+    {
+      err,
+      orderId: order.id,
+      amount: order.total,
+    },
+    "Payment processing failed",
+  );
 }
 ```
 
@@ -291,14 +280,14 @@ def request_id_middleware(request):
 const logger = pino();
 
 app.use((req, res, next) => {
-  req.id = req.headers['x-request-id'] || uuidv4();
+  req.id = req.headers["x-request-id"] || uuidv4();
   req.log = logger.child({
     requestId: req.id,
-    service: 'api-gateway'
+    service: "api-gateway",
   });
 
   // Propagate to downstream services
-  res.setHeader('X-Request-ID', req.id);
+  res.setHeader("X-Request-ID", req.id);
   next();
 });
 ```
@@ -473,21 +462,21 @@ logger = structlog.get_logger()
 ### Node.js pino (Recommended)
 
 ```javascript
-const pino = require('pino');
+const pino = require("pino");
 
 const logger = pino({
-  level: process.env.LOG_LEVEL || 'info',
+  level: process.env.LOG_LEVEL || "info",
   formatters: {
     level: (label) => {
       return { level: label };
-    }
+    },
   },
   timestamp: pino.stdTimeFunctions.isoTime,
   serializers: {
     err: pino.stdSerializers.err,
     req: pino.stdSerializers.req,
-    res: pino.stdSerializers.res
-  }
+    res: pino.stdSerializers.res,
+  },
 });
 
 module.exports = logger;

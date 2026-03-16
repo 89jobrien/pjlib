@@ -1,0 +1,39 @@
+{
+  "eval_id": 3,
+  "eval_name": "generate-comprehensive-tests",
+  "prompt": "i have this baml function that analyzes git commits to classify them as feature/bugfix/refactor/docs/etc. can you generate a comprehensive test suite? currently i only have one basic test and i know i need way more coverage\n\nfunction ClassifyCommit(commit_message: string, diff_summary: string) -> CommitClassification {\n  client CustomGPT5Mini\n  prompt #\"\n    Classify this git commit:\n    Message: {{ commit_message }}\n    Changes: {{ diff_summary }}\n    {{ ctx.output_format }}\n  \"#\n}",
+  "assertions": [
+    {
+      "text": "Includes at least 8 test cases",
+      "description": "Comprehensive test suite should have substantial coverage (8+ tests)"
+    },
+    {
+      "text": "Tests cover basic classifications (feature, bugfix, refactor, docs, test, chore)",
+      "description": "Should test all common commit types"
+    },
+    {
+      "text": "Tests include edge cases (empty message, ambiguous, very long)",
+      "description": "Should test boundary conditions"
+    },
+    {
+      "text": "Tests include complex scenarios (mixed changes, breaking changes, reverts)",
+      "description": "Should test real-world complex commits"
+    },
+    {
+      "text": "All test names are descriptive (classify_feature_with_new_files, not test1)",
+      "description": "Test names should clearly indicate what scenario is being tested"
+    },
+    {
+      "text": "Uses realistic commit messages and diff summaries",
+      "description": "Test data should resemble actual git commits"
+    },
+    {
+      "text": "Uses heredoc syntax for multi-line test data",
+      "description": "Should use #\"...\" for readability of complex test inputs"
+    },
+    {
+      "text": "Test suite is organized with comments or sections",
+      "description": "Should group related tests (e.g., // Basic Classifications, // Edge Cases)"
+    }
+  ]
+}

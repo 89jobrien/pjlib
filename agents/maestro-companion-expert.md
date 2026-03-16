@@ -4,6 +4,12 @@ model: sonnet
 description: Specialist for maestro-companion Rust crate development. Use proactively for implementing features, writing tests, adding observability, or modifying the WebSocket bridge and session management components in the maestro-companion crate.
 tools: Read, Write, Edit, Bash, Grep, Glob, LSP
 color: orange
+hooks:
+  PostToolUse:
+    - matcher: "Edit|Write"
+      hooks:
+        - type: command
+          command: "cargo fmt 2>/dev/null || true"
 ---
 
 # Purpose

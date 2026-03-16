@@ -1,11 +1,16 @@
 {
+  "cleanupPeriodDays": 30,
   "env": {
     "CLOUD_ML_REGION": "global",
     "CLOUDSDK_ACTIVE_CONFIG_NAME": "toptal-agent-ops",
     "CLAUDE_CODE_USE_VERTEX": "1",
     "MAESTRO_COMPANION_WS": "ws://localhost:8765",
-    "MAESTRO_COMPANION_DEBUG": "0"
+    "MAESTRO_COMPANION_DEBUG": "0",
+    "BAML_LOG": "info",
+    "BOUNDARY_MAX_LOG_CHUNK_CHARS": "3000",
+    "MCP_ENV_FILE": "/Users/joe/.config/dev-bootstrap/secrets.env"
   },
+  "includeCoAuthoredBy": true,
   "permissions": {
     "allow": [
       "Bash(brew install:*)",
@@ -58,116 +63,6 @@
     "context7",
     "fetch"
   ],
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "true"
-          }
-        ]
-      },
-      {
-        "matcher": "TodoWrite",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "true"
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "true"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "Edit|Write|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if echo \"$CLAUDE_FILE_PATHS\" | grep -qE '(\\.zshrc|\\.zshrc$)'; then echo 'BLOCK: ~/.zshrc is protected - edit manually if needed' >&2; exit 2; fi"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "true"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "true"
-          },
-          {
-            "type": "command",
-            "command": "true"
-          },
-          {
-            "type": "command",
-            "command": "true"
-          },
-          {
-            "type": "command",
-            "command": "bd prime"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "true"
-          }
-        ]
-      }
-    ],
-    "SubagentStop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "true"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "true"
-          },
-          {
-            "type": "command",
-            "command": "true"
-          }
-        ]
-      }
-    ]
-  },
   "statusLine": {
     "type": "command",
     "command": "bash -c '\"/Users/joe/.bun/bin/bun\" \"$(ls -td ~/.claude/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | head -1)src/index.ts\"'"
